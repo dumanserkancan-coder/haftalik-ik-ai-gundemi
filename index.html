@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-  /* Layout: haftalık editoryal brifing. Üstte sade başlık çubuğu; tek okuma sütununda sırasıyla Haftanın ana gelişmesi (büyük görsel), Bu hafta (numaralı 5–7 haber), Haftanın sinyali (koyu editoryal kart), Haftanın verisi (büyük rakam + iki çubuk), İzlenecekler, Kaynaklar ve Arşiv. Masaüstünde sağda yapışkan "Bu sayıda" içindekiler ve içerik türleri açıklaması. Her haber tıklanınca detay penceresi açılır, kaynağa oradan gidilir. */
+  /* Layout: haftalık editoryal brifing. Üstte sade başlık çubuğu; tek okuma sütununda sırasıyla Haftanın ana gelişmesi (büyük görsel), Haftalık gündem (numaralı 5–7 haber), Sektörel gözlem (koyu editoryal kart), Sayılarla gündem (büyük rakam + iki çubuk), Yaklaşan İK etkinlikleri, Kaynaklar ve aranabilir Arşiv (tüm sayıların başlıkları). Masaüstünde sağda yapışkan "Bu sayıda" içindekiler ve içerik türleri açıklaması. Her haber tıklanınca detay penceresi açılır, kaynağa oradan gidilir. */
   :root{
     --bg:#F6F6F4; --card:#FFFFFF; --line:#E5E5E1; --line-2:#D6D6D0;
     --ink:#121314; --ink-2:#3A3D42; --muted:#62666D; --faint:#8C9097;
@@ -278,15 +278,49 @@
   .src-table .none{color:var(--faint)}
 
   /* Arşiv */
-  .archive{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:4px 16px}
-  .archive button{display:flex;align-items:center;gap:14px;width:100%;padding:14px 0;text-align:left}
-  .archive li+li button{border-top:1px solid var(--line)}
-  .archive .an{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;width:44px;color:var(--ink)}
-  .archive .ad{flex:1;min-width:0;font-size:14.5px;font-weight:600}
-  .archive .ad small{display:block;font-size:13px;font-weight:500;color:var(--muted)}
-  .archive .cur{padding:3px 9px;border-radius:999px;background:var(--chip);font-size:12px;font-weight:700;color:var(--muted)}
-  .archive button:hover .ad{color:var(--link)}
-  .archive-note{margin-top:10px;font-size:13px;color:var(--faint)}
+  .ar-tools{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
+  .ar-search{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 14px;color:var(--faint)}
+  .ar-search:focus-within{border-color:var(--link)}
+  .ar-search input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:15px;color:var(--ink)}
+  .ar-search input::placeholder{color:var(--faint)}
+  .ar-cats{display:flex;flex-wrap:wrap;gap:6px}
+  .ar-cats button{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600;color:var(--ink-2)}
+  .ar-cats button .i{width:15px;height:15px;color:var(--kt)}
+  .ar-cats button:hover{border-color:var(--line-2)}
+  .ar-cats button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+  .ar-cats button[aria-pressed="true"] .i{color:inherit}
+  .ar-issue{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:6px 16px 8px}
+  .ar-issue+.ar-issue{margin-top:12px}
+  .ar-issue.is-cur{border-color:var(--line-2)}
+  .ar-next{border-style:dashed;background:transparent;padding:6px 16px}
+  .ar-head{display:flex;align-items:center;gap:14px;padding:10px 0}
+  .ar-head .an{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;width:40px;color:var(--ink);flex:none}
+  .ar-head .ad{flex:1;min-width:0}
+  .ar-head .ad b{display:block;font-size:15px;font-weight:700}
+  .ar-head .ad small{display:block;font-size:13px;color:var(--muted)}
+  .ar-head .cur{flex:none;padding:3px 10px;border-radius:999px;background:var(--chip);font-size:12px;font-weight:700;color:var(--muted)}
+  .ar-head .cur.soon{background:var(--t-takip-bg);color:var(--t-takip)}
+  .ar-openissue{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--ink)}
+  .ar-openissue .i{width:15px;height:15px}
+  .ar-openissue:hover{color:var(--link)}
+  .ar-list{border-top:1px solid var(--line)}
+  .ar-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0 16px}
+  .ar-list li+li .ar-row{border-top:1px solid var(--line)}
+  .ar-row{display:grid;grid-template-columns:40px minmax(0,1fr) 16px;gap:14px;align-items:center;width:100%;padding:11px 0;text-align:left}
+  .ar-row .ar-no{font-size:13px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums}
+  .ar-row .ar-main{min-width:0;display:flex;flex-direction:column;gap:3px}
+  .ar-row .ar-t{font-size:14.5px;font-weight:600;line-height:1.4;color:var(--ink)}
+  .ar-row .ar-m{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12.5px;color:var(--faint)}
+  .ar-row .ar-m .cat .i{width:13px;height:13px}
+  .ar-row .ar-go{width:16px;height:16px;color:var(--faint)}
+  .ar-row:hover .ar-t{color:var(--link)}
+  .ar-count{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:10px}
+  .ar-empty{padding:18px 0;color:var(--muted)}
+  .ar-more{margin-top:12px;width:100%;padding:12px;border-radius:14px;border:1px dashed var(--line-2);font-size:14px;font-weight:600;color:var(--ink-2);text-align:center}
+  .oldbar{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:12px 16px;border-radius:14px;background:var(--t-takip-bg);color:var(--ink);font-size:14px}
+  .oldbar button{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--t-takip)}
+  .oldbar .i{width:15px;height:15px}
+  .prev{padding:2px 8px;border-radius:999px;border:1px dashed var(--line-2);font-size:12px;font-weight:600;color:var(--muted)}
 
   /* Sağ sütun */
   .toc h4,.rail h4{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
@@ -295,8 +329,6 @@
   .toc a:hover{color:var(--ink)}
   .toc a.on{color:var(--ink);border-left-color:var(--ink)}
   .toc a small{font-size:12px;font-weight:600;color:var(--faint)}
-  .principle{border-radius:16px;background:var(--card);border:1px solid var(--line);padding:16px}
-  .principle q{display:block;font-size:16px;line-height:1.4;font-weight:700;letter-spacing:-.01em;quotes:none}
   .legend{display:flex;flex-direction:column;gap:9px}
   .legend li{display:grid;grid-template-columns:auto;gap:4px;font-size:12.5px;line-height:1.45;color:var(--muted)}
 
@@ -356,7 +388,8 @@
     .hero{padding:28px 0 26px}
     .hero .meta{flex-direction:column;gap:2px}
     .hero .meta span+span::before{content:none}
-    .archive .cur{display:none}
+    .ar-head .cur{display:none}
+    .ar-row{grid-template-columns:30px minmax(0,1fr) 14px;gap:10px}
     .block{padding:28px 0 32px}
     .lead-body{padding:18px 16px 18px}
     .cover{padding:14px 16px}
@@ -409,6 +442,7 @@
     <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l8.5 4.5-8.5 4.5-8.5-4.5z"/><path d="M3.5 12l8.5 4.5 8.5-4.5M3.5 16l8.5 4.5 8.5-4.5"/></g></symbol>
     <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
     <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M4 17l5-4.5 4 3.5 3-2.5 4.5 3.5"/></g></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></g></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></g></symbol>
   </defs>
@@ -430,6 +464,7 @@
 <div class="wrap" id="top">
   <div class="layout">
     <main class="col" id="col">
+      <div class="oldbar" id="oldbar" hidden></div>
       <section class="hero">
         <p class="eyebrow"><span class="live" aria-hidden="true"></span><span id="eyebrow"></span></p>
         <h1 id="site-title">Haftalık İK ve AI Gündemi</h1>
@@ -438,52 +473,54 @@
       </section>
 
       <section class="block" id="ana">
-        <div class="sec-head"><span class="tag t-haber">Haber</span><h2>Haftanın ana gelişmesi</h2><span class="en">The Lead</span></div>
+        <div class="sec-head"><span class="tag t-haber">Haber</span><h2>Haftanın ana gelişmesi</h2></div>
         <div id="lead"></div>
       </section>
 
       <section class="block" id="bu-hafta">
-        <div class="sec-head"><span class="tag t-haber">Haber</span><h2>Bu hafta</h2><span class="en">The Week in HR Tech</span><p class="note" id="bh-note"></p></div>
+        <div class="sec-head"><span class="tag t-haber">Haber</span><h2>Haftalık gündem</h2><p class="note" id="bh-note"></p></div>
         <ol class="items" id="items"></ol>
       </section>
 
       <section class="block" id="sinyal">
-        <div class="sec-head"><span class="tag t-yorum">Yorum</span><h2>Haftanın sinyali</h2><span class="en">Signal</span><p class="note">Bu haftanın haberleri birlikte ne söylüyor?</p></div>
+        <div class="sec-head"><span class="tag t-yorum">Yorum</span><h2>Sektörel gözlem</h2><p class="note">Bu haftanın haberleri birlikte ne söylüyor?</p></div>
         <div id="signal"></div>
       </section>
 
       <section class="block" id="veri">
-        <div class="sec-head"><span class="tag t-veri">Veri</span><h2>Haftanın verisi</h2><span class="en">Data Point of the Week</span></div>
+        <div class="sec-head"><span class="tag t-veri">Veri</span><h2>Sayılarla gündem</h2><p class="note">Haftanın öne çıkan araştırma sonucu.</p></div>
         <div id="data"></div>
       </section>
 
       <section class="block" id="izle">
-        <div class="sec-head"><span class="tag t-takip">Takip listesi</span><h2>Gelecek hafta izlenecekler</h2><span class="en">Watch Next</span><p class="note">Tahmin değil, takip ettiğimiz etkinlik ve tarihler.</p></div>
+        <div class="sec-head"><span class="tag t-takip">Takvim</span><h2>Yaklaşan İK etkinlikleri</h2><p class="note">Tarihi geçen etkinlikler listeden kendiliğinden düşer.</p></div>
         <div id="watch"></div>
       </section>
 
       <section class="block" id="kaynaklar">
-        <div class="sec-head"><span class="tag t-haber">Şeffaflık</span><h2>Kaynaklar ve yöntem</h2><span class="en">Sources</span></div>
+        <div class="sec-head"><span class="tag t-haber">Şeffaflık</span><h2>Kaynaklar ve yöntem</h2></div>
         <ul class="method" id="method"></ul>
         <table class="src-table" id="src-table"></table>
       </section>
 
       <section class="block" id="arsiv">
-        <div class="sec-head"><h2>Arşiv</h2><span class="en">Weekly Archive</span></div>
-        <ul class="archive" id="archive"></ul>
-        <p class="archive-note" id="archive-note"></p>
+        <div class="sec-head"><h2>Arşiv</h2><p class="note">Tüm sayılar ve haber başlıkları. Bir başlığa tıklayınca haberin detayı açılır.</p></div>
+        <div class="ar-tools">
+          <label class="ar-search"><svg class="i"><use href="#i-search"/></svg><span class="sr">Arşivde ara</span><input id="ar-q" type="search" placeholder="Arşivde ara: şirket, konu ya da kelime" autocomplete="off"></label>
+          <div class="ar-cats" id="ar-cats"></div>
+        </div>
+        <div id="archive"></div>
       </section>
     </main>
 
     <aside class="rail" aria-label="Bu sayıda">
       <nav class="toc"><h4>Bu sayıda</h4><ol id="toc"></ol></nav>
-      <div class="principle"><h4>Editoryal ilke</h4><q id="principle"></q></div>
       <div><h4>İçerik türleri</h4>
         <ul class="legend">
           <li><span><span class="tag t-haber">Haber</span></span>Resmî kaynağı olan gelişmeler</li>
           <li><span><span class="tag t-yorum">Yorum</span></span>Haberlerden çıkan editoryal gözlem</li>
-          <li><span><span class="tag t-veri">Veri</span></span>Haftanın tek önemli araştırma sonucu</li>
-          <li><span><span class="tag t-takip">Takip listesi</span></span>Tahmin değil, izlenecek tarihler</li>
+          <li><span><span class="tag t-veri">Veri</span></span>Haftanın öne çıkan araştırma sonucu</li>
+          <li><span><span class="tag t-takip">Takvim</span></span>Yaklaşan İK etkinlikleri</li>
         </ul>
       </div>
     </aside>
@@ -491,7 +528,7 @@
 </div>
 
 <footer>
-  <div class="wrap"><span><b id="foot-principle"></b></span><span id="foot-author"></span></div>
+  <div class="wrap"><span><b id="foot-title"></b> · <span id="foot-issue"></span></span><span id="foot-author"></span></div>
 </footer>
 
 <dialog class="sheet" id="detail" aria-labelledby="d-title" tabindex="-1">
@@ -559,7 +596,7 @@
     return '<span class="src-line">' + out.join(' · ') + '</span>';
   }
   function catHTML(k){ var c = kat(k); return '<span class="cat ' + kcls(k) + '">' + ic(c.ikon) + esc(c.ad) + '</span>'; }
-  function metaHTML(h){ return '<div class="meta-row">' + catHTML(h.kategori) + (h.tur ? '<span class="type">' + esc(h.tur) + '</span>' : '') + '<span>' + esc(h.tarih) + '</span></div>'; }
+  function metaHTML(h){ return '<div class="meta-row">' + catHTML(h.kategori) + (h.tur ? '<span class="type">' + esc(h.tur) + '</span>' : '') + '<span>' + esc(h.tarih) + '</span>' + (h.gecenHafta ? '<span class="prev">Geçen haftadan</span>' : '') + '</div>'; }
 
   /* Kapak görseli: önce verilen dosya adı, sonra diğer uzantılar; bulunamazsa renkli kapak */
   var found = {};
@@ -688,17 +725,66 @@
       (c ? '<a href="' + esc(c.outlook) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Outlook</a><a href="' + esc(c.google) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Google</a>' : '') +
       '</div></div></li>';
   }
-  function watchHTML(w){
-    var html = '';
-    var next = (w.gelecekHafta || []).map(function(e){ return { e: e, st: evStatus(e) }; }).filter(function(x){ return x.st.kind !== 'ended'; });
-    var cal = (w.takvimde || []).filter(function(e){ return evStatus(e).kind !== 'ended'; });
-    if (next.length){
-      html += '<p class="sub-h">Gelecek hafta</p>';
-      next.forEach(function(x, i){ html += (i ? '<div style="height:12px"></div>' : '') + (x.st.kind === 'nodate' ? '<ul class="watch">' + watchRowHTML(x.e) + '</ul>' : featureHTML(x.e, x.st)); });
+  function eventsHTML(list){
+    var all = (list || []).map(function(e){ return { e: e, st: evStatus(e) }; })
+      .filter(function(x){ return x.st.kind === 'soon' || x.st.kind === 'live'; })
+      .sort(function(x, y){ return x.st.a - y.st.a; });
+    if (!all.length) return '<p style="color:var(--muted)">Bu sayıdaki etkinliklerin tarihi geçti.</p>';
+    var html = '<p class="sub-h">Sıradaki etkinlik</p>' + featureHTML(all[0].e, all[0].st);
+    if (all.length > 1) html += '<p class="sub-h gap">Takvimde</p><ul class="watch">' + all.slice(1).map(function(x){ return watchRowHTML(x.e); }).join('') + '</ul>';
+    return html;
+  }
+
+  /* 7 · Arşiv: tüm sayıların başlıkları, arama ve konu filtresi */
+  var arState = { q: '', cat: 'all', more: false };
+  function norm(t){ return String(t || '').toLocaleLowerCase('tr'); }
+  function issueEntries(x){
+    var r = [];
+    if (x.ana) r.push({ id: x.ana.id, no: '★', label: 'Ana gelişme', h: x.ana });
+    (x.haberler || []).forEach(function(h, i){ r.push({ id: h.id, no: pad(i + 1), label: 'Haftalık gündem', h: h }); });
+    if (x.veri) r.push({ id: x.veri.id, no: '%', label: 'Sayılarla gündem', h: x.veri });
+    return r;
+  }
+  function hay(h){
+    return norm([h.baslik, h.ozet, h.ek, h.metin, kat(h.kategori).ad].concat(h.maddeler || [], (h.kaynaklar || []).map(function(k){ return k.ad; }),
+      (h.bolumler || []).reduce(function(a, b){ return a.concat(b.maddeler || [], b.metin || []); }, [])).join(' '));
+  }
+  function entryBtn(ii, en, withIssue){
+    var x = B.sayilar[ii];
+    return '<li><button type="button" class="ar-row" data-open-in="' + ii + '|' + esc(en.id) + '">' +
+      '<span class="ar-no">' + esc(en.no) + '</span><span class="ar-main"><span class="ar-t">' + esc(en.h.baslik) + '</span>' +
+      '<span class="ar-m">' + catHTML(en.h.kategori) + '<span>' + esc(en.h.tarih || '') + '</span>' + (withIssue ? '<span>Sayı ' + esc(x.no) + ' · ' + esc(x.donem) + '</span>' : '<span>' + esc(en.label) + '</span>') + '</span></span>' +
+      ic('chev-r', 'ar-go') + '</button></li>';
+  }
+  function renderArchive(){
+    var cats = ['all'].concat(Object.keys(K).filter(function(k){
+      return B.sayilar.some(function(x){ return issueEntries(x).some(function(en){ return en.h.kategori === k; }); });
+    }));
+    document.getElementById('ar-cats').innerHTML = cats.map(function(k){
+      return '<button type="button" data-arcat="' + esc(k) + '" aria-pressed="' + (arState.cat === k) + '"' + (k === 'all' ? '' : ' class="' + kcls(k) + '"') + '>' + (k === 'all' ? 'Tüm konular' : ic(kat(k).ikon) + esc(kat(k).ad)) + '</button>';
+    }).join('');
+    var box = document.getElementById('archive'), q = norm(arState.q.trim());
+    if (q || arState.cat !== 'all'){
+      var res = [];
+      B.sayilar.forEach(function(x, ii){ issueEntries(x).forEach(function(en){
+        if ((arState.cat === 'all' || en.h.kategori === arState.cat) && (!q || hay(en.h).indexOf(q) !== -1)) res.push(entryBtn(ii, en, true));
+      }); });
+      box.innerHTML = '<p class="ar-count">' + res.length + ' sonuç' + (q ? ' · "' + esc(arState.q.trim()) + '"' : '') + (arState.cat !== 'all' ? ' · ' + esc(kat(arState.cat).ad) : '') + '</p>' +
+        (res.length ? '<ol class="ar-list ar-card">' + res.join('') + '</ol>' : '<p class="ar-empty">Arşivde eşleşen başlık yok.</p>');
+      return;
     }
-    if (cal.length) html += '<p class="sub-h' + (next.length ? ' gap' : '') + '">Takvimde</p><ul class="watch">' + cal.map(watchRowHTML).join('') + '</ul>';
-    if (w.konular && w.konular.length) html += '<p class="sub-h gap">Takip ettiğimiz konular</p><div class="topics">' + w.konular.map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('') + '</div>';
-    return html || '<p style="color:var(--muted)">Bu sayı için izleme listesi yok.</p>';
+    var html = '';
+    if (B.siradaki) html += '<div class="ar-issue ar-next"><div class="ar-head"><span class="an">#' + esc(B.siradaki.no) + '</span><span class="ad"><b>' + esc(B.siradaki.donem) + '</b><small>Hazırlanıyor' + (B.siradaki.yayin ? ' · ' + esc(B.siradaki.yayin) + ' yayımlanacak' : '') + '</small></span><span class="cur soon">Sıradaki sayı</span></div></div>';
+    var LIMIT = 4;
+    B.sayilar.forEach(function(x, ii){
+      if (ii >= LIMIT && !arState.more) return;
+      var en = issueEntries(x), curr = ii === state.idx;
+      html += '<div class="ar-issue' + (curr ? ' is-cur' : '') + '"><div class="ar-head"><span class="an">#' + esc(x.no) + '</span><span class="ad"><b>' + esc(x.donem) + '</b><small>' + (x.yayin ? 'Yayın: ' + esc(x.yayin) + ' · ' : '') + (x.haberler || []).length + ' haber</small></span>' +
+        (curr ? '<span class="cur">Okuduğunuz sayı</span>' : '<button type="button" class="ar-openissue" data-issue="' + ii + '">Sayıyı aç' + ic('arrow') + '</button>') + '</div>' +
+        '<ol class="ar-list">' + en.map(function(e){ return entryBtn(ii, e, false); }).join('') + '</ol></div>';
+    });
+    if (B.sayilar.length > LIMIT && !arState.more) html += '<button type="button" class="ar-more" data-armore="1">Daha eski ' + (B.sayilar.length - LIMIT) + ' sayıyı göster</button>';
+    box.innerHTML = html;
   }
 
   /* 6 · Kaynaklar */
@@ -718,12 +804,12 @@
   var METHOD = [
     ['check', 'Her haber, gelişmeyi duyuran şirketin ya da araştırmayı yapan kurumun kendi yayınına dayanır; mümkün olduğunda bağımsız ikinci bir kaynakla karşılaştırılır.'],
     ['analytics', 'Rakamlar kaynaktaki hâliyle verilir. Doğrulanamayan rakam yayımlanmaz.'],
-    ['layers', '"Sinyal" bölümü editoryal yorumdur, haber değildir. "İzlenecekler" tahmin değil, takip listesidir.'],
+    ['layers', '"Sektörel gözlem" bölümü editoryal yorumdur, haber değildir; haberler bölümüne yorum katılmaz.'],
     ['image', 'Ana gelişmedeki kapak görseli yapay zekâ ile oluşturulmuştur.']
   ];
 
   /* Sayfa */
-  var SECTIONS = [['ana', 'Ana gelişme'], ['bu-hafta', 'Bu hafta'], ['sinyal', 'Sinyal'], ['veri', 'Veri'], ['izle', 'İzlenecekler'], ['kaynaklar', 'Kaynaklar'], ['arsiv', 'Arşiv']];
+  var SECTIONS = [['ana', 'Ana gelişme'], ['bu-hafta', 'Haftalık gündem'], ['sinyal', 'Sektörel gözlem'], ['veri', 'Sayılarla gündem'], ['izle', 'Yaklaşan İK etkinlikleri'], ['kaynaklar', 'Kaynaklar'], ['arsiv', 'Arşiv']];
   function render(){
     var s = issue();
     items = {}; order = [];
@@ -735,14 +821,15 @@
     document.getElementById('site-title').textContent = B.ad || '';
     document.getElementById('logo-name').textContent = B.ad || '';
     document.getElementById('deck').textContent = B.aciklama || '';
-    document.getElementById('principle').textContent = B.ilke || '';
-    document.getElementById('foot-principle').textContent = B.ilke || '';
+    document.getElementById('foot-title').textContent = B.altBaslik || B.ad || '';
+    document.getElementById('foot-issue').textContent = 'Sayı ' + s.no + ' · ' + s.donem;
     document.getElementById('foot-author').textContent = B.hazirlayan ? 'Hazırlayan: ' + B.hazirlayan : '';
     document.getElementById('issue-chip').textContent = 'Sayı ' + s.no + ' · ' + s.donem;
     document.getElementById('eyebrow').textContent = 'Sayı ' + s.no + ' · ' + s.donem;
     var meta = [];
+    if (s.yayin) meta.push('Yayın: ' + s.yayin);
     if (B.hazirlayan) meta.push('Hazırlayan: ' + B.hazirlayan);
-    meta.push('Yaklaşık ' + (s.okuma || 5) + ' dakikalık okuma');
+    meta.push((s.okuma || 5) + ' dk okuma');
     if (s.sonraki) meta.push('Sonraki sayı: ' + s.sonraki);
     document.getElementById('hero-meta').innerHTML = meta.map(function(m){ return '<span>' + esc(m) + '</span>'; }).join('');
 
@@ -754,26 +841,28 @@
     } else nb.hidden = true;
 
     /* Bölümler */
-    var show = { 'ana': !!s.ana, 'bu-hafta': s.haberler.length > 0, 'sinyal': !!s.sinyal, 'veri': !!s.veri, 'izle': !!s.izlenecekler, 'kaynaklar': true, 'arsiv': true };
+    var show = { 'ana': !!s.ana, 'bu-hafta': s.haberler.length > 0, 'sinyal': !!s.sinyal, 'veri': !!s.veri, 'izle': !!(s.etkinlikler && s.etkinlikler.length), 'kaynaklar': true, 'arsiv': true };
     SECTIONS.forEach(function(x){ document.getElementById(x[0]).hidden = !show[x[0]]; });
 
     if (s.ana){ document.getElementById('lead').innerHTML = leadHTML(s.ana); }
-    document.getElementById('bh-note').textContent = s.haberler.length + ' gelişme · her biri kaynağıyla';
+    var gh = s.haberler.filter(function(h){ return h.gecenHafta; }).length;
+    document.getElementById('bh-note').textContent = s.haberler.length + ' gelişme · her biri kaynağıyla' + (gh ? ' · ' + gh + ' tanesi geçen haftadan' : '');
     document.getElementById('items').innerHTML = s.haberler.map(itemHTML).join('');
     if (s.sinyal) document.getElementById('signal').innerHTML = signalHTML(s.sinyal, s);
     if (s.veri) document.getElementById('data').innerHTML = dataHTML(s.veri);
-    if (s.izlenecekler) document.getElementById('watch').innerHTML = watchHTML(s.izlenecekler);
+    if (s.etkinlikler) document.getElementById('watch').innerHTML = eventsHTML(s.etkinlikler);
     document.getElementById('method').innerHTML = METHOD.map(function(m){ return '<li>' + ic(m[0]) + '<span>' + esc(m[1]) + '</span></li>'; }).join('');
     document.getElementById('src-table').innerHTML = sourcesTableHTML(s);
 
-    document.getElementById('archive').innerHTML = B.sayilar.map(function(x, i){
-      var n = (x.haberler || []).length;
-      return '<li><button type="button" data-issue="' + i + '"><span class="an">#' + esc(x.no) + '</span><span class="ad">' + esc(x.donem) + '<small>' + (x.ana ? esc(x.ana.baslik) : n + ' haber') + '</small></span>' + (i === state.idx ? '<span class="cur">Okuduğunuz sayı</span>' : ic('chev-r')) + '</button></li>';
-    }).join('');
-    document.getElementById('archive-note').textContent = 'Yeni sayılar her pazartesi eklenir.';
+    renderArchive();
+    var ob = document.getElementById('oldbar');
+    if (state.idx !== 0){
+      ob.innerHTML = '<span>Arşivden <b>Sayı ' + esc(s.no) + ' · ' + esc(s.donem) + '</b> sayısını okuyorsunuz.</span><button type="button" data-issue="0">En yeni sayıya dön' + ic('arrow') + '</button>';
+      ob.hidden = false;
+    } else ob.hidden = true;
 
     /* İçindekiler */
-    var counts = { 'bu-hafta': s.haberler.length + ' haber' };
+    var counts = { 'bu-hafta': String(s.haberler.length) };
     var navs = SECTIONS.filter(function(x){ return show[x[0]]; });
     document.getElementById('toc').innerHTML = navs.map(function(x){ return '<li><a href="#' + x[0] + '" data-sec="' + x[0] + '">' + esc(x[1]) + (counts[x[0]] ? '<small>' + esc(counts[x[0]]) + '</small>' : '') + '</a></li>'; }).join('');
     document.getElementById('secnav').innerHTML = navs.map(function(x){ return '<a href="#' + x[0] + '" data-sec="' + x[0] + '">' + esc(x[1]) + '</a>'; }).join('');
@@ -804,7 +893,7 @@
   var dBar = document.getElementById('d-bar');
   var dScroll = document.getElementById('d-scroll');
   var current = null;
-  function sectionLabel(id){ var s = issue(); if (s.ana && id === s.ana.id) return 'Haftanın ana gelişmesi'; if (s.veri && id === s.veri.id) return 'Haftanın verisi'; var i = -1; s.haberler.forEach(function(h, j){ if (h.id === id) i = j; }); return 'Bu hafta · ' + pad(i + 1); }
+  function sectionLabel(id){ var s = issue(), pre = 'Sayı ' + s.no + ' · '; if (s.ana && id === s.ana.id) return pre + 'Ana gelişme'; if (s.veri && id === s.veri.id) return pre + 'Sayılarla gündem'; var i = -1; s.haberler.forEach(function(h, j){ if (h.id === id) i = j; }); return pre + 'Haftalık gündem · ' + pad(i + 1); }
   function detailBody(h){
     var html = '';
     if (h.kapak) html += coverHTML(h);
@@ -874,7 +963,20 @@
   });
 
   /* Tıklamalar */
+  function openIn(ii, id){
+    if (ii !== state.idx){
+      state.idx = ii;
+      try { history.replaceState(null, '', '#sayi-' + issue().no); } catch(err){}
+      render();
+    }
+    openDetail(id);
+  }
   col.addEventListener('click', function(e){
+    var oi = e.target.closest('[data-open-in]');
+    if (oi){ var parts = oi.getAttribute('data-open-in').split('|'); openIn(+parts[0], parts[1]); return; }
+    var ac = e.target.closest('[data-arcat]');
+    if (ac){ arState.cat = ac.getAttribute('data-arcat'); renderArchive(); return; }
+    if (e.target.closest('[data-armore]')){ arState.more = true; renderArchive(); return; }
     var o = e.target.closest('[data-open]'); if (o){ openDetail(o.getAttribute('data-open')); return; }
     var a = e.target.closest('[data-issue]');
     if (a){
@@ -883,6 +985,7 @@
       render(); window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
+  document.getElementById('ar-q').addEventListener('input', function(e){ arState.q = e.target.value; renderArchive(); });
   document.addEventListener('click', function(e){
     Array.prototype.forEach.call(document.querySelectorAll('details.addcal[open]'), function(d){ if (!d.contains(e.target)) d.removeAttribute('open'); });
   });

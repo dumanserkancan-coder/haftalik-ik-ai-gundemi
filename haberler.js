@@ -1,20 +1,29 @@
 /*
   HAFTALIK İK VE AI GÜNDEMİ — HABER DOSYASI
-  Her hafta sadece bu dosya değişir. Yeni sayıyı "sayilar" listesinin EN ÜSTÜNE ekle;
-  eski sayılar sayfanın altındaki "Arşiv" bölümünden açılır.
+  Her hafta sadece bu dosya değişir.
+
+  ARŞİV NASIL ÇALIŞIR?
+  - Tüm sayılar aşağıdaki "sayilar" listesinde durur. Yeni sayıyı listenin EN ÜSTÜNE ekle,
+    eski sayıları SİLME. Site açılınca en üstteki (en yeni) sayıyı gösterir.
+  - Eski sayılar sayfanın altındaki "Arşiv" bölümünde başlıklarıyla listelenir; arama ve
+    konu filtresi tüm sayılarda çalışır. Her sayının kendi adresi vardır: …/#sayi-1, …/#sayi-2
+  - "siradaki": henüz yayımlanmamış sayının bilgisi; arşivde "Hazırlanıyor" olarak görünür.
+    Yeni sayıyı ekleyince bunu bir sonraki sayıya göre güncelle.
 
   Bir sayının bölümleri (bu sırayla görünür):
     ana          Haftanın ana gelişmesi: tek konu, büyük görsel, 1 dakikalık özet  (HABER)
-    haberler     Bu hafta: 5–7 önemli gelişme                                      (HABER)
-    sinyal       Haftanın sinyali: haberlerin birlikte gösterdiği eğilim            (YORUM)
-    veri         Haftanın verisi: tek önemli araştırma sonucu                       (VERİ)
-    izlenecekler Gelecek hafta ve takvimde izlenecekler                             (TAKİP LİSTESİ, tahmin değil)
+    haberler     Haftalık gündem: 5–7 önemli gelişme                              (HABER)
+                 gecenHafta: true → bir önceki haftadan dikkat çeken gelişme etiketi
+    sinyal       Sektörel gözlem: haberlerin birlikte gösterdiği eğilim            (YORUM)
+    veri         Sayılarla gündem: tek önemli araştırma sonucu                     (VERİ)
+    etkinlikler  Yaklaşan İK etkinlikleri                                          (TAKVİM)
 
   Konu anahtarları: "ai-hr" AI in HR · "ta" Talent Acquisition · "pa" People Analytics
                     "ex" Employee Experience · "fow" Future of Work · "rapor" Rapor
   Kaynak tipi (tip): "resmi" = şirketin / kurumun kendi duyurusu, "ikinci" = bağımsız haber kaynağı
-  Tarihler (baslangic, bitis): YIL-AY-GÜN biçiminde; sitede kalan gün buna göre hesaplanır.
-  kapak.gorsel: Görsel dosyasının adı; dosyayı index.html ile aynı yere yükle.
+  Tarihler (baslangic, bitis): YIL-AY-GÜN biçiminde; sitede kalan gün buna göre hesaplanır,
+    tarihi geçen etkinlik kendiliğinden gizlenir.
+  kapak.gorsel: Görsel dosyasının adı; dosyayı index.html ile aynı yere yükle (her sayıya ayrı ad: kapak-sayi2.jpg …).
 
   yeni: İki sayı arasında çıkan gerçekten büyük bir gelişme için kullan ("Yeni" şeridi).
         Örnek: { tarih: "14 Ekim", baslik: "…", kaynak: "…", url: "https://…" }
@@ -23,7 +32,7 @@
 window.BULTEN = {
   ad: "Haftalık İK ve AI Gündemi",
   aciklama: "İK teknolojileri ve yapay zekâ dünyasında bu hafta bilmeniz gerekenler.",
-  ilke: "Haftanın tüm İK haberleri değil. Bilmeniz gerekenler.",
+  altBaslik: "Haftalık İK ve AI Gelişmeleri",
   hazirlayan: "Serkan Can Duman AI",
 
   kategoriler: {
@@ -37,10 +46,13 @@ window.BULTEN = {
 
   yeni: [],
 
+  siradaki: { no: 2, donem: "12–18 Ekim 2026", yayin: "19 Ekim Pazartesi" },
+
   sayilar: [
     {
       no: 1,
-      donem: "1–10 Ekim 2026",
+      donem: "5–11 Ekim 2026",
+      yayin: "12 Ekim 2026",
       sonraki: "19 Ekim Pazartesi",
       okuma: 6,
 
@@ -70,10 +82,10 @@ window.BULTEN = {
         ]
       },
 
-      /* 2 · BU HAFTA (5–7 haber) */
+      /* 2 · HAFTALIK GÜNDEM (5–7 haber) */
       haberler: [
         {
-          id: "h1", kategori: "ta", tarih: "1 Ekim", tur: "Şirket duyurusu",
+          id: "h1", kategori: "ta", tarih: "1 Ekim", tur: "Şirket duyurusu", gecenHafta: true,
           baslik: "LinkedIn, işe alım asistanının yeni sürümünü duyurdu",
           ozet: "Hiring Assistant 2, işe alım uzmanının geçmiş tercihlerini hatırlayarak aday öneriyor, adayın pozisyona ne kadar açık olabileceğini tahmin ediyor ve kimlik ile beceri doğrulamalarını gösteriyor. LinkedIn'e göre asistanın bulduğu adaylarla iletişime geçilme olasılığı geleneksel yöntemlere göre 4 kat daha yüksek.",
           ek: "Yetenek kazanımı uzmanlarının %39'u en büyük sorunlarının, adayın ya da becerilerinin gerçek olup olmadığını bilememek olduğunu söylüyor. Yeni özellikler, asistanı İngilizce kullanan mevcut müşterilere Kasım'dan itibaren ücretsiz olarak açılacak.",
@@ -124,7 +136,7 @@ window.BULTEN = {
           ]
         },
         {
-          id: "h6", kategori: "fow", tarih: "1 Ekim", tur: "Şirket verisi",
+          id: "h6", kategori: "fow", tarih: "1 Ekim", tur: "Şirket verisi", gecenHafta: true,
           baslik: "ABD'de 2026'da işten çıkarmaların en sık gerekçesi yapay zekâ oldu",
           ozet: "Challenger, Gray & Christmas'ın verisine göre ABD'li şirketlerin Ocak–Eylül döneminde açıkladığı 573.195 işten çıkarmanın 120.136'sı yapay zekâ gerekçesiyle yapıldı; bu, yılın en sık gösterilen nedeni. Toplam işten çıkarmalar ise geçen yılın aynı dönemine göre %39 daha az.",
           ek: "Eylül'de açıklanan 43.281 işten çıkarmanın 3.961'i yapay zekâya bağlandı. Şirketlerin yıl başından bu yana açıkladığı işe alım planları %3 artışla 210.612'ye ulaştı.",
@@ -136,17 +148,17 @@ window.BULTEN = {
         }
       ],
 
-      /* 3 · HAFTANIN SİNYALİ (editoryal gözlem, haber değil) */
+      /* 3 · SEKTÖREL GÖZLEM (editoryal yorum, haber değil) */
       sinyal: {
         baslik: "Asistandan ajana",
         ingilizce: "From Assist → Act",
-        metin: "İK yazılımlarında yapay zekânın rolü, soruları yanıtlayan bir asistan olmaktan işi adım adım tamamlayan bir ajana doğru kayıyor. Bu hafta LinkedIn işe alımda, SAP bordrodan işe başlamaya kadar birçok süreçte bu yönde ürünler duyurdu. Gartner'ın verisi ise şirketlerdeki uygulamaların duyuruların gerisinde kaldığını ve sonucu en çok veri kalitesinin belirlediğini gösteriyor.",
+        metin: "İK yazılımlarında yapay zekânın rolü, soruları yanıtlayan bir asistan olmaktan işi adım adım tamamlayan bir ajana doğru kayıyor. Son iki haftada LinkedIn işe alımda, SAP bordrodan işe başlamaya kadar birçok süreçte bu yönde ürünler duyurdu. Gartner'ın verisi ise şirketlerdeki uygulamaların duyuruların gerisinde kaldığını ve sonucu en çok veri kalitesinin belirlediğini gösteriyor.",
         once: { ad: "Asistan", metin: "Soruyu yanıtlar, öneri sunar; işi insan tamamlar." },
         sonra: { ad: "Ajan", metin: "İşi başlatır, adımları yürütür; gerektiğinde insana danışır." },
         dayanak: ["h1", "h2", "h3"]
       },
 
-      /* 4 · HAFTANIN VERİSİ */
+      /* 4 · SAYILARLA GÜNDEM */
       veri: {
         id: "veri", kategori: "pa", tarih: "5 Ekim", tur: "Araştırma",
         deger: "%40",
@@ -171,32 +183,18 @@ window.BULTEN = {
         ]
       },
 
-      /* 5 · İZLENECEKLER (takip listesi, tahmin değil) */
-      izlenecekler: {
-        gelecekHafta: [
-          { ad: "Workday Rising", tur: "Etkinlik", baslangic: "2026-10-12", bitis: "2026-10-15", yer: "Las Vegas",
-            aciklama: "Workday'in duyurusuna göre programın odağında İK ve finans için yapay zekâ ajanları var.",
-            url: "https://newsroom.workday.com/2026-07-21-Workday-Announces-Rising-2026-Where-Agentic-HR-and-Agentic-Finance-Take-Center-Stage-October-12-15-in-Las-Vegas" }
-        ],
-        takvimde: [
-          { ad: "HR Tech 2026", tur: "Etkinlik", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Las Vegas",
-            aciklama: "Sektörün en büyük İK teknolojisi fuarı.",
-            url: "https://www.hrtechnologyconference.com/press-releases/built-hr-designed-action-hr-tech-2026-set-october-20-22-las-vegas" },
-          { ad: "UNLEASH World", tur: "Etkinlik", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Paris",
-            aciklama: "Avrupa'nın büyük İK etkinliklerinden; 140 ülkeden yaklaşık 8.500 katılımcı bekleniyor.",
-            url: "https://www.unleash.ai/events/unleash-paris" },
-          { ad: "LinkedIn Hiring Assistant 2", tur: "Ürün takvimi", zaman: "Kasım 2026",
-            aciklama: "Yeni özellikler, asistanı İngilizce kullanan mevcut müşterilere ücretsiz güncelleme olarak açılmaya başlayacak.",
-            url: "https://www.hrdive.com/news/sociable-linkedin-updates-its-ai-powered-hiring-bot/831873/" },
-          { ad: "SAP–TechWolf satın alması", tur: "Satın alma", zaman: "Son çeyrek 2026",
-            aciklama: "Satışın düzenleyici onaylara bağlı olarak yılın son çeyreğinde tamamlanması bekleniyor.",
-            url: "https://news.sap.com/?p=247980" },
-          { ad: "AB Yapay Zekâ Yasası", tur: "Düzenleme", baslangic: "2027-12-02",
-            aciklama: "İşe alım ve çalışan yönetiminde kullanılan yüksek riskli yapay zekâ sistemlerine yönelik yükümlülükler, Temmuz'da yayımlanan değişiklikle 2 Aralık 2027'ye ertelendi.",
-            url: "https://www.cuatrecasas.com/en/latam/labor-and-employment/art/digital-omnibus-on-ai-how-does-it-impact-employment-relations" }
-        ],
-        konular: ["AI Agents", "Skills Intelligence", "Recruiting Automation", "Workforce Planning"]
-      }
+      /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
+      etkinlikler: [
+        { ad: "Workday Rising", tur: "Konferans", baslangic: "2026-10-12", bitis: "2026-10-15", yer: "Las Vegas",
+          aciklama: "Workday'in duyurusuna göre programın odağında İK ve finans için yapay zekâ ajanları var.",
+          url: "https://newsroom.workday.com/2026-07-21-Workday-Announces-Rising-2026-Where-Agentic-HR-and-Agentic-Finance-Take-Center-Stage-October-12-15-in-Las-Vegas" },
+        { ad: "HR Tech 2026", tur: "Konferans ve fuar", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Las Vegas",
+          aciklama: "Sektörün en büyük İK teknolojisi fuarı.",
+          url: "https://www.hrtechnologyconference.com/press-releases/built-hr-designed-action-hr-tech-2026-set-october-20-22-las-vegas" },
+        { ad: "UNLEASH World", tur: "Konferans", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Paris",
+          aciklama: "Avrupa'nın büyük İK etkinliklerinden; 140 ülkeden yaklaşık 8.500 katılımcı bekleniyor.",
+          url: "https://www.unleash.ai/events/unleash-paris" }
+      ]
     }
   ]
 };
