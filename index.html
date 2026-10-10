@@ -88,7 +88,7 @@
   .header{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--head-bg);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-bottom:1px solid var(--line)}
   .header .top{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16.5px;letter-spacing:-.02em;white-space:nowrap;min-width:0}
-  .logo .mk{width:30px;height:30px;border-radius:9px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:12px;font-weight:800;letter-spacing:0;flex:none}
+  .logo .mk{min-width:30px;height:30px;padding:0 7px;border-radius:9px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:12px;font-weight:800;letter-spacing:0;flex:none}
   .logo .nm{overflow:hidden;text-overflow:ellipsis}
   .tools{display:flex;align-items:center;gap:10px}
   .issue-chip{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap}
@@ -450,7 +450,7 @@
 
 <header class="header">
   <div class="wrap top">
-    <a class="logo" href="#top"><span class="mk" aria-hidden="true">İK</span><span class="nm" id="logo-name">Haftalık İK ve AI Gündemi</span></a>
+    <a class="logo" href="#top"><span class="mk" aria-hidden="true">AİK</span><span class="nm" id="logo-name">Haftalık İK ve AI Gündemi</span></a>
     <div class="tools">
       <span class="issue-chip" id="issue-chip"></span>
       <button type="button" class="icon-btn mode" aria-label="Temayı değiştir" title="Açık / koyu tema"><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg></button>

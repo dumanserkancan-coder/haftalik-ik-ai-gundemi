@@ -33,7 +33,7 @@ window.BULTEN = {
   ad: "Haftalık İK ve AI Gündemi",
   aciklama: "İK teknolojileri ve yapay zekâ dünyasında bu hafta bilmeniz gerekenler.",
   altBaslik: "Haftalık İK ve AI Gelişmeleri",
-  hazirlayan: "Serkan Can Duman AI",
+  hazirlayan: "Serkan Can Duman",
 
   kategoriler: {
     "ai-hr": { ad: "AI in HR",            ikon: "ik-ai",     renk: "mor" },
