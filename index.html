@@ -358,19 +358,18 @@
   .d-bullets li{position:relative;padding-left:20px}
   .d-bullets li::before{content:"";position:absolute;left:4px;top:.65em;width:7px;height:7px;border-radius:50%;background:var(--k, var(--ink))}
   .d-note{font-size:14px;color:var(--muted);background:var(--chip);border-radius:12px;padding:12px 14px}
-  .d-src{margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
-  .d-src .lbl{margin-bottom:2px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-  .d-src a{display:flex;align-items:center;gap:10px;padding:6px 8px;margin-inline:-8px;border-radius:9px}
-  .d-src a:hover{background:var(--chip)}
-  .d-src .fav{width:20px;height:20px;border-radius:5px;font-size:10px}
-  .d-src .src-t{min-width:0;flex:1;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px}
-  .d-src .nm{font-weight:600;font-size:13.5px;color:var(--ink-2)}
-  .d-src .tp{font-size:12px;color:var(--faint)}
-  .d-src .tp .k{font-weight:600;color:var(--muted)}
-  .d-src .tp .k.resmi{color:var(--t-haber)}
-  .d-src .go{flex:none;display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:600;color:var(--muted);white-space:nowrap}
-  .d-src .go .i{width:13px;height:13px}
-  .d-src a:hover .go,.d-src a:hover .nm{color:var(--link)}
+  .d-src{margin-top:10px;padding-top:12px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+  .d-src .src-h{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px}
+  .d-src .lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .d-src .key{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--faint)}
+  .d-src .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .schip{display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:5px 10px 5px 9px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--ink-2);transition:border-color .15s,color .15s}
+  .schip .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--faint);flex:none}
+  .dot.resmi,.schip.resmi .dot{background:var(--t-haber)}
+  .schip .i{width:12px;height:12px;color:var(--faint);flex:none}
+  .schip:hover{border-color:var(--line-2);color:var(--link)}
+  .schip:hover .i{color:var(--link)}
   .d-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding-top:6px}
   .pill-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--ink-2)}
   .pill-btn:hover:not([disabled]){border-color:var(--line-2);color:var(--ink)}
@@ -415,7 +414,6 @@
     .src-table td[data-l]::before{content:attr(data-l) ": ";font-size:12px;font-weight:700;color:var(--faint)}
     dialog.sheet{width:100%;height:100%;max-height:100%;margin:0;border-radius:0;border:0}
     .d-body{padding:20px 18px 28px}
-    .d-src .go span{display:none}
   }
 </style>
 </head>
@@ -911,12 +909,13 @@
     if (h.not) html += '<p class="d-note">' + esc(h.not) + '</p>';
     var src = h.kaynaklar || [];
     if (src.length){
-      html += '<div class="d-src"><p class="lbl">' + (src.length > 1 ? 'Kaynaklar' : 'Kaynak') + '</p>' + src.map(function(s){
-        var r = (s.tip || 'resmi') === 'resmi';
-        return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener"><span class="fav" aria-hidden="true">' + esc(favLetter(brand(s.ad))) + '</span>' +
-          '<span class="src-t"><span class="nm">' + esc(s.ad) + '</span><span class="tp"><span class="k' + (r ? ' resmi' : '') + '">' + (r ? 'Resmî kaynak' : 'İkinci kaynak') + '</span> · ' + esc(host(s.url)) + '</span></span>' +
-          '<span class="go"><span>Kaynağa git</span>' + ic('ext') + '</span></a>';
-      }).join('') + '</div>';
+      var hasR = src.some(function(x){ return (x.tip || 'resmi') === 'resmi'; }), hasI = src.some(function(x){ return x.tip === 'ikinci'; });
+      html += '<div class="d-src"><div class="src-h"><span class="lbl">' + (src.length > 1 ? 'Kaynaklar' : 'Kaynak') + '</span>' +
+        (hasR ? '<span class="key"><span class="dot resmi"></span>Resmî kaynak</span>' : '') + (hasI ? '<span class="key"><span class="dot"></span>İkinci kaynak</span>' : '') + '</div><div class="chips">' +
+        src.map(function(s){
+          var r = (s.tip || 'resmi') === 'resmi';
+          return '<a class="schip' + (r ? ' resmi' : '') + '" href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + (r ? 'Resmî kaynak' : 'İkinci kaynak') + ' · ' + esc(host(s.url)) + '"><span class="dot"></span><span class="t">' + esc(s.ad) + '</span>' + ic('ext') + '</a>';
+        }).join('') + '</div></div>';
     }
     var i = order.indexOf(h.id);
     html += '<div class="d-actions">' +
