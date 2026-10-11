@@ -1,6 +1,7 @@
 /*
   HAFTALIK İK VE AI GÜNDEMİ — HABER DOSYASI
-  Her hafta sadece bu dosya değişir.
+  Her hafta sadece bu dosya değişir. Yayın düzeni: her sayı Pazartesi–Pazar haftasını kapsar
+  ve o haftanın pazar günü yayımlanır (CHRO ile pazartesi paylaşılır).
 
   ARŞİV NASIL ÇALIŞIR?
   - Tüm sayılar aşağıdaki "sayilar" listesinde durur. Yeni sayıyı listenin EN ÜSTÜNE ekle,
@@ -31,7 +32,7 @@
 */
 window.BULTEN = {
   ad: "Haftalık İK ve AI Gündemi",
-  aciklama: "İK teknolojileri ve yapay zekâ dünyasında bu hafta bilmeniz gerekenler.",
+  aciklama: "İK teknolojileri ve yapay zekâ dünyasında bu haftanın öne çıkan gelişmeleri.",
   altBaslik: "Haftalık İK ve AI Gelişmeleri",
   hazirlayan: "Serkan Can Duman",
 
@@ -46,14 +47,14 @@ window.BULTEN = {
 
   yeni: [],
 
-  siradaki: { no: 2, donem: "12–18 Ekim 2026", yayin: "19 Ekim Pazartesi" },
+  siradaki: { no: 2, donem: "12–18 Ekim 2026", yayin: "18 Ekim Pazar" },
 
   sayilar: [
     {
       no: 1,
       donem: "5–11 Ekim 2026",
-      yayin: "12 Ekim 2026",
-      sonraki: "19 Ekim Pazartesi",
+      yayin: "11 Ekim 2026",
+      sonraki: "18 Ekim Pazar",
       okuma: 6,
 
       /* 1 · HAFTANIN ANA GELİŞMESİ */
