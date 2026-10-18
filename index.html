@@ -316,6 +316,23 @@
   .ar-openissue .i{width:15px;height:15px}
   .ar-openissue:hover{color:var(--link)}
   .ar-list{border-top:1px solid var(--line)}
+  /* Kompakt arşiv: her sayı tek satır, başlıklar isteyene açılır */
+  .ar-compact{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0 16px}
+  .ar-compact .ar-issue{background:none;border:0;border-radius:0;padding:0}
+  .ar-compact .ar-issue+.ar-issue{margin-top:0;border-top:1px solid var(--line)}
+  .ar-compact .ar-next .ar-head{opacity:.75}
+  .ar-head .ad .ar-lead{display:block;font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+  .ar-acts{flex:none;display:flex;align-items:center;gap:6px}
+  .ar-toggle{flex:none;display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--ink-2)}
+  .ar-toggle .i{width:14px;height:14px;transition:transform .15s}
+  .ar-toggle[aria-expanded="true"] .i{transform:rotate(90deg)}
+  .ar-toggle:hover{border-color:var(--line-2)}
+  .ar-compact .ar-list{margin-bottom:8px}
+  @media (max-width:560px){
+    .ar-head{flex-wrap:wrap;gap:8px 12px}
+    .ar-head .ad{flex-basis:calc(100% - 60px)}
+    .ar-acts{width:100%;padding-left:52px;justify-content:flex-start}
+  }
   .ar-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:0 16px}
   .ar-list li+li .ar-row{border-top:1px solid var(--line)}
   .ar-row{display:grid;grid-template-columns:40px minmax(0,1fr) 16px;gap:14px;align-items:center;width:100%;padding:11px 0;text-align:left}
@@ -516,7 +533,7 @@
       </section>
 
       <section class="block" id="arsiv">
-        <div class="sec-head"><h2>Arşiv</h2><p class="note">Tüm sayılar ve haber başlıkları. Bir başlığa tıklayınca haberin detayı açılır.</p></div>
+        <div class="sec-head"><h2>Arşiv</h2><p class="note">Tüm sayılar. "Başlıklar" ile sayının haberlerini görebilir, "Sayıyı aç" ile sayının tamamını okuyabilirsiniz.</p></div>
         <div class="ar-tools">
           <label class="ar-search"><svg class="i"><use href="#i-search"/></svg><span class="sr">Arşivde ara</span><input id="ar-q" type="search" placeholder="Arşivde ara: şirket, konu ya da kelime" autocomplete="off"></label>
           <div class="ar-cats" id="ar-cats"></div>
@@ -748,7 +765,7 @@
   }
 
   /* 7 · Arşiv: tüm sayıların başlıkları, arama ve konu filtresi */
-  var arState = { q: '', cat: 'all', more: false };
+  var arState = { q: '', cat: 'all', more: false, open: {} };
   function norm(t){ return String(t || '').toLocaleLowerCase('tr'); }
   function issueEntries(x){
     var r = [];
@@ -787,14 +804,18 @@
     }
     var html = '';
     if (B.siradaki) html += '<div class="ar-issue ar-next"><div class="ar-head"><span class="an">#' + esc(B.siradaki.no) + '</span><span class="ad"><b>' + esc(B.siradaki.donem) + '</b><small>Hazırlanıyor' + (B.siradaki.yayin ? ' · ' + esc(B.siradaki.yayin) + ' yayımlanacak' : '') + '</small></span><span class="cur soon">Sıradaki sayı</span></div></div>';
-    var LIMIT = 4;
+    var LIMIT = 8;
     B.sayilar.forEach(function(x, ii){
       if (ii >= LIMIT && !arState.more) return;
-      var en = issueEntries(x), curr = ii === state.idx;
-      html += '<div class="ar-issue' + (curr ? ' is-cur' : '') + '"><div class="ar-head"><span class="an">#' + esc(x.no) + '</span><span class="ad"><b>' + esc(x.donem) + '</b><small>' + (x.yayin ? 'Yayın: ' + esc(x.yayin) + ' · ' : '') + (x.haberler || []).length + ' haber</small></span>' +
-        (curr ? '<span class="cur">Okuduğunuz sayı</span>' : '<button type="button" class="ar-openissue" data-issue="' + ii + '">Sayıyı aç' + ic('arrow') + '</button>') + '</div>' +
-        '<ol class="ar-list">' + en.map(function(e){ return entryBtn(ii, e, false); }).join('') + '</ol></div>';
+      var en = issueEntries(x), curr = ii === state.idx, open = !!arState.open[ii];
+      html += '<div class="ar-issue' + (curr ? ' is-cur' : '') + '"><div class="ar-head"><span class="an">#' + esc(x.no) + '</span><span class="ad"><b>' + esc(x.donem) + '</b>' +
+        (x.ana ? '<span class="ar-lead" title="' + esc(x.ana.baslik) + '">' + esc(x.ana.baslik) + '</span>' : '') +
+        '<small>' + (x.yayin ? 'Yayın: ' + esc(x.yayin) + ' · ' : '') + (x.haberler || []).length + ' haber</small></span>' +
+        '<span class="ar-acts"><button type="button" class="ar-toggle" data-artoggle="' + ii + '" aria-expanded="' + open + '">' + ic('chev-r') + (open ? 'Başlıkları gizle' : 'Başlıklar') + '</button>' +
+        (curr ? '<span class="cur">Okuduğunuz sayı</span>' : '<button type="button" class="ar-openissue" data-issue="' + ii + '">Sayıyı aç' + ic('arrow') + '</button>') + '</span></div>' +
+        (open ? '<ol class="ar-list">' + en.map(function(e){ return entryBtn(ii, e, false); }).join('') + '</ol>' : '') + '</div>';
     });
+    html = '<div class="ar-compact">' + html + '</div>';
     if (B.sayilar.length > LIMIT && !arState.more) html += '<button type="button" class="ar-more" data-armore="1">Daha eski ' + (B.sayilar.length - LIMIT) + ' sayıyı göster</button>';
     box.innerHTML = html;
   }
@@ -990,6 +1011,8 @@
     var ac = e.target.closest('[data-arcat]');
     if (ac){ arState.cat = ac.getAttribute('data-arcat'); renderArchive(); return; }
     if (e.target.closest('[data-armore]')){ arState.more = true; renderArchive(); return; }
+    var at = e.target.closest('[data-artoggle]');
+    if (at){ var ti = at.getAttribute('data-artoggle'); arState.open[ti] = !arState.open[ti]; renderArchive(); return; }
     var o = e.target.closest('[data-open]'); if (o){ openDetail(o.getAttribute('data-open')); return; }
     var a = e.target.closest('[data-issue]');
     if (a){

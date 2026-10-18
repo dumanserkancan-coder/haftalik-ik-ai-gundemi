@@ -22,6 +22,8 @@
   Konu anahtarları: "ai-hr" AI in HR · "ta" Talent Acquisition · "pa" People Analytics
                     "ex" Employee Experience · "fow" Future of Work · "rapor" Rapor
   Kaynak tipi (tip): "resmi" = şirketin / kurumun kendi duyurusu, "ikinci" = bağımsız haber kaynağı
+  Etkinlikler: Öncelik Türkiye'deki İK etkinliklerinde. Dünyadan yalnızca çok önemli bir etkinlik eklenir
+    (tur alanı "Dünyadan · …" ile başlar).
   Tarihler (baslangic, bitis): YIL-AY-GÜN biçiminde; sitede kalan gün buna göre hesaplanır,
     tarihi geçen etkinlik kendiliğinden gizlenir.
   kapak.gorsel: Görsel dosyasının adı; dosyayı index.html ile aynı yere yükle (her sayıya ayrı ad: kapak-sayi2.jpg …).
@@ -192,18 +194,18 @@ window.BULTEN = {
 
       /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
       etkinlikler: [
-        { ad: "HR Tech 2026", tur: "Konferans ve fuar", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Las Vegas",
-          aciklama: "Organizatöre göre yüzlerce teknolojinin sergilendiği, dünyanın en büyük İK çözümleri fuarı.",
-          url: "https://www.hrtechnologyconference.com/press-releases/built-hr-designed-action-hr-tech-2026-set-october-20-22-las-vegas" },
-        { ad: "UNLEASH World", tur: "Konferans", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Paris",
-          aciklama: "Avrupa'nın büyük İK etkinliklerinden; 140 ülkeden yaklaşık 8.500 katılımcı bekleniyor.",
-          url: "https://www.prnewswire.com/news-releases/unleash-2026-hits-record-growth-in-paris-as-ai-triggers-major-investments-in-work-and-hr-302907638.html" },
-        { ad: "Gartner HR Symposium/Xpo", tur: "Konferans", baslangic: "2026-10-26", bitis: "2026-10-28", yer: "Florida (Orlando bölgesi)",
-          aciklama: "CHRO ve İK yöneticilerine yönelik; odakta insan ve yapay zekânın birlikte çalıştığı işgücü ve işlerin yeniden tasarımı var.",
-          url: "https://www.gartner.com/en/newsroom/press-releases/2026-08-24-gartner-announces-gartner-hr-symposium-xpo-conference-2026-orlando" },
-        { ad: "Gartner HR Symposium/Xpo", tur: "Konferans", baslangic: "2026-11-16", bitis: "2026-11-17", yer: "Sidney",
-          aciklama: "Gartner'ın İK zirvesinin Asya-Pasifik ayağı.",
-          url: "https://www.gartner.com/en/newsroom/press-releases/2026-10-06-gartner-announces-gartner-hr-symposium-2026-sydney" }
+        { ad: "34. PERYÖN İnsan Odağında Yönetim Kongresi", tur: "Kongre", baslangic: "2026-10-20", bitis: "2026-10-21", yer: "İstanbul · Haliç Kongre Merkezi",
+          aciklama: "Türkiye İnsan Yönetimi Derneği'nin (PERYÖN) yıllık kongresi; teknoloji ve yapay zekânın işi, liderliği ve öğrenme modellerini nasıl dönüştürdüğü ele alınacak.",
+          url: "https://www.peryonkongre.com/" },
+        { ad: "25. Performans Yönetimi Zirvesi", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-11", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; performans yönetiminin geleceği, yapay zekâ ve veri odaklı yaklaşımlar gündemde.",
+          url: "https://hrdergi.com/25-performans-yonetimi-zirvesi" },
+        { ad: "5. Dijital İK Çağı Zirvesi", tur: "Zirve", baslangic: "2026-12-09", bitis: "2026-12-09", yer: "İstanbul",
+          aciklama: "HRdergi'nin zirvesi; yapay zekâ çağında İK'nın rolü, yapay zekâ etiği, veri gizliliği ve people analytics konuşulacak.",
+          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi" },
+        { ad: "HR Tech 2026", tur: "Dünyadan · Konferans ve fuar", baslangic: "2026-10-20", bitis: "2026-10-22", yer: "Las Vegas",
+          aciklama: "Dünyanın en büyük İK teknolojisi fuarı; yeni İK yazılımları ve yapay zekâ ürünleri genellikle burada tanıtılıyor.",
+          url: "https://www.hrtechnologyconference.com/press-releases/built-hr-designed-action-hr-tech-2026-set-october-20-22-las-vegas" }
       ]
     },
     {
