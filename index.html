@@ -288,6 +288,37 @@
   .src-table a+a{margin-top:6px}
   .src-table a .i{width:12px;height:12px;vertical-align:-1px;margin-left:3px}
   .src-table .none{color:var(--faint)}
+  /* Kompakt kaynak listesi: her içerik tek satır, kaynaklar isteyene açılır */
+  .src-list{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 16px}
+  .src-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .src-all{font-size:13px;font-weight:700;color:var(--ink)}
+  .src-all:hover{color:var(--link)}
+  .src-item+.src-item{border-top:1px solid var(--line)}
+  .src-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:11px 0;text-align:left}
+  .src-row .sn{font-size:13px;font-weight:800;color:var(--faint);font-variant-numeric:tabular-nums}
+  .src-row .st{min-width:0;display:flex;flex-direction:column;gap:2px}
+  .src-row .st b{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .src-row .st small{font-size:12.5px;color:var(--faint)}
+  .src-row .sx{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+  .src-row .sx .i{width:14px;height:14px;transition:transform .15s}
+  .src-row[aria-expanded="true"] .sx .i{transform:rotate(90deg)}
+  .src-row[aria-expanded="true"] .st b{white-space:normal}
+  .src-row:hover .st b{color:var(--link)}
+  .src-body{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;padding:0 0 14px 44px;font-size:13.5px}
+  .src-body h4{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 6px}
+  .src-body a{display:block;color:var(--link);font-weight:500}
+  .src-body a+br+a{margin-top:6px}
+  .src-body a .i{width:12px;height:12px;vertical-align:-1px;margin-left:3px}
+  .src-body .none{color:var(--faint)}
+  #src-table .src-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  #src-table .src-links li{margin:0;padding:0}
+  @media (max-width:560px){
+    .src-row{grid-template-columns:24px minmax(0,1fr) auto;gap:10px}
+    .src-row .sx span{display:none}
+    #src-table .src-row .st b{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+    #src-table .src-row[aria-expanded="true"] .st b{-webkit-line-clamp:unset;display:block}
+    .src-body{grid-template-columns:1fr;padding-left:34px;gap:12px}
+  }
 
   /* Arşiv */
   .ar-tools{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}
@@ -529,7 +560,7 @@
       <section class="block" id="kaynaklar">
         <div class="sec-head"><span class="tag t-haber">Şeffaflık</span><h2>Kaynaklar ve yöntem</h2></div>
         <ul class="method" id="method"></ul>
-        <table class="src-table" id="src-table"></table>
+        <div class="src-list" id="src-table"></div>
       </section>
 
       <section class="block" id="arsiv">
@@ -826,14 +857,31 @@
     if (!l.length) return '<span class="none">—</span>';
     return l.map(function(x){ return '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.ad) + ic('ext') + '</a>'; }).join('<br>');
   }
+  var srcOpen = {}, srcIssue = null;
   function sourcesTableHTML(s){
+    if (srcIssue !== s){ srcOpen = {}; srcIssue = s; }
     var rows = [];
     if (s.ana) rows.push({ n: '★', t: s.ana.baslik, k: s.ana.kaynaklar });
     s.haberler.forEach(function(h, i){ rows.push({ n: pad(i + 1), t: h.baslik, k: h.kaynaklar }); });
     if (s.veri) rows.push({ n: '%', t: s.veri.baslik, k: s.veri.kaynaklar });
-    return '<thead><tr><th></th><th>İçerik</th><th>Resmî kaynak</th><th>İkinci kaynak</th></tr></thead><tbody>' +
-      rows.map(function(r){ return '<tr><td class="n">' + esc(r.n) + '</td><td class="t">' + esc(r.t) + '</td><td data-l="Resmî">' + linksHTML(r.k, 'resmi') + '</td><td data-l="İkinci">' + linksHTML(r.k, 'ikinci') + '</td></tr>'; }).join('') + '</tbody>';
+    var total = 0, allOpen = rows.length > 0;
+    rows.forEach(function(r, i){ total += (r.k || []).length; if (!srcOpen[i]) allOpen = false; });
+    function cnt(k, tip){ return (k || []).filter(function(x){ return (x.tip || 'resmi') === tip; }).length; }
+    return '<div class="src-top"><span>' + rows.length + ' içerik · ' + total + ' kaynak</span><button type="button" class="src-all" data-srcall="' + (allOpen ? '0' : '1') + '">' + (allOpen ? 'Tümünü kapat' : 'Tümünü aç') + '</button></div>' +
+      rows.map(function(r, i){
+        var open = !!srcOpen[i], nr = cnt(r.k, 'resmi'), ni = cnt(r.k, 'ikinci');
+        return '<div class="src-item"><button type="button" class="src-row" data-srctoggle="' + i + '" aria-expanded="' + open + '">' +
+          '<span class="sn">' + esc(r.n) + '</span><span class="st"><b>' + esc(r.t) + '</b><small>' + nr + ' resmî · ' + ni + ' ikinci kaynak</small></span>' +
+          '<span class="sx">' + ic('chev-r') + '<span>' + (open ? 'Gizle' : 'Kaynaklar') + '</span></span></button>' +
+          (open ? '<div class="src-body"><div><h4>Resmî kaynak</h4>' + srcLinks(r.k, 'resmi') + '</div><div><h4>İkinci kaynak</h4>' + srcLinks(r.k, 'ikinci') + '</div></div>' : '') + '</div>';
+      }).join('');
   }
+  function srcLinks(list, tip){
+    var l = (list || []).filter(function(x){ return (x.tip || 'resmi') === tip; });
+    if (!l.length) return '<span class="none">—</span>';
+    return '<ul class="src-links">' + l.map(function(x){ return '<li><a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.ad) + ic('ext') + '</a></li>'; }).join('') + '</ul>';
+  }
+  function rerenderSources(){ if (srcIssue) document.getElementById('src-table').innerHTML = sourcesTableHTML(srcIssue); }
   var METHOD = [
     ['check', 'Her haber, gelişmeyi duyuran şirketin ya da araştırmayı yapan kurumun kendi yayınına dayanır; mümkün olduğunda bağımsız ikinci bir kaynakla karşılaştırılır.'],
     ['analytics', 'Rakamlar kaynaktaki hâliyle verilir. Doğrulanamayan rakam yayımlanmaz.'],
@@ -1011,6 +1059,10 @@
     var ac = e.target.closest('[data-arcat]');
     if (ac){ arState.cat = ac.getAttribute('data-arcat'); renderArchive(); return; }
     if (e.target.closest('[data-armore]')){ arState.more = true; renderArchive(); return; }
+    var stg = e.target.closest('[data-srctoggle]');
+    if (stg){ var si = stg.getAttribute('data-srctoggle'); srcOpen[si] = !srcOpen[si]; rerenderSources(); return; }
+    var sall = e.target.closest('[data-srcall]');
+    if (sall){ var on = sall.getAttribute('data-srcall') === '1'; document.querySelectorAll('#src-table [data-srctoggle]').forEach(function(el){ srcOpen[el.getAttribute('data-srctoggle')] = on; }); rerenderSources(); return; }
     var at = e.target.closest('[data-artoggle]');
     if (at){ var ti = at.getAttribute('data-artoggle'); arState.open[ti] = !arState.open[ti]; renderArchive(); return; }
     var o = e.target.closest('[data-open]'); if (o){ openDetail(o.getAttribute('data-open')); return; }
