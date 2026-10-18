@@ -292,6 +292,11 @@
   .src-list{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:0 16px}
   .src-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
   .src-all{font-size:13px;font-weight:700;color:var(--ink)}
+  .src-top.closed{border-bottom:0}
+  .src-show{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);text-align:left}
+  .src-show .i{width:14px;height:14px;transition:transform .15s}
+  .src-show[aria-expanded="true"] .i{transform:rotate(90deg)}
+  .src-show:hover{color:var(--ink)}
   .src-all:hover{color:var(--link)}
   .src-item+.src-item{border-top:1px solid var(--line)}
   .src-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:11px 0;text-align:left}
@@ -857,9 +862,9 @@
     if (!l.length) return '<span class="none">—</span>';
     return l.map(function(x){ return '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.ad) + ic('ext') + '</a>'; }).join('<br>');
   }
-  var srcOpen = {}, srcIssue = null;
+  var srcOpen = {}, srcIssue = null, srcShow = false;
   function sourcesTableHTML(s){
-    if (srcIssue !== s){ srcOpen = {}; srcIssue = s; }
+    if (srcIssue !== s){ srcOpen = {}; srcIssue = s; srcShow = false; }
     var rows = [];
     if (s.ana) rows.push({ n: '★', t: s.ana.baslik, k: s.ana.kaynaklar });
     s.haberler.forEach(function(h, i){ rows.push({ n: pad(i + 1), t: h.baslik, k: h.kaynaklar }); });
@@ -867,7 +872,10 @@
     var total = 0, allOpen = rows.length > 0;
     rows.forEach(function(r, i){ total += (r.k || []).length; if (!srcOpen[i]) allOpen = false; });
     function cnt(k, tip){ return (k || []).filter(function(x){ return (x.tip || 'resmi') === tip; }).length; }
-    return '<div class="src-top"><span>' + rows.length + ' içerik · ' + total + ' kaynak</span><button type="button" class="src-all" data-srcall="' + (allOpen ? '0' : '1') + '">' + (allOpen ? 'Tümünü kapat' : 'Tümünü aç') + '</button></div>' +
+    var top = '<div class="src-top' + (srcShow ? '' : ' closed') + '"><button type="button" class="src-show" data-srcshow="1" aria-expanded="' + srcShow + '">' + ic('chev-r') + '<span>' + rows.length + ' içerik · ' + total + ' kaynak</span></button>' +
+      (srcShow ? '<button type="button" class="src-all" data-srcall="' + (allOpen ? '0' : '1') + '">' + (allOpen ? 'Tümünü kapat' : 'Tümünü aç') + '</button>' : '<button type="button" class="src-all" data-srcshow="1">Kaynakları göster</button>') + '</div>';
+    if (!srcShow) return top;
+    return top +
       rows.map(function(r, i){
         var open = !!srcOpen[i], nr = cnt(r.k, 'resmi'), ni = cnt(r.k, 'ikinci');
         return '<div class="src-item"><button type="button" class="src-row" data-srctoggle="' + i + '" aria-expanded="' + open + '">' +
@@ -1059,6 +1067,7 @@
     var ac = e.target.closest('[data-arcat]');
     if (ac){ arState.cat = ac.getAttribute('data-arcat'); renderArchive(); return; }
     if (e.target.closest('[data-armore]')){ arState.more = true; renderArchive(); return; }
+    if (e.target.closest('[data-srcshow]')){ srcShow = !srcShow; rerenderSources(); return; }
     var stg = e.target.closest('[data-srctoggle]');
     if (stg){ var si = stg.getAttribute('data-srctoggle'); srcOpen[si] = !srcOpen[si]; rerenderSources(); return; }
     var sall = e.target.closest('[data-srcall]');
