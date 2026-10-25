@@ -49,9 +49,162 @@ window.BULTEN = {
 
   yeni: [],
 
-  siradaki: { no: 3, donem: "19–25 Ekim 2026", yayin: "25 Ekim Pazar" },
+  siradaki: { no: 4, donem: "26 Ekim – 1 Kasım 2026", yayin: "1 Kasım Pazar" },
 
   sayilar: [
+    {
+      no: 3,
+      donem: "19–25 Ekim 2026",
+      yayin: "25 Ekim 2026",
+      sonraki: "1 Kasım Pazar",
+      okuma: 6,
+
+      /* 1 · HAFTANIN ANA GELİŞMESİ */
+      ana: {
+        id: "ana", kategori: "ai-hr", tarih: "21 Ekim", tur: "Haftanın konusu", okumaSuresi: 3,
+        baslik: "Oracle, işgücü planlama, işe alım, ücret ve bordro için yedi yapay zekâ ajanı uygulaması tanıttı",
+        ozet: "Oracle, 21 Ekim'de Las Vegas'taki HR Tech konferansında İK yazılımı Fusion Cloud HCM'in içinde çalışan yedi yeni yapay zekâ ajanı uygulamasını duyurdu. Uygulamalar üç alanı kapsıyor: işgücü planlama ve kadro yönetimi; aday bulma ve işe alım takibi; ücret planlaması ve bordro kontrolü. Şirketin açıklamasına göre uygulamalar hazırladıkları önerileri ve işlemleri kurumun mevcut inceleme ve onay süreçlerinden geçiriyor. Uygulamalar, Oracle'ın uzun süren ve çok adımlı işler için geliştirdiği Fusion Claw adlı altyapıda çalışıyor. Oracle kullanıma açılış tarihi ve fiyat açıklamadı.",
+        bolumler: [
+          { baslik: "Neler duyuruldu?", maddeler: [
+            "İşgücü planlama: Workforce Orchestration, talepteki değişimi, maliyeti ve iş sürekliliğini birlikte gözeterek işgücü planı hazırlıyor; çalışanı geliştirme, başka role kaydırma, dışarıdan işe alma ve dış kaynak seçeneklerini tartıyor. Positions Command Center ise kadro, çalışan, işe alım, maliyet ve onay verisini birleştirip çakışmaları ve ileride doğabilecek riskleri gösteriyor.",
+            "İşe alım: Candidate Sourcing, adayları gruplayıp iletişim ve takip adımlarını mevcut işe alım süreçleri ve onaylar içinde yürütüyor. Recruiting Command Center; ilan, aday, mülakat, geri bildirim ve teklif verisini tek yerde topluyor, ilerlemeye hazır adayları işaretliyor ve sonraki adımları onaya hazırlıyor.",
+            "Ücret: Workforce Compensation, işverenin belirlediği bütçe, ücret kuralları ve hakkaniyet kriterlerine göre ücret önerileri hazırlıyor; öneriler insan incelemesi ve onayı için sunuluyor.",
+            "Bordro: Payroll Command Center; çalışan verisi, puantaj, geriye dönük değişiklikler ve geçmiş örüntüleri inceleyerek olası bordro sorunlarını ve muhtemel nedenlerini buluyor. Payroll Activity Workspace ise bu dönemin ücret, bakiye ve maliyetlerini önceki dönemlerle karşılaştırıp önemli farkları gösteriyor."
+          ]},
+          { baslik: "Dikkat edilecek noktalar", maddeler: [
+            "Oracle'dan Lew Thompson'a göre iş ve İK liderlerinin daha hızlı ve emin karar verebilmek için işgücünü bütünüyle görebilmesi gerekiyor. Duyuruda müşteri sayısı, verim artışı ya da tasarruf gibi bir rakam yer almıyor.",
+            "HR Tech Edge, Oracle'ın bağımsız performans ölçümü ya da sayısal verim kazancı paylaşmadığını not ediyor.",
+            "ERP Today'e göre ajanların ne kadar kendi başına çalışacağı her kurumda ayarlanabiliyor; istihdam kararlarının ve denetimin sorumluluğu müşteride kalıyor. Yayın, kurumlara onay kurallarını yazılı hâle getirmelerini, ücret ve işe alım önerilerini kimin inceleyeceğini belirlemelerini öneriyor.",
+            "Aynı hafta iCIMS de Microsoft Teams içinde çalışan bir işe alım ajanı duyurdu: Ajan, ilgilenilmesi gereken adayları hatırlatıyor; yöneticiler adayı Teams'ten inceleyip geri bildirim ve onay verebiliyor. Şirkete göre son kararları insanlar veriyor; müşterilere açılması 26 Ekim'de başlıyor."
+          ]}
+        ],
+        not: "Yapay zekâ ajanı uygulaması (agentic application): Soru yanıtlamakla kalmayıp bir işi adım adım yürüten, örneğin veriyi tarayıp sorun bulan ve düzeltme önerisini onaya sunan yazılım. \"Command center\" (komuta merkezi) ise ilgili tüm veriyi tek ekranda toplayıp neyin dikkat istediğini gösteren paneldir.",
+        kapak: { gorsel: "kapak-sayi3.jpg", gorselAciklama: "İşgücü planı, işe alım, ücret ve bordro kartlarının ortadaki bir onay noktasında birleştiğini anlatan illüstrasyon" },
+        kaynaklar: [
+          { ad: "Oracle · Resmî duyuru", url: "https://www.oracle.com/news/announcement/oracle-introduces-claw-powered-fusion-agentic-applications-for-hr-2026-10-20/", tip: "resmi" },
+          { ad: "iCIMS · Hiring Agent duyurusu", url: "https://www.icims.com/company/newsroom/fallrelease2026/", tip: "resmi" },
+          { ad: "ERP Today · Haber", url: "https://erp.today/oracle-brings-claw-powered-agentic-applications-to-hr-and-payroll", tip: "ikinci" },
+          { ad: "HR Tech Edge · Haber", url: "https://hrtechedge.com/talent-acquisition/oracle-launches-agentic-ai-applications-for-hr-teams/", tip: "ikinci" }
+        ]
+      },
+
+      /* 2 · HAFTALIK GÜNDEM (5–7 haber) */
+      haberler: [
+        {
+          id: "h1", kategori: "ai-hr", tarih: "21 Ekim", tur: "Şirket duyurusu",
+          baslik: "Deel'in testi: En iyi yapay zekâ modeli gerçek bordro görevlerinin yalnızca %49'unu tam çözebiliyor",
+          ozet: "Küresel bordro ve İK platformu Deel, yapay zekâ modellerini gerçek iş görevleriyle test eden Emet adlı bir laboratuvar kurdu. 8 ülkede 29 yerel bordro uzmanıyla hazırlanan 295 görevlik bordro testinde en iyi model, uzmanların kriterlerinin %90'ını karşılasa da görevlerin yalnızca %49'unu eksiksiz çözebildi. Şirket ayrıca bordro ve uluslararası istihdam sorularına odaklanan kendi model ailesi Pangaea'yı kullanıma almaya başladı.",
+          ek: "Deel'e göre 601 soruluk uluslararası istihdam testinde en iyi model, internette arama yaparak bile bilgilerin %75'ini doğru verdi. Şirketin açıklamasına göre bordro modeli P1, en zor 110 görevde kriter karşılama oranını %55'ten %61'e çıkardı ve en iyi modelden yaklaşık 40 kat daha ucuz çalışıyor. Deel, modellerin kişisel ya da müşteri verisiyle eğitilmediğini belirtiyor.",
+          not: "Bu sonuçlar Deel'in kendi hazırladığı testlere dayanıyor; şirket test sonuçlarını herkese açık sıralama tablolarında yayımladığını söylüyor.",
+          kaynaklar: [
+            { ad: "Deel · Resmî duyuru", url: "https://www.deel.com/blog/pangaea-emet-launch/", tip: "resmi" },
+            { ad: "CPA Practice Advisor · Haber", url: "https://cpapracticeadvisor.com/2026/10/22/deel-launches-ai-lab-and-llms/192250", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h2", kategori: "ai-hr", tarih: "19 Ekim", tur: "Şirket duyurusu",
+          baslik: "UKG, bordro hatalarını maaş gününden önce yakalamayı hedefleyen yapay zekâ özellikleri duyurdu",
+          ozet: "İK, bordro ve vardiya yönetimi yazılımı UKG, sahada çalışan (frontline) işgücüne yönelik yeni yapay zekâ özelliklerini tanıttı. Şirketin açıklamasına göre sistem olağandışı bordro sonuçlarını belirleyip olası sorunu açıklıyor ve düzeltmeyi bordro uzmanının incelemesine hazırlıyor. Ayrıca personel açıklarını daha erken fark edip işe alma, başka role kaydırma ya da yeniden eğitme seçeneklerini değerlendirmeye yardım ediyor.",
+          ek: "UKG, bu yetenekleri çalışanların ve yöneticilerin zaten kullandığı yapay zekâ araçlarına taşımak için de çalıştığını söylüyor. Duyuruda genel kullanım tarihi ve fiyat yer almıyor. MarketScale'in değerlendirmesine göre duyuruda uyarıların ne sıklıkla doğru çıktığına ya da ne kadar zaman kazandırdığına dair veri yok.",
+          kaynaklar: [
+            { ad: "UKG · Resmî duyuru", url: "https://www.ukg.com/company/newsroom/ukg-turns-workforce-intelligence-action-new-ai-frontline", tip: "resmi" },
+            { ad: "MarketScale · Değerlendirme", url: "https://www.marketscale.com/industries/software-and-technology/ukgs-new-frontline-ai-aims-to-catch-payroll-problems-before-payday", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h3", kategori: "ta", tarih: "20 Ekim", tur: "Araştırma",
+          baslik: "Greenhouse: ABD'li adayların %81'i hiç kimseyle görüşmeden reddedildiğini söylüyor",
+          ozet: "İşe alım yazılımı Greenhouse'un beş ülkede 2.800'den fazla iş arayanla yaptığı araştırmanın ABD sonuçlarına göre adayların %81'i son bir yılda şirketten kimseyle konuşmadan reddedildi. Adayların %77'si iş ararken yapay zekâ kullanıyor; %60'ı ise başvurusu yapay zekâ yazmış gibi görünmesin diye yazım biçimini değiştirdiğini ya da değiştirmeyi düşündüğünü söylüyor.",
+          ek: "Mülakata kadar gelenlerin %96'sının en az bir şikâyeti var; en sık şikâyet (%45) işverenden bir daha haber alamamak. Son bir yılda adayların %48'i yapay zekânın yürüttüğü bir mülakata girdi; yapay zekâ mülakatını kesinlikle reddedeceğini söyleyenler %7. Adayların %88'i, işverenlerin mülakatta yapay zekâ kullanımı konusunda şeffaf olmasını gerektiren en az bir yasal kural istiyor. Greenhouse'un İK yöneticisi Sharawn Tipton, \"Hatırlayabildiğim kadarıyla ilk kez iki taraf da işe alımın işlediğini düşünmüyor\" dedi.",
+          kaynaklar: [
+            { ad: "Greenhouse · Basın bülteni", url: "https://www.greenhouse.com/newsroom/6-in-10-job-seekers-are-rethinking-how-they-write-to-avoid-sounding-like-ai-even-as-most-use-it-in-their-search", tip: "resmi" },
+            { ad: "HR Dive · Haber", url: "https://www.hrdive.com/news/job-seekers-say-theyre-still-being-ghosted-even-as-theyre-trying-harder/833774/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h4", kategori: "pa", tarih: "20 Ekim", tur: "Şirket duyurusu",
+          baslik: "Visier'in yapay zekâ asistanı, İK metriklerinin neden değiştiğini istatistiksel olarak açıklamaya başlıyor",
+          ozet: "İşgücü analitiği şirketi Visier, yapay zekâ asistanı Vee'ye \"Diagnostics\" özelliğini ekledi. Şirketin açıklamasına göre özellik, istifaların artması ya da pozisyon doldurma süresinin uzaması gibi bir değişimin arkasındaki etkenleri istatistiksel modellerle buluyor, değerlendirdiği etkenleri sıralıyor, güven düzeyini belirtiyor ve yapılan analizin kaydını tutuyor.",
+          ek: "Visier'e göre araç, belirli bir etken değiştirildiğinde sonucun nasıl etkileneceğini de modelleyip öneri sunuyor. Özellik şimdilik seçili müşterilere erken erişimde; genel kullanım 2027 kışı için yol haritasında ve Vee'ye ek ücret olmadan dahil. Duyuruda hangi istatistiksel yöntemlerin kullanıldığı belirtilmiyor.",
+          kaynaklar: [
+            { ad: "Visier · Basın bülteni", url: "https://www.prnewswire.com/news-releases/visier-launches-vee-diagnostics-capabilities-at-hrtech-2026-bringing-data-science-rigor-to-everyday-talent-decisions-302914244.html", tip: "resmi" },
+            { ad: "HR Tech Edge · Haber", url: "https://hrtechedge.com/workplace-experience/visier-launches-ai-diagnostics-to-explain-workforce-trends/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h5", kategori: "ex", tarih: "22 Ekim", tur: "Araştırma",
+          baslik: "Gallup: ABD'de çalışanların yalnızca %41'i \"kaliteli iş\" ölçütlerini karşılayan bir işte",
+          ozet: "Gallup, Jobs for the Future ve Families & Workers Fund'ın ikinci Amerikan İş Kalitesi Araştırması'na göre ABD'li çalışanların %41'i kaliteli bir işte çalışıyor; oran geçen yılla aynı. Kaliteli iş; adil ücret ve yan haklar, güvenli ve saygılı bir işyeri, gelişim fırsatı, kararlarda söz hakkı ve sürdürülebilir çalışma saatleri gibi asgari ölçütlerle tanımlanıyor.",
+          ek: "Kaliteli işte çalışanlar hastalık ya da yaralanma nedeniyle %15 daha az iş günü kaçırıyor. Her dört çalışandan biri ayrımcılık ya da haksız muamele gördüğünü söylüyor. Axios'un aktardığına göre düşük kaliteli işlerde çalışanların bir yıl sonra başka bir işverende olma ihtimali yaklaşık iki kat. Axios'a göre anket 26 Ocak–24 Mart 2026 arasında 18–75 yaş arası 17.874 çalışanla yapıldı.",
+          kaynaklar: [
+            { ad: "Gallup · Araştırma sayfası", url: "https://www.gallup.com/analytics/691241/american-job-quality-study.aspx", tip: "resmi" },
+            { ad: "Axios (Yahoo Finance) · Haber", url: "https://finance.yahoo.com/economy/articles/majority-americans-low-quality-jobs-040105964.html", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h6", kategori: "fow", tarih: "22 Ekim", tur: "Şirket açıklaması",
+          baslik: "Barclays bu yıl yaklaşık 5.000 kişilik kadro azaltacak; kesintilerin %60'ı destek birimlerinde",
+          ozet: "İngiliz bankası Barclays, 22 Ekim'deki üçüncü çeyrek sonuçları toplantısında bu yıl yaklaşık 5.000 tam zamanlı kadroyu azaltmayı beklediğini açıkladı; Reuters'a göre bu, çalışanlarının yaklaşık %5'i. Finans direktörü Anna Cross'a göre azaltmaların yaklaşık %60'ı, \"yapay zekâ çalışanlarımızı daha verimli kıldığı için daha az geliştirici\" de dahil olmak üzere destek birimlerinde olacak.",
+          ek: "Cross'un Reuters'a aktarılan açıklamasına göre şimdiye kadar yaklaşık 1.000 kadro azaltıldı, kalanı yıl sonuna kadar azaltılacak. Banka, maliyetleri teknoloji yardımıyla kalıcı olarak düşürmek için yılın ikinci yarısında 300 milyon sterlin ek harcama yapıyor. CEO C.S. Venkatakrishnan ise yapay zekâyı büyük ölçekte kullanacaklarını söylerken \"Yapay zekâ pastanın kreması, pastanın kendisi değil\" dedi.",
+          kaynaklar: [
+            { ad: "Investing.com · Barclays çeyrek sonuçları toplantısı dökümü", url: "https://uk.investing.com/news/stock-market-news/earnings-call-transcript-barclays-posts-mixed-q3-2026-results-as-revenue-misses-93CH-4924843", tip: "ikinci" },
+            { ad: "Reuters (Business Standard) · Haber", url: "https://www.business-standard.com/amp/companies/news/barclays-to-cut-5-000-jobs-in-ai-led-cost-drive-as-q3-profit-rises-12-126102201741_1.html", tip: "ikinci" },
+            { ad: "TechRepublic · Haber", url: "https://www.techrepublic.com/article/news-barclays-job-cuts-ai-productivity-emea-uk/", tip: "ikinci" }
+          ]
+        }
+      ],
+
+      /* 3 · SEKTÖREL GÖZLEM (editoryal yorum, haber değil) */
+      sinyal: {
+        baslik: "Ajanların yeni adresi: bordro",
+        ingilizce: "From Answering → Checking",
+        metin: "Bu hafta HR Tech'te Oracle (ana gelişme) ve UKG, yapay zekâyı çalışan sorularını yanıtlamanın ötesine taşıyıp bordro çalışmadan önce veriyi tarayan, farkı açıklayan ve düzeltme öneren bir kontrol katmanı olarak konumladı; ikisinde de son onay bordro uzmanında kalıyor. Deel'in aynı hafta yayımladığı testler de bunun nedenine işaret ediyor: Modeller kuralları büyük ölçüde biliyor ama bir görevi baştan sona eksiksiz bitirmekte hâlâ zorlanıyor. İK açısından bu, bordro ekibinin rolünün hesap yapmaktan, yapay zekânın işaretlediği istisnaları incelemeye ve onaylamaya kayabileceği anlamına geliyor. Hangi farkın kimin onayına gideceğini önceden yazılı kurala bağlamak, bu araçlardan değer almanın ön koşulu olabilir.",
+        once: { ad: "Soru yanıtlayan asistan", metin: "Çalışanın bordro sorusunu yanıtlar; hesap ve kontrol insanda kalır." },
+        sonra: { ad: "Kontrol eden ajan", metin: "Bordro çalışmadan hatayı arar, düzeltme önerir; onay insanda kalır." },
+        dayanak: ["h1", "h2"]
+      },
+
+      /* 4 · SAYILARLA GÜNDEM */
+      veri: {
+        id: "veri", kategori: "fow", tarih: "19 Ekim", tur: "Araştırma",
+        deger: "%4",
+        baslik: "Gartner CIO anketi: Rolleri insan–ajan iş birliğine göre yeniden tasarlama planı olan CIO'lar yalnızca %4",
+        metin: "Gartner'ın 2.002 CIO ve teknoloji yöneticisiyle yaptığı ankete göre rolleri insanların ve yapay zekâ ajanlarının birlikte çalışacağı bir yapıya göre yeniden tasarlamak için açık planı olan CIO'ların oranı yalnızca %4. Gartner'a göre böyle bir planı olan kurumların, iş sonuçlarında daha iyi performans gösteren ve CEO'larının yapay zekâdan yüksek değer gördüğünü söylediği \"öncü\" kurumlar arasında olma ihtimali 2,4 kat daha yüksek.",
+        karsilastirma: [
+          { etiket: "Yapay zekâdan önemli ya da dönüştürücü değer elde ettiğini söyleyen CIO'lar", deger: 13 },
+          { etiket: "Rolleri insan–ajan iş birliğine göre yeniden tasarlama planı olan CIO'lar", deger: 4 }
+        ],
+        orneklem: "2.002 CIO ve teknoloji yöneticisi (Mayıs–Temmuz 2026)",
+        ozet: "Gartner'ın 2027 CIO ve Teknoloji Yöneticisi Gündemi anketinden öne çıkanlar:",
+        maddeler: [
+          "CIO'ların yalnızca %13'ü kurumlarının yapay zekâdan önemli ya da dönüştürücü değer elde ettiğini söylüyor; yapay zekâ kullanım senaryolarının başarı oranı yaklaşık beşte bir.",
+          "CIO'ların %58'i yapay zekâdan maliyet iyileştirmesi sağlama baskısının arttığını söylüyor; %51'i yapay zekânın teknoloji çözümlerinin toplam sahip olma maliyetini artırmasını bekliyor.",
+          "Bir yapay zekâ pilotunun ne zaman canlıya alınmayacağına dair kuralı olan CIO'lar %31; canlıdaki düşük değerli yapay zekâ uygulamalarını ne zaman durduracaklarına dair kuralı olanlar ise %17.",
+          "Katılımcıların %40'ı 2027'de BT çalışan sayısının artmasını bekliyor; artışın özellikle siber güvenlik ile veri ve analitik alanlarında olması bekleniyor.",
+          "Gartner'dan Alicia Mullery'ye göre öncü kurumları asıl farklılaştıran şey işgücünün yeniden tasarımı; Mullery'ye göre teknoloji işlerinde daha az sayıda farklı rol türü olacak, her rolün sorumluluk alanı ise genişleyecek."
+        ],
+        kaynaklar: [
+          { ad: "Gartner · Basın bülteni", url: "https://www.gartner.com/en/newsroom/press-releases/2026-10-19-gartner-survey-finds-only-13-percent-of-cios-say-their-enterprise-has-realized-significant-or-transformational-value-from-ai", tip: "resmi" },
+          { ad: "CIO Dive · Haber", url: "https://www.ciodive.com/news/gartner-survey-CIOs-workforce-revamp/833405/", tip: "ikinci" }
+        ]
+      },
+
+      /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
+      etkinlikler: [
+        { ad: "İstanbul Workplace Conference 2026", tur: "Konferans", baslangic: "2026-11-03", bitis: "2026-11-03", yer: "İstanbul · Point Hotel Barbaros",
+          aciklama: "İnsan performansı, çalışma alanı stratejisi, işin geleceği, ofis tasarımı ve iş hayatında uzun ömürlülük konuşulacak.",
+          url: "https://www.istanbulworkplace.com/" },
+        { ad: "25. Performans Yönetimi Zirvesi", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-11", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; performans yönetiminin geleceği, yapay zekâ ve veri odaklı yaklaşımlar gündemde.",
+          url: "https://hrdergi.com/25-performans-yonetimi-zirvesi" },
+        { ad: "Türkiye Yapay Zekâ Zirvesi 2026", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-12", yer: "İstanbul · Wyndham Grand Levent (12 Kasım çevrim içi)",
+          aciklama: "Türkiye Yapay Zekâ İnisiyatifi'nin zirvesi; programda yapay zekâ ajanları ve kurum kültürünün bu dönüşüme hazır olup olmadığı üzerine bir oturum da var.",
+          url: "https://zirve.turkiye.ai/" },
+        { ad: "5. Dijital İK Çağı Zirvesi", tur: "Zirve", baslangic: "2026-12-09", bitis: "2026-12-09", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; yapay zekâ çağında İK'nın rolü, yapay zekâ etiği, veri gizliliği ve people analytics konuşulacak.",
+          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi" }
+      ]
+    },
     {
       no: 2,
       donem: "12–18 Ekim 2026",
