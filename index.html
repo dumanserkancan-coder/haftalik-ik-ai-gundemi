@@ -351,45 +351,48 @@
   .aw-steps li.past{color:var(--faint);text-decoration:line-through}
   .aw-steps li.next b{color:var(--t-takip)}
   .aw-wait{font-size:13px;font-weight:600;color:var(--muted);margin-top:6px}
-  /* Ödül kartları */
-  .aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-  .awc{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 18px 14px;overflow:hidden}
-  .awc::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--aw-accent,var(--t-takip))}
-  .awc.hot{--aw-accent:#E5484D}
-  .awc.soon{--aw-accent:#F59E0B}
-  .awc.wait{--aw-accent:var(--line-2);background:var(--bg)}
-  .awc-head{display:flex;align-items:center;gap:10px}
-  .awc-mono{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;background:var(--aw-mono,#5A39E0)}
-  .awc-org{min-width:0;flex:1;font-size:12px;line-height:1.3;color:var(--faint);font-weight:600}
-  .awc-org b{display:block;color:var(--ink-2);font-size:13px}
-  .awc-count{flex:none;text-align:right;line-height:1}
-  .awc-count b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
-  .awc-count small{font-size:11px;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
-  .awc.hot .awc-count b{color:#E5484D}
-  .awc h4{margin:14px 0 4px;font-size:16.5px;font-weight:750;letter-spacing:-.01em;line-height:1.3}
-  .awc-next{font-size:13px;color:var(--muted)}
-  .awc-next b{color:var(--ink-2)}
-  .stepper{list-style:none;display:flex;margin:16px 0 4px;padding:0}
-  .stepper li{flex:1;min-width:0;position:relative;text-align:center;padding-top:16px}
-  .stepper li::before{content:"";position:absolute;top:5px;left:-50%;right:50%;height:2px;background:var(--line-2)}
-  .stepper li:first-child::before{display:none}
-  .stepper li::after{content:"";position:absolute;top:0;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--card);border:2px solid var(--line-2);box-sizing:border-box}
-  .stepper li.past::before,.stepper li.past::after{background:var(--faint);border-color:var(--faint)}
-  .stepper li.next::before{background:var(--faint)}
-  .stepper li.next::after{width:16px;height:16px;margin-left:-8px;top:-2px;background:var(--aw-accent,var(--t-takip));border-color:var(--aw-accent,var(--t-takip));box-shadow:0 0 0 4px color-mix(in srgb, var(--aw-accent,#5A39E0) 22%, transparent)}
-  .stepper span{display:block;font-size:11px;font-weight:700;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 2px}
-  .stepper small{display:block;font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums}
-  .stepper li.past span,.stepper li.past small{color:var(--faint);text-decoration:line-through}
-  .awc .k-tags{margin-top:10px}
-  .awc-foot{margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13px;font-weight:600}
-  .awc-foot a,.awc-foot summary{display:inline-flex;align-items:center;gap:5px;color:var(--link);cursor:pointer}
-  .awc-foot .i{width:14px;height:14px}
-  .awc-more{width:100%}
-  .awc-more summary{list-style:none}
-  .awc-more summary::-webkit-details-marker{display:none}
-  .awc-more p{margin-top:8px;font-size:13.5px;line-height:1.55;color:var(--muted);font-weight:400}
-  .awc-wait{margin-top:8px;font-size:13px;color:var(--muted)}
-  .awc-sep{margin:26px 0 12px}
+  /* Ödül takvimi: ajanda görünümü */
+  .agenda{border-top:1px solid var(--line)}
+  .ag-month{display:flex;align-items:baseline;gap:10px;padding:22px 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line)}
+  .ag-month:first-child{padding-top:14px}
+  .ag-month small{font-weight:600;letter-spacing:0;text-transform:none}
+  .ag-row{border-bottom:1px solid var(--line)}
+  .ag-row>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) auto 18px;gap:16px;align-items:center;padding:14px 4px}
+  .ag-row>summary::-webkit-details-marker{display:none}
+  .ag-row>summary:hover .ag-name{color:var(--link)}
+  .ag-day{line-height:1;text-align:left}
+  .ag-day b{display:block;font-size:24px;font-weight:750;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+  .ag-day small{display:block;margin-top:3px;font-size:11px;font-weight:600;color:var(--faint)}
+  .ag-name{display:block;font-size:15.5px;font-weight:650;color:var(--ink);letter-spacing:-.005em;line-height:1.35;transition:color .15s}
+  .ag-org{display:block;margin-top:2px;font-size:13px;color:var(--faint)}
+  .ag-step{text-align:right;line-height:1.3}
+  .ag-step b{display:block;font-size:13px;font-weight:650;color:var(--ink-2)}
+  .ag-step span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .ag-step span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--faint)}
+  .ag-row.hot .ag-step span::before{background:#E5484D}
+  .ag-row.hot .ag-step span{color:#E5484D;font-weight:650}
+  .ag-row.soon .ag-step span::before{background:#F59E0B}
+  .ag-chev{color:var(--faint);transition:transform .2s}
+  .ag-chev .i{width:16px;height:16px}
+  .ag-row[open] .ag-chev{transform:rotate(90deg)}
+  .ag-body{padding:0 4px 18px 72px}
+  .ag-steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13px}
+  .ag-steps li{display:flex;gap:7px;align-items:baseline;color:var(--ink-2)}
+  .ag-steps li b{font-weight:700;font-variant-numeric:tabular-nums}
+  .ag-steps li.past{color:var(--faint);text-decoration:line-through}
+  .ag-steps li.next b{color:var(--t-takip)}
+  .ag-desc{margin-top:10px;font-size:14px;line-height:1.6;color:var(--muted);max-width:62ch}
+  .ag-links{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;font-weight:600}
+  .ag-links a{display:inline-flex;align-items:center;gap:5px;color:var(--link)}
+  .ag-links .i{width:14px;height:14px}
+  .ag-tba .ag-day b{font-size:18px;color:var(--faint)}
+  @media (max-width:560px){
+    .ag-row>summary{grid-template-columns:44px minmax(0,1fr) 16px;gap:12px}
+    .ag-step{grid-column:2;grid-row:2;text-align:left;margin-top:-6px}
+    .ag-step b{display:inline;margin-right:8px}
+    .ag-chev{grid-column:3;grid-row:1}
+    .ag-body{padding-left:56px}
+  }
   /* Sektörden kartları */
   .sx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
   .sxc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
@@ -653,7 +656,7 @@
       </section>
 
       <section class="block" id="oduller">
-        <div class="sec-head"><span class="tag t-takip">Takvim</span><h2>Ödül başvuru takvimi</h2><p class="note">Başvuru tarihleri ödülün resmî sayfasından alınır. Tarihi geçen adımların üstü çizilir; son tarihi geçen ödül listeden düşer.</p></div>
+        <div class="sec-head"><span class="tag t-takip">Takvim</span><h2>Ödül başvuru takvimi</h2><p class="note">Sıradaki başvuru adımına göre sıralı. Ayrıntılar, tüm tarihler ve resmî sayfa için satıra tıklayın.</p></div>
         <div class="f-cats" id="aw-cats"></div>
         <div id="awards"></div>
       </section>
@@ -958,25 +961,25 @@
     if (t.indexOf('jüri') !== -1) return 'Jüri';
     return String(e).split(' ')[0];
   }
-  var MONO = ['#5A39E0', '#0F7B6C', '#1F5FC9', '#B45309', '#BE185D', '#475569'];
-  function monoColor(s){ var h = 0; String(s).split('').forEach(function(c){ h = (h * 31 + c.charCodeAt(0)) % 997; }); return MONO[h % MONO.length]; }
+  var GUN = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
   function awardRowHTML(o, inf){
     var t = today(), diff = inf.next ? Math.round((inf.next.d - t) / 86400000) : null, c = null;
-    var cls = inf.wait ? 'wait' : (diff <= 14 ? 'hot' : (diff <= 45 ? 'soon' : ''));
-    var count = inf.next ? '<div class="awc-count"><b>' + (diff === 0 ? 'Bugün' : diff) + '</b>' + (diff === 0 ? '' : '<small>gün</small>') + '</div>' : '';
+    var cls = inf.wait ? 'ag-tba' : (diff <= 14 ? 'hot' : (diff <= 45 ? 'soon' : ''));
+    var day = inf.next ? '<span class="ag-day"><b>' + inf.next.d.getDate() + '</b><small>' + AYK[inf.next.d.getMonth()] + ' · ' + GUN[inf.next.d.getDay()] + '</small></span>' : '<span class="ag-day"><b>—</b><small>Tarih yok</small></span>';
+    var step = inf.next ? '<span class="ag-step"><b>' + esc(inf.next.etiket) + '</b><span>' + (diff === 0 ? 'bugün' : diff === 1 ? 'yarın' : diff + ' gün kaldı') + '</span></span>' : '<span class="ag-step"><span>Takvim bekleniyor</span></span>';
     if (inf.next) c = calLinks({ ad: o.ad + ' – ' + inf.next.etiket, aciklama: o.aciklama, url: o.url, yer: '' }, { a: inf.next.d, b: inf.next.d });
-    var steps = inf.steps.length ? '<ol class="stepper">' + inf.steps.map(function(x){
+    var steps = inf.steps.length ? '<ul class="ag-steps">' + inf.steps.map(function(x){
       var sc = x.d < t ? 'past' : (inf.next && x === inf.next ? 'next' : '');
-      return '<li' + (sc ? ' class="' + sc + '"' : '') + ' title="' + esc(x.etiket + ' · ' + shortDate(x.d)) + '"><span>' + esc(stepLabel(x.etiket)) + '</span><small>' + x.d.getDate() + ' ' + AYK[x.d.getMonth()] + (x.d.getFullYear() !== t.getFullYear() ? ' ' + String(x.d.getFullYear()).slice(2) : '') + '</small></li>';
-    }).join('') + '</ol>' : '';
-    var nextLine = inf.next ? '<div class="awc-next">Sıradaki: <b>' + esc(inf.next.etiket) + '</b> · ' + esc(shortDate(inf.next.d)) + '</div>' : (o.durum ? '<p class="awc-wait">' + esc(o.durum) + '</p>' : '');
-    return '<article class="awc ' + cls + '"><div class="awc-head"><span class="awc-mono" style="--aw-mono:' + monoColor(o.kurum || o.ad) + '">' + esc(String(o.kurum || o.ad).charAt(0)) + '</span>' +
-      '<div class="awc-org"><b>' + esc(o.kurum || '') + '</b>' + esc(o.kapsam || '') + '</div>' + count + '</div>' +
-      '<h4>' + esc(o.ad) + '</h4>' + nextLine + steps + tagsHTML(o.konular) +
-      '<div class="awc-foot">' + (o.url ? '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">' + ic('ext') + 'Resmî sayfa</a>' : '') +
-      (c ? '<a href="' + esc(c.outlook) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Outlook</a><a href="' + esc(c.google) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Google</a>' : '') +
-      (o.aciklama ? '<details class="awc-more"><summary>' + ic('chev-r') + 'Ayrıntı</summary><p>' + esc(o.aciklama) + '</p></details>' : '') +
-      '</div></article>';
+      return '<li' + (sc ? ' class="' + sc + '"' : '') + '><b>' + esc(shortDate(x.d)) + '</b>' + esc(x.etiket) + '</li>';
+    }).join('') + '</ul>' : '';
+    var desc = [o.aciklama, inf.wait ? o.durum : ''].filter(Boolean).join(' ');
+    return '<details class="ag-row ' + cls + '"><summary>' + day +
+      '<span><span class="ag-name">' + esc(o.ad) + '</span><span class="ag-org">' + esc(o.kurum || '') + (o.kapsam ? ' · ' + esc(o.kapsam) : '') + '</span></span>' +
+      step + '<span class="ag-chev">' + ic('chev-r') + '</span></summary>' +
+      '<div class="ag-body">' + steps + (desc ? '<p class="ag-desc">' + esc(desc) + '</p>' : '') +
+      '<div class="ag-links">' + (o.url ? '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">' + ic('ext') + 'Resmî sayfa</a>' : '') +
+      (c ? '<a href="' + esc(c.outlook) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Outlook takvimine ekle</a><a href="' + esc(c.google) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Google Takvim\'e ekle</a>' : '') +
+      '</div></div></details>';
   }
   function renderAwards(){
     var list = (B.oduller || []).map(function(o){ return { o: o, inf: awInfo(o) }; }).filter(function(x){ return !x.inf.expired; });
@@ -986,8 +989,14 @@
     var dated = list.filter(function(x){ return x.inf.next; }).sort(function(a, b){ return a.inf.next.d - b.inf.next.d; });
     var wait = list.filter(function(x){ return !x.inf.next; });
     var html = '';
-    if (dated.length) html += '<div class="aw-grid">' + dated.map(function(x){ return awardRowHTML(x.o, x.inf); }).join('') + '</div>';
-    if (wait.length) html += '<p class="sub-h' + (dated.length ? ' awc-sep' : '') + '">Yeni dönem takvimi bekleniyor</p><div class="aw-grid">' + wait.map(function(x){ return awardRowHTML(x.o, x.inf); }).join('') + '</div>';
+    var lastKey = '';
+    dated.forEach(function(x){
+      var d = x.inf.next.d, key = d.getFullYear() + '-' + d.getMonth();
+      if (key !== lastKey){ var n = dated.filter(function(y){ return y.inf.next.d.getFullYear() === d.getFullYear() && y.inf.next.d.getMonth() === d.getMonth(); }).length; html += '<div class="ag-month">' + AY[d.getMonth()] + ' ' + d.getFullYear() + '<small>' + n + ' ödül</small></div>'; lastKey = key; }
+      html += awardRowHTML(x.o, x.inf);
+    });
+    if (wait.length){ html += '<div class="ag-month">Takvimi açıklanmayanlar<small>' + wait.length + ' ödül</small></div>'; html += wait.map(function(x){ return awardRowHTML(x.o, x.inf); }).join(''); }
+    if (html) html = '<div class="agenda">' + html + '</div>';
     document.getElementById('awards').innerHTML = html || '<p style="color:var(--muted)">Takvimde ödül yok.</p>';
   }
 
