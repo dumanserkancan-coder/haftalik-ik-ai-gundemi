@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
-  /* Layout: haftalık editoryal brifing. Üstte sade başlık çubuğu; tek okuma sütununda sırasıyla Haftanın ana gelişmesi (büyük görsel), Haftalık gündem (numaralı 5–7 haber), Sektörel gözlem (koyu editoryal kart), Sayılarla gündem (büyük rakam + iki çubuk), Sektörden (perakende ve iç giyim şirketlerinin herkese açık gelişmeleri), Yaklaşan etkinlikler (konu filtresiyle), Ödül başvuru takvimi, Kaynaklar ve aranabilir Arşiv (tüm sayıların başlıkları). Masaüstünde sağda yapışkan "Bu sayıda" içindekiler ve içerik türleri açıklaması. Her haber tıklanınca detay penceresi açılır, kaynağa oradan gidilir. */
+  /* Layout: haftalık editoryal brifing. Üstte sade başlık çubuğu; tek okuma sütununda sırasıyla Haftanın ana gelişmesi (büyük görsel), Haftalık gündem (numaralı 5–7 haber), Sektörel gözlem (koyu editoryal kart), Sayılarla gündem (büyük rakam + iki çubuk), Perakende Vitrini (perakende ve iç giyim şirketlerinin herkese açık İK gelişmeleri; ödüllerde madalya noktalı kazanan listesi), Yaklaşan etkinlikler (konu filtresiyle), Ödül başvuru takvimi, Kaynaklar ve aranabilir Arşiv (tüm sayıların başlıkları). Masaüstünde sağda yapışkan "Bu sayıda" içindekiler ve içerik türleri açıklaması. Her haber tıklanınca detay penceresi açılır, kaynağa oradan gidilir. */
   :root{
     --bg:#F6F6F4; --card:#FFFFFF; --line:#E5E5E1; --line-2:#D6D6D0;
     --ink:#121314; --ink-2:#3A3D42; --muted:#62666D; --faint:#8C9097;
@@ -357,11 +357,11 @@
   .ag-month:first-child{padding-top:14px}
   .ag-month small{font-weight:600;letter-spacing:0;text-transform:none}
   .ag-row{border-bottom:1px solid var(--line)}
-  .ag-row>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) auto 18px;gap:16px;align-items:center;padding:14px 4px}
+  .ag-row>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px minmax(0,1fr) auto 16px;gap:16px;align-items:center;padding:13px 2px}
   .ag-row>summary::-webkit-details-marker{display:none}
   .ag-row>summary:hover .ag-name{color:var(--link)}
   .ag-day{line-height:1;text-align:left}
-  .ag-day b{display:block;font-size:24px;font-weight:750;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+  .ag-day b{display:block;font-size:22px;font-weight:750;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
   .ag-day small{display:block;margin-top:3px;font-size:11px;font-weight:600;color:var(--faint)}
   .ag-name{display:block;font-size:15.5px;font-weight:650;color:var(--ink);letter-spacing:-.005em;line-height:1.35;transition:color .15s}
   .ag-org{display:block;margin-top:2px;font-size:13px;color:var(--faint)}
@@ -375,7 +375,7 @@
   .ag-chev{color:var(--faint);transition:transform .2s}
   .ag-chev .i{width:16px;height:16px}
   .ag-row[open] .ag-chev{transform:rotate(90deg)}
-  .ag-body{padding:0 4px 18px 72px}
+  .ag-body{padding:0 2px 18px 60px}
   .ag-steps{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13px}
   .ag-steps li{display:flex;gap:7px;align-items:baseline;color:var(--ink-2)}
   .ag-steps li b{font-weight:700;font-variant-numeric:tabular-nums}
@@ -386,42 +386,54 @@
   .ag-links a{display:inline-flex;align-items:center;gap:5px;color:var(--link)}
   .ag-links .i{width:14px;height:14px}
   .ag-tba .ag-day b{font-size:18px;color:var(--faint)}
+  .ag-more{margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:0;background:none;border:0;font-size:14px;font-weight:650;color:var(--link);cursor:pointer}
+  .ag-more small{font-size:12.5px;font-weight:600;color:var(--faint)}
+  .ag-more .i{width:15px;height:15px;transform:rotate(90deg);transition:transform .2s}
+  .ag-more.open .i{transform:rotate(-90deg)}
+  #aw-cats[hidden]{display:none}
+  .seg{display:inline-flex;padding:3px;margin:0 0 14px;border-radius:999px;background:var(--chip);border:1px solid var(--line)}
+  .seg button{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border:0;border-radius:999px;background:none;font-size:13.5px;font-weight:650;color:var(--muted);cursor:pointer}
+  .seg button small{font-size:11.5px;font-weight:700;color:var(--faint)}
+  .seg button[aria-selected="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
   @media (max-width:560px){
-    .ag-row>summary{grid-template-columns:44px minmax(0,1fr) 16px;gap:12px}
-    .ag-step{grid-column:2;grid-row:2;text-align:left;margin-top:-6px}
-    .ag-step b{display:inline;margin-right:8px}
-    .ag-chev{grid-column:3;grid-row:1}
-    .ag-body{padding-left:56px}
+    .ag-row>summary{grid-template-columns:40px minmax(0,1fr) auto;gap:12px}
+    .ag-chev{display:none}
+    .ag-body{padding-left:52px}
   }
-  /* Sektörden kartları */
-  .sx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-  .sxc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
-  .sxc-top{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--faint)}
-  .sxc-ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--sx-bg,var(--chip));color:var(--sx-t,var(--ink-2))}
-  .sxc-ic .i{width:17px;height:17px}
-  .sxc-top .sxc-type{color:var(--sx-t,var(--ink-2));text-transform:uppercase;letter-spacing:.05em}
-  .sxc-top time{margin-left:auto}
-  .sxc.odul{--sx-bg:rgba(212,160,23,.16);--sx-t:#B7860B}
-  .sxc.egitim{--sx-bg:var(--t-veri-bg);--sx-t:var(--t-veri)}
-  .sxc.tek{--sx-bg:var(--t-takip-bg);--sx-t:var(--t-takip)}
-  .sxc.marka{--sx-bg:var(--t-haber-bg);--sx-t:var(--t-haber)}
-  .sxc h4{margin:12px 0 2px;font-size:16px;font-weight:750;line-height:1.35;letter-spacing:-.01em}
-  .sxc-co{font-size:13px;font-weight:600;color:var(--muted)}
-  .sxc p.d{margin-top:8px;font-size:14px;line-height:1.55;color:var(--muted)}
-  .medals{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
-  .medals li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:center;padding:8px 10px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
-  .medal{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:10.5px;font-weight:800;color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
-  .medal.altin{background:linear-gradient(145deg,#F2C94C,#C99A06)}
-  .medal.gumus{background:linear-gradient(145deg,#C9D0D8,#8C96A3)}
-  .medal.bronz{background:linear-gradient(145deg,#E0A274,#A8622E)}
-  .medal.yer{background:var(--ink-2)}
-  .medals b{font-size:13.5px;font-weight:700;color:var(--ink)}
-  .medals div span{display:block;font-size:12px;color:var(--muted);line-height:1.35}
-  .sxc-foot{margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;font-weight:600}
-  .sxc-foot a{display:inline-flex;align-items:center;gap:5px;color:var(--link)}
-  .sxc-foot .i{width:14px;height:14px}
-  .sxc .k-tags{margin-top:10px}
-  @media (max-width:420px){ .aw-grid,.sx-grid{grid-template-columns:minmax(0,1fr)} }
+  /* Perakendede İK: sade liste */
+  .sx-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:-4px 0 6px;font-size:12px;font-weight:600;color:var(--faint)}
+  .sx-legend span{display:inline-flex;align-items:center;gap:6px}
+  .sx-list{border-top:1px solid var(--line)}
+  .sx{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 2px;border-bottom:1px solid var(--line)}
+  .sx-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--sx-bg,var(--chip));color:var(--sx-t,var(--ink-2))}
+  .sx-ic .i{width:20px;height:20px}
+  .sx.odul{--sx-bg:rgba(212,160,23,.15);--sx-t:#B7860B}
+  .sx.egitim{--sx-bg:var(--t-veri-bg);--sx-t:var(--t-veri)}
+  .sx.tek{--sx-bg:var(--t-takip-bg);--sx-t:var(--t-takip)}
+  .sx.marka{--sx-bg:var(--t-haber-bg);--sx-t:var(--t-haber)}
+  .sx-meta{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sx-t,var(--faint))}
+  .sx-meta time{color:var(--faint);letter-spacing:.02em}
+  .sx h4{margin-top:4px;font-size:16.5px;font-weight:700;letter-spacing:-.01em;line-height:1.35;color:var(--ink)}
+  .sx p.d{margin-top:6px;font-size:14px;line-height:1.6;color:var(--muted)}
+  .podium{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .podium li{display:grid;grid-template-columns:minmax(120px,190px) minmax(0,1fr);gap:4px 14px;align-items:baseline}
+  .podium .cat{font-size:12.5px;font-weight:600;color:var(--faint);line-height:1.4}
+  .podium .who{display:flex;flex-wrap:wrap;gap:6px}
+  .win{display:inline-flex;align-items:center;gap:7px;padding:4px 11px 4px 8px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:13.5px;font-weight:650;color:var(--ink)}
+  .win small{font-weight:500;color:var(--muted)}
+  .mdot{flex:none;width:10px;height:10px;border-radius:50%;background:var(--faint)}
+  .mdot.altin{background:#E0B21B;box-shadow:0 0 0 3px rgba(224,178,27,.22)}
+  .mdot.gumus{background:#9AA4B2;box-shadow:0 0 0 3px rgba(154,164,178,.25)}
+  .mdot.bronz{background:#C27A45;box-shadow:0 0 0 3px rgba(194,122,69,.22)}
+  .sx-links{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;font-weight:600}
+  .sx-links a{display:inline-flex;align-items:center;gap:5px;color:var(--link)}
+  .sx-links .i{width:14px;height:14px}
+  @media (max-width:560px){
+    .sx{grid-template-columns:32px minmax(0,1fr);gap:12px}
+    .sx-ic{width:32px;height:32px;border-radius:10px}
+    .sx-ic .i{width:17px;height:17px}
+    .podium li{grid-template-columns:minmax(0,1fr)}
+  }
   .ar-issue{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:6px 16px 8px}
   .ar-issue+.ar-issue{margin-top:12px}
   .ar-issue.is-cur{border-color:var(--line-2)}
@@ -645,8 +657,8 @@
       </section>
 
       <section class="block" id="sektor">
-        <div class="sec-head"><span class="tag t-haber">Haber</span><h2>Sektörden</h2><p class="note">Perakende ve iç giyim şirketlerinin İK, işveren markası ve teknoloji gelişmeleri. Şirket duyuruları ve ödül listelerinden derlenir; yorum içermez.</p></div>
-        <div class="sx-grid" id="sector"></div>
+        <div class="sec-head"><span class="tag t-haber">Haber</span><h2>Perakende Vitrini</h2><p class="note">Perakende ve iç giyim şirketlerinin aldığı İK ödülleri, eğitim programları ve İK teknolojisi hamleleri. Şirket duyuruları ve resmî ödül listelerinden; yorum içermez.</p></div>
+        <div id="sector"></div>
       </section>
 
       <section class="block" id="izle">
@@ -656,7 +668,8 @@
       </section>
 
       <section class="block" id="oduller">
-        <div class="sec-head"><span class="tag t-takip">Takvim</span><h2>Ödül başvuru takvimi</h2><p class="note">Sıradaki başvuru adımına göre sıralı. Ayrıntılar, tüm tarihler ve resmî sayfa için satıra tıklayın.</p></div>
+        <div class="sec-head"><span class="tag t-takip">Takvim</span><h2>Ödül başvuru takvimi</h2><p class="note">Türkiye ve dünyadan yaklaşan başvuru tarihleri. Ayrıntı ve resmî sayfa için satıra tıklayın.</p></div>
+        <div class="seg" id="aw-tabs" role="tablist" aria-label="Bölge"></div>
         <div class="f-cats" id="aw-cats"></div>
         <div id="awards"></div>
       </section>
@@ -891,7 +904,7 @@
   }
   /* Konu etiketleri (etkinlik ve ödüller) */
   var KON = B.konular || {};
-  var evState = { k: 'all' }, awState = { k: 'all' };
+  var evState = { k: 'all' }, awState = { k: 'all', all: false, reg: 'tr' };
   function konAd(k){ return (KON[k] && KON[k].ad) || k; }
   function tagsHTML(list){ return (list && list.length) ? '<div class="k-tags">' + list.map(function(k){ return '<span>' + esc(konAd(k)) + '</span>'; }).join('') + '</div>' : ''; }
   function catsHTML(items, cur, attr){
@@ -925,18 +938,30 @@
   /* 5b · Sektörden: perakende ve iç giyim şirketlerinin herkese açık gelişmeleri */
   var MED = { 'Altın': 'altin', 'Gümüş': 'gumus', 'Bronz': 'bronz' };
   function sxKind(t){ t = norm(t); if (t.indexOf('ödül') !== -1) return ['odul', 'medal']; if (t.indexOf('eğitim') !== -1 || t.indexOf('akademi') !== -1) return ['egitim', 'book']; if (t.indexOf('teknoloji') !== -1 || t.indexOf('yapay') !== -1) return ['tek', 'ai-net']; return ['marka', 'ik-ai']; }
+  function podiumHTML(list){
+    var groups = [], idx = {};
+    list.forEach(function(m){ var k = m.kategori || ''; if (!(k in idx)){ idx[k] = groups.length; groups.push({ k: k, w: [] }); } groups[idx[k]].w.push(m); });
+    return '<ul class="podium">' + groups.map(function(g){
+      return '<li><span class="cat">' + esc(g.k) + '</span><span class="who">' + g.w.map(function(m){
+        return '<span class="win" title="' + esc((m.derece || '') + (m.proje ? ' · ' + m.proje : '')) + '"><span class="mdot ' + (MED[m.derece] || '') + '"></span>' + esc(m.sirket) + (MED[m.derece] ? '' : ' <small>' + esc(m.derece || '') + '</small>') + (m.proje ? ' <small>· ' + esc(m.proje) + '</small>' : '') + '</span>';
+      }).join('') + '</span></li>';
+    }).join('') + '</ul>';
+  }
   function sectorRowHTML(x){
     var d = parseDay(x.tarih), k = sxKind(x.tur);
-    var when = d ? d.getDate() + ' ' + AY[d.getMonth()] : esc(x.tarih || '');
-    var medals = (x.kazananlar && x.kazananlar.length) ? '<ul class="medals">' + x.kazananlar.map(function(m){
-      var cls = MED[m.derece] || 'yer', lbl = MED[m.derece] ? m.derece.charAt(0) : esc(m.derece || '');
-      return '<li><span class="medal ' + cls + '" title="' + esc(m.derece || '') + '">' + lbl + '</span><div><b>' + esc(m.sirket) + '</b>' + (m.kategori ? '<span>' + esc(m.derece ? m.derece + ' · ' : '') + esc(m.kategori) + '</span>' : '') + '</div></li>';
-    }).join('') + '</ul>' : '';
-    var src = (x.kaynaklar || []).map(function(s){ return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + ic('ext') + esc(brand(s.ad)) + '</a>'; }).join('');
-    return '<article class="sxc ' + k[0] + '"><div class="sxc-top"><span class="sxc-ic">' + ic(k[1]) + '</span><span class="sxc-type">' + esc(x.tur || 'Gelişme') + '</span><time>' + when + '</time></div>' +
-      '<h4>' + esc(x.baslik) + '</h4>' + (x.sirket ? '<div class="sxc-co">' + esc(x.sirket) + '</div>' : '') +
-      medals + (x.metin ? '<p class="d">' + esc(x.metin) + '</p>' : '') + tagsHTML(x.konular) +
-      (src ? '<div class="sxc-foot">' + src + '</div>' : '') + '</article>';
+    var when = d ? d.getDate() + ' ' + AY[d.getMonth()] + ' ' + d.getFullYear() : esc(x.tarih || '');
+    var src = (x.kaynaklar || []).map(function(s){ return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + ic('ext') + esc(s.ad) + '</a>'; }).join('');
+    return '<article class="sx ' + k[0] + '"><span class="sx-ic">' + ic(k[1]) + '</span><div>' +
+      '<div class="sx-meta">' + esc(x.tur || 'Gelişme') + ' · <time>' + when + '</time></div>' +
+      '<h4>' + esc(x.baslik) + '</h4>' +
+      (x.kazananlar && x.kazananlar.length ? podiumHTML(x.kazananlar) : '') +
+      (x.metin ? '<p class="d">' + esc(x.metin) + '</p>' : '') +
+      (src ? '<div class="sx-links">' + src + '</div>' : '') + '</div></article>';
+  }
+  function sectorHTML(list){
+    var hasMed = list.some(function(x){ return (x.kazananlar || []).some(function(m){ return MED[m.derece]; }); });
+    return (hasMed ? '<div class="sx-legend"><span><span class="mdot altin"></span>Altın</span><span><span class="mdot gumus"></span>Gümüş</span><span><span class="mdot bronz"></span>Bronz</span></div>' : '') +
+      '<div class="sx-list">' + list.map(sectorRowHTML).join('') + '</div>';
   }
 
   /* 6 · Ödül başvuru takvimi (B.oduller, sayılardan bağımsız) */
@@ -965,39 +990,58 @@
   function awardRowHTML(o, inf){
     var t = today(), diff = inf.next ? Math.round((inf.next.d - t) / 86400000) : null, c = null;
     var cls = inf.wait ? 'ag-tba' : (diff <= 14 ? 'hot' : (diff <= 45 ? 'soon' : ''));
-    var day = inf.next ? '<span class="ag-day"><b>' + inf.next.d.getDate() + '</b><small>' + AYK[inf.next.d.getMonth()] + ' · ' + GUN[inf.next.d.getDay()] + '</small></span>' : '<span class="ag-day"><b>—</b><small>Tarih yok</small></span>';
-    var step = inf.next ? '<span class="ag-step"><b>' + esc(inf.next.etiket) + '</b><span>' + (diff === 0 ? 'bugün' : diff === 1 ? 'yarın' : diff + ' gün kaldı') + '</span></span>' : '<span class="ag-step"><span>Takvim bekleniyor</span></span>';
+    var day = inf.next ? '<span class="ag-day"><b>' + inf.next.d.getDate() + '</b><small>' + AYK[inf.next.d.getMonth()] + '</small></span>' : '<span class="ag-day"><b>—</b></span>';
+    var step = inf.next ? '<span class="ag-step"><span>' + (diff === 0 ? 'bugün' : diff === 1 ? 'yarın' : diff + ' gün') + '</span></span>' : '<span class="ag-step"><span>Bekleniyor</span></span>';
     if (inf.next) c = calLinks({ ad: o.ad + ' – ' + inf.next.etiket, aciklama: o.aciklama, url: o.url, yer: '' }, { a: inf.next.d, b: inf.next.d });
     var steps = inf.steps.length ? '<ul class="ag-steps">' + inf.steps.map(function(x){
       var sc = x.d < t ? 'past' : (inf.next && x === inf.next ? 'next' : '');
       return '<li' + (sc ? ' class="' + sc + '"' : '') + '><b>' + esc(shortDate(x.d)) + '</b>' + esc(x.etiket) + '</li>';
     }).join('') + '</ul>' : '';
-    var desc = [o.aciklama, inf.wait ? o.durum : ''].filter(Boolean).join(' ');
+    var desc = [(o.kurum ? o.kurum + (o.kapsam ? ' · ' + o.kapsam : '') + '.' : ''), o.aciklama, inf.wait ? o.durum : ''].filter(Boolean).join(' ');
     return '<details class="ag-row ' + cls + '"><summary>' + day +
-      '<span><span class="ag-name">' + esc(o.ad) + '</span><span class="ag-org">' + esc(o.kurum || '') + (o.kapsam ? ' · ' + esc(o.kapsam) : '') + '</span></span>' +
+      '<span><span class="ag-name">' + esc(o.ad) + '</span><span class="ag-org">' + (inf.next ? esc(inf.next.etiket) : 'Yeni dönem takvimi açıklanmadı') + '</span></span>' +
       step + '<span class="ag-chev">' + ic('chev-r') + '</span></summary>' +
       '<div class="ag-body">' + steps + (desc ? '<p class="ag-desc">' + esc(desc) + '</p>' : '') +
       '<div class="ag-links">' + (o.url ? '<a href="' + esc(o.url) + '" target="_blank" rel="noopener">' + ic('ext') + 'Resmî sayfa</a>' : '') +
       (c ? '<a href="' + esc(c.outlook) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Outlook takvimine ekle</a><a href="' + esc(c.google) + '" target="_blank" rel="noopener">' + ic('cal-plus') + 'Google Takvim\'e ekle</a>' : '') +
       '</div></div></details>';
   }
+  function awRegion(o){ return o.bolge || (/^türkiye$/i.test(String(o.kapsam || '').trim()) ? 'tr' : 'dunya'); }
   function renderAwards(){
-    var list = (B.oduller || []).map(function(o){ return { o: o, inf: awInfo(o) }; }).filter(function(x){ return !x.inf.expired; });
-    if (awState.k !== 'all' && !list.some(function(x){ return (x.o.konular || []).indexOf(awState.k) !== -1; })) awState.k = 'all';
-    document.getElementById('aw-cats').innerHTML = catsHTML(list.map(function(x){ return x.o; }), awState.k, 'data-awk');
-    if (awState.k !== 'all') list = list.filter(function(x){ return (x.o.konular || []).indexOf(awState.k) !== -1; });
-    var dated = list.filter(function(x){ return x.inf.next; }).sort(function(a, b){ return a.inf.next.d - b.inf.next.d; });
-    var wait = list.filter(function(x){ return !x.inf.next; });
+    var every = (B.oduller || []).map(function(o){ return { o: o, inf: awInfo(o) }; }).filter(function(x){ return !x.inf.expired; });
+    var regs = [['tr', 'Türkiye'], ['dunya', 'Dünya']].map(function(r){ return { k: r[0], ad: r[1], n: every.filter(function(x){ return awRegion(x.o) === r[0]; }).length }; }).filter(function(r){ return r.n; });
+    if (!regs.some(function(r){ return r.k === awState.reg; })) awState.reg = regs.length ? regs[0].k : 'tr';
+    document.getElementById('aw-tabs').innerHTML = regs.length > 1 ? regs.map(function(r){ return '<button type="button" role="tab" data-awreg="' + r.k + '" aria-selected="' + (awState.reg === r.k) + '">' + r.ad + '<small>' + r.n + '</small></button>'; }).join('') : '';
+    var all = every.filter(function(x){ return awRegion(x.o) === awState.reg; });
+    var cats = document.getElementById('aw-cats');
+    var byDate = function(a, b){ return a.inf.next.d - b.inf.next.d; };
+    var datedAll = all.filter(function(x){ return x.inf.next; }).sort(byDate);
+    var waitAll = all.filter(function(x){ return !x.inf.next; });
     var html = '';
+    if (!awState.all){
+      cats.innerHTML = ''; cats.hidden = true;
+      var top = datedAll.slice(0, 3); if (top.length < 3) top = top.concat(waitAll.slice(0, 3 - top.length));
+      html = top.length ? '<div class="agenda">' + top.map(function(x){ return awardRowHTML(x.o, x.inf); }).join('') + '</div>' : '<p style="color:var(--muted)">Yakın tarihli başvuru yok.</p>';
+      if (all.length > top.length) html += '<button type="button" class="ag-more" data-awall="1">Tümünü göster <small>' + all.length + ' ödül</small>' + ic('chev-r') + '</button>';
+      document.getElementById('awards').innerHTML = html;
+      return;
+    }
+    var list = all;
+    if (awState.k !== 'all' && !list.some(function(x){ return (x.o.konular || []).indexOf(awState.k) !== -1; })) awState.k = 'all';
+    cats.innerHTML = catsHTML(list.map(function(x){ return x.o; }), awState.k, 'data-awk'); cats.hidden = !cats.innerHTML;
+    if (awState.k !== 'all') list = list.filter(function(x){ return (x.o.konular || []).indexOf(awState.k) !== -1; });
+    var dated = list.filter(function(x){ return x.inf.next; }).sort(byDate);
+    var wait = list.filter(function(x){ return !x.inf.next; });
     var lastKey = '';
     dated.forEach(function(x){
       var d = x.inf.next.d, key = d.getFullYear() + '-' + d.getMonth();
-      if (key !== lastKey){ var n = dated.filter(function(y){ return y.inf.next.d.getFullYear() === d.getFullYear() && y.inf.next.d.getMonth() === d.getMonth(); }).length; html += '<div class="ag-month">' + AY[d.getMonth()] + ' ' + d.getFullYear() + '<small>' + n + ' ödül</small></div>'; lastKey = key; }
+      if (key !== lastKey){ html += '<div class="ag-month">' + AY[d.getMonth()] + ' ' + d.getFullYear() + '</div>'; lastKey = key; }
       html += awardRowHTML(x.o, x.inf);
     });
-    if (wait.length){ html += '<div class="ag-month">Takvimi açıklanmayanlar<small>' + wait.length + ' ödül</small></div>'; html += wait.map(function(x){ return awardRowHTML(x.o, x.inf); }).join(''); }
-    if (html) html = '<div class="agenda">' + html + '</div>';
-    document.getElementById('awards').innerHTML = html || '<p style="color:var(--muted)">Takvimde ödül yok.</p>';
+    if (wait.length){ html += '<div class="ag-month">Takvimi açıklanmayanlar</div>'; html += wait.map(function(x){ return awardRowHTML(x.o, x.inf); }).join(''); }
+    html = (html ? '<div class="agenda">' + html + '</div>' : '<p style="color:var(--muted)">Takvimde ödül yok.</p>') +
+      '<button type="button" class="ag-more open" data-awall="0">Daha az göster' + ic('chev-r') + '</button>';
+    document.getElementById('awards').innerHTML = html;
   }
 
   /* 7 · Arşiv: tüm sayıların başlıkları, arama ve konu filtresi */
@@ -1098,7 +1142,7 @@
   ];
 
   /* Sayfa */
-  var SECTIONS = [['ana', 'Ana gelişme'], ['bu-hafta', 'Haftalık gündem'], ['sinyal', 'Sektörel gözlem'], ['veri', 'Sayılarla gündem'], ['sektor', 'Sektörden'], ['izle', 'Yaklaşan etkinlikler'], ['oduller', 'Ödül takvimi'], ['kaynaklar', 'Kaynaklar'], ['arsiv', 'Arşiv']];
+  var SECTIONS = [['ana', 'Ana gelişme'], ['bu-hafta', 'Haftalık gündem'], ['sinyal', 'Sektörel gözlem'], ['veri', 'Sayılarla gündem'], ['sektor', 'Perakende Vitrini'], ['izle', 'Yaklaşan etkinlikler'], ['oduller', 'Ödül takvimi'], ['kaynaklar', 'Kaynaklar'], ['arsiv', 'Arşiv']];
   function render(){
     var s = issue();
     items = {}; order = [];
@@ -1139,7 +1183,7 @@
     document.getElementById('items').innerHTML = s.haberler.map(itemHTML).join('');
     if (s.sinyal) document.getElementById('signal').innerHTML = signalHTML(s.sinyal, s);
     if (s.veri) document.getElementById('data').innerHTML = dataHTML(s.veri);
-    if (s.sektorden && s.sektorden.length) document.getElementById('sector').innerHTML = s.sektorden.map(sectorRowHTML).join('');
+    if (s.sektorden && s.sektorden.length) document.getElementById('sector').innerHTML = sectorHTML(s.sektorden);
     if (s.etkinlikler) renderEvents();
     if (B.oduller && B.oduller.length) renderAwards();
     document.getElementById('method').innerHTML = METHOD.map(function(m){ return '<li>' + ic(m[0]) + '<span>' + esc(m[1]) + '</span></li>'; }).join('');
@@ -1270,6 +1314,10 @@
     if (ac){ arState.cat = ac.getAttribute('data-arcat'); renderArchive(); return; }
     var evk = e.target.closest('[data-evk]');
     if (evk){ evState.k = evk.getAttribute('data-evk'); renderEvents(); return; }
+    var awr = e.target.closest('[data-awreg]');
+    if (awr){ awState.reg = awr.getAttribute('data-awreg'); awState.k = 'all'; renderAwards(); return; }
+    var awa = e.target.closest('[data-awall]');
+    if (awa){ awState.all = awa.getAttribute('data-awall') === '1'; renderAwards(); if (!awState.all) document.getElementById('oduller').scrollIntoView({ behavior: 'smooth' }); return; }
     var awk = e.target.closest('[data-awk]');
     if (awk){ awState.k = awk.getAttribute('data-awk'); renderAwards(); return; }
     if (e.target.closest('[data-armore]')){ arState.more = true; renderArchive(); return; }

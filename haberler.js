@@ -17,13 +17,14 @@
                  gecenHafta: true → bir önceki haftadan dikkat çeken gelişme etiketi
     sinyal       Sektörel gözlem: haberlerin birlikte gösterdiği eğilim            (YORUM)
     veri         Sayılarla gündem: tek önemli araştırma sonucu                     (VERİ)
-    sektorden    Sektörden: perakende ve iç giyim şirketlerinin herkese açık İK,     (HABER)
+    sektorden    "Perakende Vitrini" bölümü: perakende ve iç giyim şirketlerinin herkese açık İK,     (HABER)
                  işveren markası, ödül ve teknoloji gelişmeleri; 0–4 madde, yorum YOK.
                  Biçim: { tarih: "YIL-AY-GÜN", sirket, tur, baslik, metin, konular: [...],
-                          kazananlar?: [{ sirket, derece: "Altın"|"Gümüş"|"Bronz"|"Finalist", kategori }],
+                          kazananlar?: [{ sirket, derece: "Altın"|"Gümüş"|"Bronz"|"Finalist", kategori, proje? }],
                           kaynaklar: [{ ad, url, tip }] }
                  tur: "Ödül" | "Eğitim" | "İşveren markası" | "İK teknolojisi" (kart rengi ve ikonu buna göre).
-                 Ödül haberlerinde kazananları metin yerine "kazananlar" listesine yaz; sitede madalya olarak görünür.
+                 Ödül haberlerinde kazananları metin yerine "kazananlar" listesine yaz; aynı kategorideki kazananlar
+                 sitede tek satırda, madalya renginde noktalarla görünür. Proje adı varsa "proje" alanına yaz.
                  Kural: "rakip", kıyaslama, öneri ve kendi şirketimizin adı yazılmaz.
                  Haftada haber yoksa liste boş bırakılır; bölüm sitede görünmez.
     etkinlikler  Yaklaşan etkinlikler: İK, eğitim, çalışan deneyimi, yapay zekâ  (TAKVİM)
@@ -39,7 +40,7 @@
     "tce" Çalışan deneyimi ve bağlılık · "ai" Yapay zekâ · "liderlik" Liderlik ve kültür
     "isveren" İşveren markası · "satis-cx" Satış ve müşteri deneyimi · "genel" Genel iş ödülleri
   ÖDÜL TAKVİMİ (oduller): Sayılardan bağımsız, sayfanın en altındaki ayrı liste; her hafta güncellenir.
-    Her ödül: ad, kurum, kapsam, aciklama, url, konular, tarihler: [{ etiket, tarih: "YIL-AY-GÜN", sonTarih: true }]
+    Her ödül: ad, kurum, kapsam, bolge ("tr" = Türkiye'de düzenlenen, "dunya" = uluslararası; sitede iki sekme), aciklama, url, konular, tarihler: [{ etiket, tarih: "YIL-AY-GÜN", sonTarih: true }]
     sonTarih: true → başvuru son tarihi; en son "sonTarih" geçince ödül listeden kendiliğinden düşer.
     Tarihi açıklanmamış ödülde tarihler boş bırakılır, "durum" alanına kısa not yazılır.
     Tarihleri yalnızca ödülün resmî sayfasından yaz; açıklanmamış tarihi tahmin etme.
@@ -81,7 +82,7 @@ window.BULTEN = {
 
   /* ÖDÜL BAŞVURU TAKVİMİ (sayılardan bağımsız; her hafta resmî sayfalardan güncellenir) */
   oduller: [
-    { ad: "PERYÖN İnsana Değer Ödülleri", kurum: "PERYÖN", kapsam: "Türkiye",
+    { ad: "PERYÖN İnsana Değer Ödülleri", kurum: "PERYÖN", kapsam: "Türkiye", bolge: "tr",
       aciklama: "Türkiye İnsan Yönetimi Derneği'nin İK uygulamalarını ödüllendiren programı. Önce ön başvuru, ardından kesin başvuru dosyası teslim ediliyor; \"Değer Yaratan Uygulamalar\" kategorilerinde jüri sunumu yapılıyor. Tören Mart 2027'de.",
       url: "https://peryon.org.tr/en_US/odul-takvimi", konular: ["ik", "tce"],
       tarihler: [
@@ -89,7 +90,7 @@ window.BULTEN = {
         { etiket: "Kesin başvuru dosyası teslimi", tarih: "2026-12-25", sonTarih: true },
         { etiket: "Jüri sunumları başlıyor", tarih: "2027-02-01" }
       ] },
-    { ad: "Orta Doğu ve Kuzey Afrika Stevie Ödülleri 2027", kurum: "Stevie Awards", kapsam: "Bölgesel · Türkiye dahil 17 ülke",
+    { ad: "Orta Doğu ve Kuzey Afrika Stevie Ödülleri 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Bölgesel · Türkiye dahil 17 ülke",
       aciklama: "Orta Doğu ve Kuzey Afrika'daki kurumlar için Stevie programı; Türkiye başvurabilen ülkeler arasında. 29 Ekim'e kadar başvurup kazananlar, kazanan ücretinde 40 dolar indirim alıyor.",
       url: "https://mena.stevieawards.com/About/faq", konular: ["genel"],
       tarihler: [
@@ -97,7 +98,7 @@ window.BULTEN = {
         { etiket: "Son başvuru", tarih: "2026-11-26", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-02-18" }
       ] },
-    { ad: "Stevie Satış ve Müşteri Hizmetleri Ödülleri", kurum: "Stevie Awards", kapsam: "Dünya",
+    { ad: "Stevie Satış ve Müşteri Hizmetleri Ödülleri", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Dünya",
       aciklama: "Satış, müşteri hizmetleri ve çağrı merkezi ekiplerini ve çalışanlarını ödüllendiren program; dünyanın her yerinden kurumlara açık.",
       url: "https://stevieawards.com/About/Calendar", konular: ["satis-cx"],
       tarihler: [
@@ -106,7 +107,7 @@ window.BULTEN = {
         { etiket: "Son başvuru", tarih: "2027-02-03", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-03-11" }
       ] },
-    { ad: "Brandon Hall HCM Excellence Awards 2027", kurum: "Brandon Hall Group", kapsam: "Dünya",
+    { ad: "Brandon Hall HCM Excellence Awards 2027", kurum: "Brandon Hall Group", bolge: "dunya", kapsam: "Dünya",
       aciklama: "2026 program alanları: öğrenme ve gelişim, yetenek yönetimi, işe alım, liderlik gelişimi, İK, satış performansı, çeşitlilik, eşitlik ve kapsayıcılık, işin geleceği. 2027 kategori listesi henüz yayımlanmadı. Başvuru başına ücret 575 dolar.",
       url: "https://excellenceawards.brandonhall.com/hcm/", konular: ["egitim", "ik", "liderlik", "satis-cx"],
       tarihler: [
@@ -114,7 +115,7 @@ window.BULTEN = {
         { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-08-12" }
       ] },
-    { ad: "Stevie International Business Awards 2027", kurum: "Stevie Awards", kapsam: "Dünya",
+    { ad: "Stevie International Business Awards 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Dünya",
       aciklama: "Birçok alanda kategorisi olan uluslararası Stevie programı.",
       url: "https://stevieawards.com/About/Calendar", konular: ["genel"],
       tarihler: [
@@ -124,7 +125,7 @@ window.BULTEN = {
         { etiket: "Son başvuru", tarih: "2027-06-16", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-09-01" }
       ] },
-    { ad: "Stevie Awards for Great Employers 2027", kurum: "Stevie Awards", kapsam: "Dünya",
+    { ad: "Stevie Awards for Great Employers 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Dünya",
       aciklama: "İşveren olarak öne çıkan kurumları, İK ekiplerini ve uygulamalarını ödüllendiren Stevie programı.",
       url: "https://stevieawards.com/About/Calendar", konular: ["ik", "tce", "isveren"],
       tarihler: [
@@ -134,11 +135,21 @@ window.BULTEN = {
         { etiket: "Son başvuru", tarih: "2027-06-09", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-07-15" }
       ] },
-    { ad: "TEGEP Kurumsal Akademi Ödülleri", kurum: "TEGEP", kapsam: "Türkiye",
+    { ad: "7. Uluslararası Kadın Dostu Markalar Farkındalık Ödülleri", kurum: "Kadın Dostu Markalar Platformu", kapsam: "Türkiye", bolge: "tr",
+      aciklama: "8 kategoride 30 ödül veriliyor; İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\". \"Çeşitlilik, Kapsayıcılık ve İyi Oluş Uygulamaları\" kategorisi de var. İndirimli erken başvuru dönemi 30 Eylül'de sona erdi; tören Mart 2027'de.",
+      url: "https://www.guncelkadin.com.tr/7-uluslararasi-kadin-dostu-markalar-farkindalik-odullerinde-erken-basvuru-donemi-basladi/", konular: ["ik", "tce"],
+      tarihler: [
+        { etiket: "Son başvuru", tarih: "2026-11-30", sonTarih: true }
+      ] },
+    { ad: "Youth Awards (Youthall)", kurum: "Youthall", kapsam: "Türkiye", bolge: "tr",
+      aciklama: "Şirketler aday olmak için başvuruyor, kazananları 18–35 yaş arası gençler oyluyor. Kategoriler arasında Perakende, Çalışan Değer Önermesi (EVP), Eğitim ve Gelişim, İşe Alım Programı, Staj programları ve İK Lideri var.",
+      durum: "2027 takvimi henüz açıklanmadı. 2026'da şirket başvuruları 6 Mayıs–12 Haziran arasındaydı, tören 16 Eylül'de yapıldı.",
+      url: "https://www.youthall.com/en/youth-awards/", konular: ["isveren", "egitim"], tarihler: [] },
+    { ad: "TEGEP Kurumsal Akademi Ödülleri", kurum: "TEGEP", kapsam: "Türkiye", bolge: "tr",
       aciklama: "Kategoriler: En İyi Kurumsal Akademi (çalışan sayısına göre üç grup) ve En İyi Yeni Kurumsal Akademi. 2025 döneminde başvuru ücreti TEGEP üyeleri için 13.000 TL + KDV idi.",
       durum: "Yeni dönemin başvuru tarihleri henüz açıklanmadı.",
       url: "https://tegep.org/tegep-kurumsal-akademi-odulleri", konular: ["egitim"], tarihler: [] },
-    { ad: "The Hammers Awards", kurum: "Pazarlamasyon", kapsam: "Türkiye",
+    { ad: "The Hammers Awards", kurum: "Pazarlamasyon", kapsam: "Türkiye", bolge: "tr",
       aciklama: "Pazarlama ve iletişim ekiplerini ödüllendiren program; \"En İyi İşveren Markası Takımı\" kategorisi iç ve dış işveren markası çalışmalarını ödüllendiriyor.",
       durum: "2027 takvimi henüz açıklanmadı. 2026'da başvurular 8 Eylül'de kapandı, tören 13 Ekim'de yapıldı.",
       url: "https://thehammersawards.com/", konular: ["isveren"], tarihler: [] }
@@ -288,12 +299,12 @@ window.BULTEN = {
       sektorden: [
         { tarih: "2026-09-16", sirket: "Mavi · LC Waikiki", tur: "Ödül",
           baslik: "Youth Awards 2026'da perakendeden iki işveren markası ödülü",
-          metin: "Kazananlar Youthall'un düzenlediği ve gençlerin oylarıyla belirlenen Youth Awards 2026'da açıklandı.",
+          metin: "Youthall'un düzenlediği ödüllerde kazananlar gençlerin oylarıyla belirlendi.",
           kazananlar: [
             { sirket: "Migros", derece: "Altın", kategori: "Perakende Şirketi" },
             { sirket: "Mavi", derece: "Gümüş", kategori: "Perakende Şirketi" },
             { sirket: "Starbucks Alshaya", derece: "Bronz", kategori: "Perakende Şirketi" },
-            { sirket: "LC Waikiki", derece: "Bronz", kategori: "Çalışan Değer Önermesi (EVP) · \"Büyük Kalplerle, Büyük Hedeflere\"" }
+            { sirket: "LC Waikiki", derece: "Bronz", kategori: "Çalışan Değer Önermesi (EVP)", proje: "Büyük Kalplerle, Büyük Hedeflere" }
           ],
           konular: ["isveren"],
           kaynaklar: [{ ad: "Youthall · Youth Awards 2026 kazananları", url: "https://www.youthall.com/en/youth-awards/winners/2026/?hl=tr+", tip: "resmi" }] },
@@ -303,8 +314,7 @@ window.BULTEN = {
           konular: ["egitim", "ai"],
           kaynaklar: [{ ad: "İnternet Haber · Haber", url: "https://www.internethaber.com/lc-waikiki-calisanlari-icin-dijital-teknolojiler-ve-yapay-zeka-okulunu-hayata-gecirdi-2457701h.htm", tip: "ikinci" }] },
         { tarih: "2026-07-16", sirket: "Dagi · Rossmann Türkiye", tur: "Ödül",
-          baslik: "Stevie Great Employers 2026'da perakende ve iç giyimden ödüller",
-          metin: "Kazananlar 16 Temmuz'da açıklandı.",
+          baslik: "Stevie Great Employers 2026'da perakende ve iç giyimden üç ödül",
           kazananlar: [
             { sirket: "Rossmann Türkiye", derece: "Altın", kategori: "Esnek ve Hibrit Çalışma Modelleri" },
             { sirket: "Dagi", derece: "Gümüş", kategori: "En İyi Liderlik Gelişim Programı" },
