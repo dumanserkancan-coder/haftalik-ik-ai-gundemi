@@ -38,7 +38,7 @@
     (tur alanı "Dünyadan · …" ile başlar).
   Etkinlik ve ödül konu anahtarları (konular): "ik" İK ve İK teknolojisi · "egitim" Eğitim ve gelişim
     "tce" Çalışan deneyimi ve bağlılık · "ai" Yapay zekâ · "liderlik" Liderlik ve kültür
-    "isveren" İşveren markası · "satis-cx" Satış ve müşteri deneyimi · "genel" Genel iş ödülleri
+    "isveren" İşveren markası · "genel" Genel iş ödülleri
   ÖDÜL TAKVİMİ (oduller): Sayılardan bağımsız, sayfanın en altındaki ayrı liste; her hafta güncellenir.
     Her ödül: ad, kurum, kapsam, bolge ("tr" = Türkiye'de düzenlenen, "dunya" = uluslararası; sitede iki sekme), aciklama, url, konular, tarihler: [{ etiket, tarih: "YIL-AY-GÜN", sonTarih: true }]
     sonTarih: true → başvuru son tarihi; en son "sonTarih" geçince ödül listeden kendiliğinden düşer.
@@ -74,7 +74,6 @@ window.BULTEN = {
     "ai":        { ad: "Yapay zekâ" },
     "liderlik":  { ad: "Liderlik ve kültür" },
     "isveren":   { ad: "İşveren markası" },
-    "satis-cx":  { ad: "Satış ve müşteri deneyimi" },
     "genel":     { ad: "Genel iş ödülleri" }
   },
 
@@ -98,18 +97,9 @@ window.BULTEN = {
         { etiket: "Son başvuru", tarih: "2026-11-26", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-02-18" }
       ] },
-    { ad: "Stevie Satış ve Müşteri Hizmetleri Ödülleri", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Dünya",
-      aciklama: "Satış, müşteri hizmetleri ve çağrı merkezi ekiplerini ve çalışanlarını ödüllendiren program; dünyanın her yerinden kurumlara açık.",
-      url: "https://stevieawards.com/About/Calendar", konular: ["satis-cx"],
-      tarihler: [
-        { etiket: "Erken başvuru (indirimli)", tarih: "2026-11-12" },
-        { etiket: "Ana son tarih (sonrası gecikme ücretli)", tarih: "2027-01-13" },
-        { etiket: "Son başvuru", tarih: "2027-02-03", sonTarih: true },
-        { etiket: "Kazananlar açıklanıyor", tarih: "2027-03-11" }
-      ] },
     { ad: "Brandon Hall HCM Excellence Awards 2027", kurum: "Brandon Hall Group", bolge: "dunya", kapsam: "Dünya",
       aciklama: "2026 program alanları: öğrenme ve gelişim, yetenek yönetimi, işe alım, liderlik gelişimi, İK, satış performansı, çeşitlilik, eşitlik ve kapsayıcılık, işin geleceği. 2027 kategori listesi henüz yayımlanmadı. Başvuru başına ücret 575 dolar.",
-      url: "https://excellenceawards.brandonhall.com/hcm/", konular: ["egitim", "ik", "liderlik", "satis-cx"],
+      url: "https://excellenceawards.brandonhall.com/hcm/", konular: ["egitim", "ik", "liderlik"],
       tarihler: [
         { etiket: "Başvurular açılıyor", tarih: "2027-01-04" },
         { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true },
