@@ -17,13 +17,32 @@
                  gecenHafta: true → bir önceki haftadan dikkat çeken gelişme etiketi
     sinyal       Sektörel gözlem: haberlerin birlikte gösterdiği eğilim            (YORUM)
     veri         Sayılarla gündem: tek önemli araştırma sonucu                     (VERİ)
-    etkinlikler  Yaklaşan İK etkinlikleri                                          (TAKVİM)
+    sektorden    Sektörden: perakende ve iç giyim şirketlerinin herkese açık İK,     (HABER)
+                 işveren markası, ödül ve teknoloji gelişmeleri; 0–4 madde, yorum YOK.
+                 Biçim: { tarih: "YIL-AY-GÜN", sirket, tur, baslik, metin, konular: [...],
+                          kazananlar?: [{ sirket, derece: "Altın"|"Gümüş"|"Bronz"|"Finalist", kategori }],
+                          kaynaklar: [{ ad, url, tip }] }
+                 tur: "Ödül" | "Eğitim" | "İşveren markası" | "İK teknolojisi" (kart rengi ve ikonu buna göre).
+                 Ödül haberlerinde kazananları metin yerine "kazananlar" listesine yaz; sitede madalya olarak görünür.
+                 Kural: "rakip", kıyaslama, öneri ve kendi şirketimizin adı yazılmaz.
+                 Haftada haber yoksa liste boş bırakılır; bölüm sitede görünmez.
+    etkinlikler  Yaklaşan etkinlikler: İK, eğitim, çalışan deneyimi, yapay zekâ  (TAKVİM)
+                 Her etkinliğe "konular" eklenir (aşağıdaki konu anahtarlarından); sitede bu
+                 etiketlerle süzülebilir. Örnek: konular: ["egitim", "ai"]
 
   Konu anahtarları: "ai-hr" AI in HR · "ta" Talent Acquisition · "pa" People Analytics
                     "ex" Employee Experience · "fow" Future of Work · "rapor" Rapor
   Kaynak tipi (tip): "resmi" = şirketin / kurumun kendi duyurusu, "ikinci" = bağımsız haber kaynağı
   Etkinlikler: Öncelik Türkiye'deki İK etkinliklerinde. Dünyadan yalnızca çok önemli bir etkinlik eklenir
     (tur alanı "Dünyadan · …" ile başlar).
+  Etkinlik ve ödül konu anahtarları (konular): "ik" İK ve İK teknolojisi · "egitim" Eğitim ve gelişim
+    "tce" Çalışan deneyimi ve bağlılık · "ai" Yapay zekâ · "liderlik" Liderlik ve kültür
+    "isveren" İşveren markası · "satis-cx" Satış ve müşteri deneyimi · "genel" Genel iş ödülleri
+  ÖDÜL TAKVİMİ (oduller): Sayılardan bağımsız, sayfanın en altındaki ayrı liste; her hafta güncellenir.
+    Her ödül: ad, kurum, kapsam, aciklama, url, konular, tarihler: [{ etiket, tarih: "YIL-AY-GÜN", sonTarih: true }]
+    sonTarih: true → başvuru son tarihi; en son "sonTarih" geçince ödül listeden kendiliğinden düşer.
+    Tarihi açıklanmamış ödülde tarihler boş bırakılır, "durum" alanına kısa not yazılır.
+    Tarihleri yalnızca ödülün resmî sayfasından yaz; açıklanmamış tarihi tahmin etme.
   Tarihler (baslangic, bitis): YIL-AY-GÜN biçiminde; sitede kalan gün buna göre hesaplanır,
     tarihi geçen etkinlik kendiliğinden gizlenir.
   kapak.gorsel: Görsel dosyasının adı; dosyayı index.html ile aynı yere yükle (her sayıya ayrı ad: kapak-sayi2.jpg …).
@@ -47,7 +66,83 @@ window.BULTEN = {
     "rapor": { ad: "Rapor",               ikon: "report",    renk: "gri" }
   },
 
+  konular: {
+    "ik":        { ad: "İK ve İK teknolojisi" },
+    "egitim":    { ad: "Eğitim ve gelişim" },
+    "tce":       { ad: "Çalışan deneyimi" },
+    "ai":        { ad: "Yapay zekâ" },
+    "liderlik":  { ad: "Liderlik ve kültür" },
+    "isveren":   { ad: "İşveren markası" },
+    "satis-cx":  { ad: "Satış ve müşteri deneyimi" },
+    "genel":     { ad: "Genel iş ödülleri" }
+  },
+
   yeni: [],
+
+  /* ÖDÜL BAŞVURU TAKVİMİ (sayılardan bağımsız; her hafta resmî sayfalardan güncellenir) */
+  oduller: [
+    { ad: "PERYÖN İnsana Değer Ödülleri", kurum: "PERYÖN", kapsam: "Türkiye",
+      aciklama: "Türkiye İnsan Yönetimi Derneği'nin İK uygulamalarını ödüllendiren programı. Önce ön başvuru, ardından kesin başvuru dosyası teslim ediliyor; \"Değer Yaratan Uygulamalar\" kategorilerinde jüri sunumu yapılıyor. Tören Mart 2027'de.",
+      url: "https://peryon.org.tr/en_US/odul-takvimi", konular: ["ik", "tce"],
+      tarihler: [
+        { etiket: "Ön başvuru son tarihi", tarih: "2026-11-15", sonTarih: true },
+        { etiket: "Kesin başvuru dosyası teslimi", tarih: "2026-12-25", sonTarih: true },
+        { etiket: "Jüri sunumları başlıyor", tarih: "2027-02-01" }
+      ] },
+    { ad: "Orta Doğu ve Kuzey Afrika Stevie Ödülleri 2027", kurum: "Stevie Awards", kapsam: "Bölgesel · Türkiye dahil 17 ülke",
+      aciklama: "Orta Doğu ve Kuzey Afrika'daki kurumlar için Stevie programı; Türkiye başvurabilen ülkeler arasında. 29 Ekim'e kadar başvurup kazananlar, kazanan ücretinde 40 dolar indirim alıyor.",
+      url: "https://mena.stevieawards.com/About/faq", konular: ["genel"],
+      tarihler: [
+        { etiket: "İndirimli ilk son tarih", tarih: "2026-10-29" },
+        { etiket: "Son başvuru", tarih: "2026-11-26", sonTarih: true },
+        { etiket: "Kazananlar açıklanıyor", tarih: "2027-02-18" }
+      ] },
+    { ad: "Stevie Satış ve Müşteri Hizmetleri Ödülleri", kurum: "Stevie Awards", kapsam: "Dünya",
+      aciklama: "Satış, müşteri hizmetleri ve çağrı merkezi ekiplerini ve çalışanlarını ödüllendiren program; dünyanın her yerinden kurumlara açık.",
+      url: "https://stevieawards.com/About/Calendar", konular: ["satis-cx"],
+      tarihler: [
+        { etiket: "Erken başvuru (indirimli)", tarih: "2026-11-12" },
+        { etiket: "Ana son tarih (sonrası gecikme ücretli)", tarih: "2027-01-13" },
+        { etiket: "Son başvuru", tarih: "2027-02-03", sonTarih: true },
+        { etiket: "Kazananlar açıklanıyor", tarih: "2027-03-11" }
+      ] },
+    { ad: "Brandon Hall HCM Excellence Awards 2027", kurum: "Brandon Hall Group", kapsam: "Dünya",
+      aciklama: "2026 program alanları: öğrenme ve gelişim, yetenek yönetimi, işe alım, liderlik gelişimi, İK, satış performansı, çeşitlilik, eşitlik ve kapsayıcılık, işin geleceği. 2027 kategori listesi henüz yayımlanmadı. Başvuru başına ücret 575 dolar.",
+      url: "https://excellenceawards.brandonhall.com/hcm/", konular: ["egitim", "ik", "liderlik", "satis-cx"],
+      tarihler: [
+        { etiket: "Başvurular açılıyor", tarih: "2027-01-04" },
+        { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true },
+        { etiket: "Kazananlar açıklanıyor", tarih: "2027-08-12" }
+      ] },
+    { ad: "Stevie International Business Awards 2027", kurum: "Stevie Awards", kapsam: "Dünya",
+      aciklama: "Birçok alanda kategorisi olan uluslararası Stevie programı.",
+      url: "https://stevieawards.com/About/Calendar", konular: ["genel"],
+      tarihler: [
+        { etiket: "Başvurular açılıyor", tarih: "2027-02-09" },
+        { etiket: "Erken başvuru (indirimli)", tarih: "2027-04-07" },
+        { etiket: "Ana son tarih (sonrası gecikme ücretli)", tarih: "2027-05-05" },
+        { etiket: "Son başvuru", tarih: "2027-06-16", sonTarih: true },
+        { etiket: "Kazananlar açıklanıyor", tarih: "2027-09-01" }
+      ] },
+    { ad: "Stevie Awards for Great Employers 2027", kurum: "Stevie Awards", kapsam: "Dünya",
+      aciklama: "İşveren olarak öne çıkan kurumları, İK ekiplerini ve uygulamalarını ödüllendiren Stevie programı.",
+      url: "https://stevieawards.com/About/Calendar", konular: ["ik", "tce", "isveren"],
+      tarihler: [
+        { etiket: "Başvurular açılıyor", tarih: "2027-02-24" },
+        { etiket: "Erken başvuru (indirimli)", tarih: "2027-04-08" },
+        { etiket: "Ana son tarih (sonrası gecikme ücretli)", tarih: "2027-05-06" },
+        { etiket: "Son başvuru", tarih: "2027-06-09", sonTarih: true },
+        { etiket: "Kazananlar açıklanıyor", tarih: "2027-07-15" }
+      ] },
+    { ad: "TEGEP Kurumsal Akademi Ödülleri", kurum: "TEGEP", kapsam: "Türkiye",
+      aciklama: "Kategoriler: En İyi Kurumsal Akademi (çalışan sayısına göre üç grup) ve En İyi Yeni Kurumsal Akademi. 2025 döneminde başvuru ücreti TEGEP üyeleri için 13.000 TL + KDV idi.",
+      durum: "Yeni dönemin başvuru tarihleri henüz açıklanmadı.",
+      url: "https://tegep.org/tegep-kurumsal-akademi-odulleri", konular: ["egitim"], tarihler: [] },
+    { ad: "The Hammers Awards", kurum: "Pazarlamasyon", kapsam: "Türkiye",
+      aciklama: "Pazarlama ve iletişim ekiplerini ödüllendiren program; \"En İyi İşveren Markası Takımı\" kategorisi iç ve dış işveren markası çalışmalarını ödüllendiriyor.",
+      durum: "2027 takvimi henüz açıklanmadı. 2026'da başvurular 8 Eylül'de kapandı, tören 13 Ekim'de yapıldı.",
+      url: "https://thehammersawards.com/", konular: ["isveren"], tarihler: [] }
+  ],
 
   siradaki: { no: 4, donem: "26 Ekim – 1 Kasım 2026", yayin: "1 Kasım Pazar" },
 
@@ -189,20 +284,50 @@ window.BULTEN = {
         ]
       },
 
+      /* 4b · SEKTÖRDEN (perakende ve iç giyim; herkese açık bilgi, yorum yok) */
+      sektorden: [
+        { tarih: "2026-09-16", sirket: "Mavi · LC Waikiki", tur: "Ödül",
+          baslik: "Youth Awards 2026'da perakendeden iki işveren markası ödülü",
+          metin: "Kazananlar Youthall'un düzenlediği ve gençlerin oylarıyla belirlenen Youth Awards 2026'da açıklandı.",
+          kazananlar: [
+            { sirket: "Migros", derece: "Altın", kategori: "Perakende Şirketi" },
+            { sirket: "Mavi", derece: "Gümüş", kategori: "Perakende Şirketi" },
+            { sirket: "Starbucks Alshaya", derece: "Bronz", kategori: "Perakende Şirketi" },
+            { sirket: "LC Waikiki", derece: "Bronz", kategori: "Çalışan Değer Önermesi (EVP) · \"Büyük Kalplerle, Büyük Hedeflere\"" }
+          ],
+          konular: ["isveren"],
+          kaynaklar: [{ ad: "Youthall · Youth Awards 2026 kazananları", url: "https://www.youthall.com/en/youth-awards/winners/2026/?hl=tr+", tip: "resmi" }] },
+        { tarih: "2026-09-02", sirket: "LC Waikiki", tur: "Eğitim",
+          baslik: "LC Waikiki çalışanları için \"Dijital Teknolojiler ve Yapay Zekâ Okulu\" açtı",
+          metin: "Kurumsal Akademi çatısı altında, Yıldız Teknik Üniversitesi Teknoloji Transfer Ofisi işbirliğiyle yürütülen program 8 modül ve 27 oturumdan oluşuyor; farklı birimlerden 450 çalışan katılıyor. Şirket, programın ileride üniversite öğrencileri ve çalışanların çocukları gibi farklı gruplara da genişletilmesini hedefliyor.",
+          konular: ["egitim", "ai"],
+          kaynaklar: [{ ad: "İnternet Haber · Haber", url: "https://www.internethaber.com/lc-waikiki-calisanlari-icin-dijital-teknolojiler-ve-yapay-zeka-okulunu-hayata-gecirdi-2457701h.htm", tip: "ikinci" }] },
+        { tarih: "2026-07-16", sirket: "Dagi · Rossmann Türkiye", tur: "Ödül",
+          baslik: "Stevie Great Employers 2026'da perakende ve iç giyimden ödüller",
+          metin: "Kazananlar 16 Temmuz'da açıklandı.",
+          kazananlar: [
+            { sirket: "Rossmann Türkiye", derece: "Altın", kategori: "Esnek ve Hibrit Çalışma Modelleri" },
+            { sirket: "Dagi", derece: "Gümüş", kategori: "En İyi Liderlik Gelişim Programı" },
+            { sirket: "Dagi", derece: "Bronz", kategori: "Yeni Çalışan Oryantasyonu" }
+          ],
+          konular: ["egitim", "liderlik", "tce"],
+          kaynaklar: [{ ad: "Stevie Awards · 2026 kazananları", url: "https://hr.stevieawards.com/awards/sage-winners/2026/hr-achievement-category-winners/", tip: "resmi" }, { ad: "Stevie Blog · Kazananlar duyurusu", url: "https://blog.stevieawards.com/blog/winners-in-2026-stevie-awards-for-great-employers-announced", tip: "resmi" }] }
+      ],
+
       /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
       etkinlikler: [
         { ad: "İstanbul Workplace Conference 2026", tur: "Konferans", baslangic: "2026-11-03", bitis: "2026-11-03", yer: "İstanbul · Point Hotel Barbaros",
           aciklama: "İnsan performansı, çalışma alanı stratejisi, işin geleceği, ofis tasarımı ve iş hayatında uzun ömürlülük konuşulacak.",
-          url: "https://www.istanbulworkplace.com/" },
+          url: "https://www.istanbulworkplace.com/", konular: ["tce"] },
         { ad: "25. Performans Yönetimi Zirvesi", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-11", yer: "İstanbul · Sheraton Grand Ataşehir",
           aciklama: "HRdergi'nin zirvesi; performans yönetiminin geleceği, yapay zekâ ve veri odaklı yaklaşımlar gündemde.",
-          url: "https://hrdergi.com/25-performans-yonetimi-zirvesi" },
+          url: "https://hrdergi.com/25-performans-yonetimi-zirvesi", konular: ["ik", "ai"] },
         { ad: "Türkiye Yapay Zekâ Zirvesi 2026", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-12", yer: "İstanbul · Wyndham Grand Levent (12 Kasım çevrim içi)",
           aciklama: "Türkiye Yapay Zekâ İnisiyatifi'nin zirvesi; programda yapay zekâ ajanları ve kurum kültürünün bu dönüşüme hazır olup olmadığı üzerine bir oturum da var.",
-          url: "https://zirve.turkiye.ai/" },
+          url: "https://zirve.turkiye.ai/", konular: ["ai", "liderlik"] },
         { ad: "5. Dijital İK Çağı Zirvesi", tur: "Zirve", baslangic: "2026-12-09", bitis: "2026-12-09", yer: "İstanbul · Sheraton Grand Ataşehir",
           aciklama: "HRdergi'nin zirvesi; yapay zekâ çağında İK'nın rolü, yapay zekâ etiği, veri gizliliği ve people analytics konuşulacak.",
-          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi" }
+          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi", konular: ["ik", "ai", "tce"] }
       ]
     },
     {
