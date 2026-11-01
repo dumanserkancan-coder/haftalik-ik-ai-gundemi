@@ -90,10 +90,10 @@ window.BULTEN = {
         { etiket: "Jüri sunumları başlıyor", tarih: "2027-02-01" }
       ] },
     { ad: "Orta Doğu ve Kuzey Afrika Stevie Ödülleri 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Bölgesel · Türkiye dahil 17 ülke",
-      aciklama: "Orta Doğu ve Kuzey Afrika'daki kurumlar için Stevie programı; Türkiye başvurabilen ülkeler arasında. 29 Ekim'e kadar başvurup kazananlar, kazanan ücretinde 40 dolar indirim alıyor.",
+      aciklama: "Orta Doğu ve Kuzey Afrika'daki kurumlar için Stevie programı; Türkiye başvurabilen ülkeler arasında. Kazanan ücretinde indirim sağlayan ilk son tarih (29 Ekim) geçti; son başvuru 26 Kasım.",
       url: "https://mena.stevieawards.com/About/faq", konular: ["genel"],
       tarihler: [
-        { etiket: "İndirimli ilk son tarih", tarih: "2026-10-29" },
+        { etiket: "İndirimli ilk son tarih (geçti)", tarih: "2026-10-29" },
         { etiket: "Son başvuru", tarih: "2026-11-26", sonTarih: true },
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-02-18" }
       ] },
@@ -102,8 +102,7 @@ window.BULTEN = {
       url: "https://excellenceawards.brandonhall.com/hcm/", konular: ["egitim", "ik", "liderlik"],
       tarihler: [
         { etiket: "Başvurular açılıyor", tarih: "2027-01-04" },
-        { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true },
-        { etiket: "Kazananlar açıklanıyor", tarih: "2027-08-12" }
+        { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true }
       ] },
     { ad: "Stevie International Business Awards 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Dünya",
       aciklama: "Birçok alanda kategorisi olan uluslararası Stevie programı.",
@@ -126,7 +125,7 @@ window.BULTEN = {
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-07-15" }
       ] },
     { ad: "7. Uluslararası Kadın Dostu Markalar Farkındalık Ödülleri", kurum: "Kadın Dostu Markalar Platformu", kapsam: "Türkiye", bolge: "tr",
-      aciklama: "8 kategoride 30 ödül veriliyor; İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\". \"Çeşitlilik, Kapsayıcılık ve İyi Oluş Uygulamaları\" kategorisi de var. İndirimli erken başvuru dönemi 30 Eylül'de sona erdi; tören Mart 2027'de.",
+      aciklama: "8 kategoride 30 ödül veriliyor; İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\". \"Çeşitlilik, Kapsayıcılık ve İyilik Hali Uygulamaları\" kategorisi de var. İndirimli erken başvuru dönemi 30 Eylül'de sona erdi; tören Mart 2027'de.",
       url: "https://www.guncelkadin.com.tr/7-uluslararasi-kadin-dostu-markalar-farkindalik-odullerinde-erken-basvuru-donemi-basladi/", konular: ["ik", "tce"],
       tarihler: [
         { etiket: "Son başvuru", tarih: "2026-11-30", sonTarih: true }
@@ -140,14 +139,158 @@ window.BULTEN = {
       durum: "Yeni dönemin başvuru tarihleri henüz açıklanmadı.",
       url: "https://tegep.org/tegep-kurumsal-akademi-odulleri", konular: ["egitim"], tarihler: [] },
     { ad: "The Hammers Awards", kurum: "Pazarlamasyon", kapsam: "Türkiye", bolge: "tr",
-      aciklama: "Pazarlama ve iletişim ekiplerini ödüllendiren program; \"En İyi İşveren Markası Takımı\" kategorisi iç ve dış işveren markası çalışmalarını ödüllendiriyor.",
-      durum: "2027 takvimi henüz açıklanmadı. 2026'da başvurular 8 Eylül'de kapandı, tören 13 Ekim'de yapıldı.",
+      aciklama: "Reklamveren tarafındaki pazarlama ve iletişim ekiplerini ödüllendiren program; 2026'da altı ana grupta 103 alt kategori vardı. İşveren markası ekipleri için uygun kategori olup olmadığı yeni dönem kategori listesinden kontrol edilmeli.",
+      durum: "2027 takvimi henüz açıklanmadı. 2026 töreni 13 Ekim'de yapıldı.",
       url: "https://thehammersawards.com/", konular: ["isveren"], tarihler: [] }
   ],
 
-  siradaki: { no: 4, donem: "26 Ekim – 1 Kasım 2026", yayin: "1 Kasım Pazar" },
+  siradaki: { no: 5, donem: "2–8 Kasım 2026", yayin: "8 Kasım Pazar" },
 
   sayilar: [
+    {
+      no: 4,
+      donem: "26 Ekim – 1 Kasım 2026",
+      yayin: "1 Kasım 2026",
+      sonraki: "8 Kasım Pazar",
+      okuma: 5,
+
+      /* 1 · HAFTANIN ANA GELİŞMESİ */
+      ana: {
+        id: "ana", kategori: "rapor", tarih: "26 Ekim", tur: "Haftanın konusu", okumaSuresi: 3,
+        baslik: "Gartner: Yönetim kurullarının dörtte üçü yapay zekâdan verim ve tasarruf bekliyor; hedefi verimlilikle aşan kurumlar yalnızca %3",
+        ozet: "Gartner, 26 Ekim'de HR Symposium konferansında paylaştığı İK araştırmasında, yönetim kurulu üyelerinin dörtte üçünün yapay zekâdan verimlilik ve maliyet tasarrufu beklediğini açıkladı. Buna karşın kurumların yalnızca %3'ü maliyet tasarrufu hedeflerini verimlilik artışı yoluyla aşabiliyor. Gartner'dan CV Viverito'ya göre kurumların %38'i yapay zekâda bütçeyi aşmış durumda ve %85'i gelecek yıl daha fazla harcama yapmayı planlıyor. Gartner'ın 1.800'den fazla çalışanla yaptığı başka bir ankete göre yapay zekânın kazandırdığı zamanın yalnızca %21'i daha yenilikçi işlere yönlendiriliyor.",
+        bolumler: [
+          { baslik: "Neler açıklandı?", maddeler: [
+            "Gartner İK biriminden kıdemli direktör analist CV Viverito: \"Kurumlar şu aşamada yapay zekâdan maliyet tasarrufu elde etmeyecek.\" Viverito'ya göre asıl fırsat, yapay zekâyı daha önce mümkün olmayan işler için kullanmak; örneğin çalışan zamanını yeni yetkinliklere, sonuçlara ve büyüme kaynaklarına kaydırmak.",
+            "Viverito'ya göre kurumlar işi yeniden tasarladıkça kapasite zaten oluşuyor; zorlandıkları nokta bu kapasiteyi kullanılabilir hâle getirmek ve değerli olan işe yönlendirmek.",
+            "Gartner'dan başkan yardımcısı analist Arj Bagga'ya göre yapay zekânın kurum için en çok nerede önemli olduğuna dair ortak bir bakış yoksa, işgücünün nasıl konumlanacağı ve yapay zekâ yatırımlarından nasıl değer alınacağı konusunda kopukluk oluşuyor. ITPro'nun aktardığına göre Gartner'ın Temmuz 2026 anketinde yöneticilerin %78'i yapay zekânın nerede değer yarattığı konusunda net bir uzlaşıya sahip değil."
+          ]},
+          { baslik: "Aynı konferanstan: İşe alım", maddeler: [
+            "Gartner'dan kıdemli direktör analist Jamie Kohn'a göre başvuru sayıları son iki yılda iki katından fazla arttı; Kohn'a göre yapay zekâyı aday tarama ve değerlendirmenin dışında sonsuza dek tutmak sürdürülebilir değil. HR Dive'ın aktardığına göre Gartner, 2029'a kadar her dört adaydan birinin bir yapay zekâ aracı tarafından temsil edilebileceğini öngörüyor."
+          ]},
+          { baslik: "Dikkat edilecek noktalar", maddeler: [
+            "Bu sayıda kullanılan haberler (HR Dive, The Register, ITPro), %3 ve %85 rakamlarının dayandığı anketin örneklem büyüklüğünü ve tarihini vermiyor.",
+            "%21'lik oran, 1.800'den fazla çalışanla yapılan ayrı bir Gartner anketinden geliyor; yönetim kurulu beklentisiyle aynı ankete ait değil."
+          ]}
+        ],
+        not: "Kapasite: Yapay zekânın işleri hızlandırmasıyla çalışanların elinde kalan zaman. Gartner'ın vurgusu, bu zamanın kendiliğinden ne maliyet tasarrufuna ne de yeni işe dönüştüğü; nereye gideceğinin ayrıca planlanması gerektiği.",
+        kapak: { gorsel: "kapak-sayi4.jpg", gorselAciklama: "Yapay zekâ simgeli bir saatten çıkan kesikli akış çizgilerinin çoğunun yolda dağılıp söndüğü, yalnızca tek bir yeşil çizginin sağdaki çubuk grafikli karta ulaştığı illüstrasyon" },
+        kaynaklar: [
+          { ad: "Gartner · Basın bülteni", url: "https://www.gartner.com/en/newsroom/press-releases/2026-10-26-gartner-hr-research-finds-77-percent-of-board-members-expect-ai-to-deliver-productivity-and-cost-savings-yet-just-3-percent-of-organizations-exceed-cost-savings-goals-via-productivity", tip: "resmi" },
+          { ad: "HR Dive · Haber", url: "https://www.hrdive.com/news/companies-are-not-saving-money-with-ai/873110/", tip: "ikinci" },
+          { ad: "The Register · Haber", url: "https://www.theregister.com/ai-and-ml/2026/10/27/a-whopping-3-of-boardroom-execs-spy-productivity-and-costs-savings-from-ai/5305675", tip: "ikinci" },
+          { ad: "ITPro · Haber", url: "https://www.itpro.com/business/business-strategy/organizations-will-not-generate-cost-savings-from-ai-at-this-point-just-3-percent-of-companies-have-recorded-cost-savings-with-ai-but-that-isnt-stopping-them-from-investing-more", tip: "ikinci" },
+          { ad: "HR Dive · İşe alım oturumu", url: "https://www.hrdive.com/news/4-trends-explaining-why-recruiters-are-struggling-right-now/873036/", tip: "ikinci" }
+        ]
+      },
+
+      /* 2 · HAFTALIK GÜNDEM (5–7 haber) */
+      haberler: [
+        {
+          id: "h1", kategori: "ai-hr", tarih: "27 Ekim", tur: "Şirket duyurusu",
+          baslik: "Dayforce, İK yazılımını yapay zekâ ajanları etrafında yeniden kurdu; yapay zekâ mülakat şirketi Ribbon'u satın alıyor",
+          ozet: "İK ve bordro yazılımı Dayforce, kendi konferansı Dayforce Discover'da yapay zekâ ajanlarını merkeze alan yeni platformunu tanıttı. Şirketin açıklamasına göre ajanlar işe alımda aday bulma, ön eleme, mülakat planlama ve adayla iletişim işlerini üstlenecek; öğrenme ve performans yönetimi de yapay zekâ destekli hâle gelecek.",
+          ek: "Dayforce, sesli ve görüntülü yapay zekâ mülakatları yapan Ribbon AI'ı satın almak için anlaşma imzaladı. Şirkete göre bazı ajanlar şimdiden kullanımda, diğer özellikler 2027 boyunca gelecek; fiyat rakamı açıklanmadı.",
+          kaynaklar: [
+            { ad: "Dayforce · Platform duyurusu", url: "https://www.globenewswire.com/news-release/2026/10/27/3389574/0/en/dayforce-unveils-the-agentic-hcm-platform.html", tip: "resmi" },
+            { ad: "Dayforce · İşe alım ve gelişim duyurusu", url: "https://www.globenewswire.com/news-release/2026/10/27/3389571/0/en/dayforce-introduces-agentic-talent-experiences-to-transform-how-organizations-hire-and-develop-talent.html", tip: "resmi" },
+            { ad: "IT Brief · Ribbon haberi", url: "https://itbrief.co.uk/story/dayforce-to-buy-ribbon-ai-for-recruiting-technology", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h2", kategori: "ai-hr", tarih: "27 Ekim", tur: "Analiz",
+          baslik: "İşyeri şikâyetlerini yapay zekâ ajanı almalı mı? İK ajanı geliştiren şirketler bile ikiye bölünmüş durumda",
+          ozet: "HR Brew, İK'ya özel yapay zekâ ajanı geliştiren beş şirketle, avukatlarla ve analistlerle görüşerek ajanların taciz ve benzeri işyeri suistimali bildirimlerini almasını inceledi. Wisq'ten ürün sorumlusu Clayton Holz'a göre yapay zekânın tutarlılığı ve her şeyin kayıt altında olması faydalı olabilir; şirketin ajanı, bir vakayı kaçırmaktansa fazla vaka işaretlemeye ayarlı. Lattice'ten Barbra Gago'ya göre ise asıl zorluk, hassas durumlarda gereken yönetişim, yetki, denetlenebilirlik ve insan gözetimini kurmak.",
+          ek: "ABD'li hukuk bürosu Fisher Phillips'ten Dave Walton, suistimal ajana bildirildiğinde mahkemelerin bunu tüm şirkete yapılmış bildirim sayacağını düşünüyor: \"Şirket 'ajan bana söylemedi, bilmiyordum' diyemez.\" Synthesia'nın İK yöneticisi Laura Gonzalez'e göre ciddi bir endişesi olan kişi İK ekibinden biriyle konuşmak ister.",
+          not: "Haberdeki hukuki değerlendirmeler ABD'deki avukatlara ait.",
+          kaynaklar: [
+            { ad: "HR Brew · Haber", url: "https://www.hr-brew.com/stories/workplace-misconduct-agentic-ai", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h3", kategori: "ta", tarih: "23 Ekim", tur: "Şirket duyurusu", gecenHafta: true,
+          baslik: "Gap Inc., yılbaşı sezonu işe alımında yapay zekâ asistanı \"Bridgette\"i kullanıyor",
+          ozet: "Gap Inc., mağaza ve dağıtım merkezlerindeki sezonluk işe alımda Paradox üzerine kurulu ve Workday Recruiting'e bağlı yapay zekâ asistanı Bridgette'i kullanıyor. Asistan adayların sorularını 7/24 yanıtlıyor, mülakatları planlıyor, hatırlatma gönderiyor ve adayı süreç boyunca bilgilendiriyor. Şirketin açıklamasına göre Haziran'dan bu yana 100'den fazla mağaza ve altı bölgesel dağıtım merkezini kapsayan pilotta yaklaşık 45.000 aday asistanı kullandı ve asistan 7.000'den fazla mülakat planladı.",
+          ek: "Gap, sezon boyunca yaklaşık 200.000 başvuru bekliyor. HR Dive'ın aktardığına göre Gap, kaç kişiyi işe almayı hedeflediğine ilişkin soruya hemen yanıt vermedi.",
+          kaynaklar: [
+            { ad: "Gap Inc. · Resmî duyuru", url: "https://www.gapinc.com/en-us/articles/2026/10/gap-inc-reimagines-holiday-hiring-with-ai-tools-to", tip: "resmi" },
+            { ad: "HR Dive · Haber", url: "https://www.hrdive.com/news/gap-ai-hiring-tool-bridgette/873179/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h4", kategori: "ex", tarih: "27 Ekim", tur: "Araştırma",
+          baslik: "TalentLMS: Eğitim alan çalışanların yarısından azı yeni çalışma yöntemini kalıcı olarak kullanıyor",
+          ozet: "Kurumsal eğitim platformu TalentLMS'in ABD'de 1.500 çalışanla yaptığı araştırmaya göre çalışanların yarısından azı, eğitimini aldıkları yeni çalışma yöntemlerini tutarlı biçimde kullanıyor; üçte birinden fazlası zaman zaman eski yöntemlere dönüyor. Çalışanların %73'ü işi bitirmek için eski ve yeni yöntemleri karıştırıyor.",
+          ek: "Yöneticisi de yeni yöntemi kullanan çalışanların %49'u yeni yöntemi tutarlı biçimde benimsiyor; yöneticisi kullanmayanlarda bu oran %22.",
+          kaynaklar: [
+            { ad: "TalentLMS · Basın bülteni", url: "https://www.prnewswire.com/news-releases/new-talentlms-research-reveals-the-habit-hugging-effect-in-the-us-workplace-302920717.html", tip: "resmi" },
+            { ad: "HR Dive · Haber", url: "https://www.hrdive.com/news/workers-are-habit-hugging-despite-new-training/873252/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h5", kategori: "fow", tarih: "26 Ekim", tur: "Şirket açıklaması",
+          baslik: "Microsoft, küresel işgücünün yaklaşık %27'sine, 60.000 çalışana gönüllü ayrılma teklif etti",
+          ozet: "AP'nin haberine göre Microsoft, yapay zekâya yoğun yatırım yaptığı bir dönemde 60.000 çalışanına, yani küresel işgücünün yaklaşık %27'sine gönüllü ayrılma teklif etti. Şirketin İK yöneticisi Amy Coleman'ın blog yazısına göre teklif Kanada, Hindistan, İngiltere ve ABD'deki uygun çalışanlara açık. Microsoft'un Haziran sonunda yaklaşık 223.000 tam zamanlı çalışanı vardı.",
+          ek: "Coleman'ın yazısına göre program süreli, belirli kıdem seviyesinin altındaki çalışanları kapsıyor ve her birim teklifi sunmuyor; ayrılanlara mali destek ve kariyer planlama desteği veriliyor. Şirket Temmuz'da da yaklaşık 4.800 kadroyu azaltmıştı. Coleman: \"Gönüllü Ayrılma Teklifi bizim için yeni. Bundan öğreneceğiz. Aynı zamanda insanların en önemli işe odaklanmasına, yeni beceriler edinmesine ve uygun olduğunda Microsoft içinde yeni fırsatlar bulmasına yardım etmeyi sürdüreceğiz.\"",
+          kaynaklar: [
+            { ad: "Microsoft · Resmî blog yazısı", url: "https://blogs.microsoft.com/blog/2026/10/26/introducing-a-voluntary-exit-offer/", tip: "resmi" },
+            { ad: "AP · Haber (Dakota News Now yayını)", url: "https://www.dakotanewsnow.com/2026/10/26/microsoft-offers-60000-employees-voluntary-buyouts-ai-spending-accelerates/?outputType=amp", tip: "ikinci" },
+            { ad: "FOX Business · Haber", url: "https://www.fox29.com/news/microsoft-offers-voluntary-buyouts-60000-employees-tech-giant-reshapes-its-workforce", tip: "ikinci" }
+          ]
+        }
+      ],
+
+      /* 3 · SEKTÖREL GÖZLEM (editoryal yorum, haber değil) */
+      sinyal: {
+        baslik: "Tasarruf beklentisi, yeni ayrılık araçları",
+        ingilizce: "From Productivity Promise → Workforce Decisions",
+        metin: "Bu hafta iki gelişme aynı gerilimi farklı uçlardan gösteriyor. Gartner'ın verisi (ana gelişme), yapay zekâ harcaması artarken verimlilikten gelen tasarrufun henüz gerçekleşmediğini söylüyor. Microsoft ise yapay zekâya yoğun yatırım yaptığı bir dönemde, bu yılın başındaki daha dar kapsamlı teklifin ardından çok daha geniş bir gönüllü ayrılma programı başlatıyor. TalentLMS'in verisi de üçüncü bir halkayı ekliyor: Yeni çalışma biçimi, yönetici kendisi kullanmadıkça kalıcı olmuyor. İK için bunun anlamı, yapay zekâ gündeminin teknoloji seçiminden çok işgücü kararlarına taşınması: kadro planı, ayrılma seçenekleri ve yöneticilerin yeni çalışma biçimini benimsemesi aynı masada konuşulmaya başlıyor.",
+        once: { ad: "Teknoloji gündemi", metin: "Yapay zekâ bir araç yatırımıdır; verim artışının kendiliğinden geleceği varsayılır." },
+        sonra: { ad: "İşgücü gündemi", metin: "Kadro planı, ayrılma seçenekleri ve yönetici davranışı birlikte ele alınır." },
+        dayanak: ["h4", "h5"]
+      },
+
+      /* 4 · SAYILARLA GÜNDEM */
+      veri: {
+        id: "veri", kategori: "ex", tarih: "26 Ekim", tur: "Araştırma",
+        deger: "%52,6",
+        baslik: "ZipRecruiter: Çalışanların %52,6'sı yapay zekânın işini daha keyifli hâle getirdiğini söylüyor; yeterli eğitim aldığını söyleyenler %28,9",
+        metin: "ZipRecruiter'ın 2026 AI Worker Report'una göre ABD'li çalışanların %52,6'sı yapay zekânın işini daha keyifli hâle getirdiğini, %5,5'i ise tersini söylüyor. Ancak fark kademeler arasında belirgin: Üst düzey yöneticilerin %76,5'i yapay zekânın iş memnuniyetini artırdığını söylerken giriş seviyesindeki çalışanlarda bu oran %39,8.",
+        karsilastirma: [
+          { etiket: "Yapay zekâ iş memnuniyetimi artırdı diyen üst düzey yöneticiler (%76,5)", deger: 77 },
+          { etiket: "Yapay zekâ iş memnuniyetimi artırdı diyen giriş seviyesi çalışanlar (%39,8)", deger: 40 }
+        ],
+        orneklem: "1.500'den fazla ABD'li çalışan (8–21 Eylül 2026)",
+        ozet: "Raporda öne çıkanlar:",
+        maddeler: [
+          "Çalışanların %39,3'ü işverenin yapay zekâ kullanımını teşvik ettiğini söylüyor; yeterli eğitim aldığını söyleyenler %28,9, araçları tamamen kendi kendine öğrenenler %37,2.",
+          "Yapay zekâ eğitimi almış olanların oranı üst düzey yöneticilerde %83,5, giriş seviyesindeki çalışanlarda %45,3."
+        ],
+        kaynaklar: [
+          { ad: "ZipRecruiter · Rapor", url: "https://www.ziprecruiter-research.org/economic-insights-research/2026-ai-worker-report", tip: "resmi" },
+          { ad: "Canadian HR Reporter · Haber", url: "https://www.hrreporter.com/focus-areas/culture-and-engagement/does-ai-make-work-more-enjoyable/395080", tip: "ikinci" }
+        ]
+      },
+
+      /* 4b · SEKTÖRDEN (perakende ve iç giyim; herkese açık bilgi, yorum yok) */
+      sektorden: [],
+
+      /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
+      etkinlikler: [
+        { ad: "İstanbul Workplace Conference 2026", tur: "Konferans", baslangic: "2026-11-03", bitis: "2026-11-03", yer: "İstanbul · Point Hotel Barbaros",
+          aciklama: "İnsan performansı, çalışma alanı stratejisi ve işin geleceği konuşulacak.",
+          url: "https://www.istanbulworkplace.com/", konular: ["tce"] },
+        { ad: "25. Performans Yönetimi Zirvesi", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-11", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; tema \"Çeyrek Asırlık Güvenle: Geleceğin Performans Kodları!\"",
+          url: "https://hrdergi.com/25-performans-yonetimi-zirvesi", konular: ["ik"] },
+        { ad: "Türkiye Yapay Zekâ Zirvesi 2026", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-12", yer: "İstanbul · Wyndham Grand Levent (12 Kasım çevrim içi)",
+          aciklama: "Türkiye Yapay Zekâ İnisiyatifi'nin zirvesi; programda yapay zekâ ajanları oturumları da var. 12 Kasım'daki çevrim içi gün ücretsiz.",
+          url: "https://zirve.turkiye.ai/", konular: ["ai"] },
+        { ad: "5. Dijital İK Çağı Zirvesi", tur: "Zirve", baslangic: "2026-12-09", bitis: "2026-12-09", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; tema \"İK'nın Dijital Geleceğinin Tasarımında Geride Kalmayın!\"",
+          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi", konular: ["ik"] }
+      ]
+    },
     {
       no: 3,
       donem: "19–25 Ekim 2026",
