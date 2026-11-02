@@ -26,7 +26,8 @@
                  Ödül haberlerinde kazananları metin yerine "kazananlar" listesine yaz; aynı kategorideki kazananlar
                  sitede tek satırda, madalya renginde noktalarla görünür. Proje adı varsa "proje" alanına yaz.
                  Kural: "rakip", kıyaslama, öneri ve kendi şirketimizin adı yazılmaz.
-                 Haftada haber yoksa liste boş bırakılır; bölüm sitede görünmez.
+                 Haftada haber yoksa liste boş bırakılır; bölüm yine görünür ve önceki sayılardaki son 3 madde
+                 "Sayı N'ten" etiketiyle gösterilir (hiç önceki madde yoksa bölüm gizlenir).
     etkinlikler  Yaklaşan etkinlikler: İK, eğitim, çalışan deneyimi, yapay zekâ  (TAKVİM)
                  Her etkinliğe "konular" eklenir (aşağıdaki konu anahtarlarından); sitede bu
                  etiketlerle süzülebilir. Örnek: konular: ["egitim", "ai"]

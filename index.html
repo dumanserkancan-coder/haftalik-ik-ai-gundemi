@@ -401,6 +401,8 @@
     .ag-body{padding-left:52px}
   }
   /* Perakendede İK: sade liste */
+  .sx-empty{margin:0 0 12px;padding:12px 14px;border:1px dashed var(--line);border-radius:12px;font-size:14px;color:var(--faint)}
+  .sx-from{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;background:var(--line);color:var(--ink);font-size:10.5px;letter-spacing:.04em}
   .sx-legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:-4px 0 6px;font-size:12px;font-weight:600;color:var(--faint)}
   .sx-legend span{display:inline-flex;align-items:center;gap:6px}
   .sx-list{border-top:1px solid var(--line)}
@@ -952,11 +954,23 @@
     var when = d ? d.getDate() + ' ' + AY[d.getMonth()] + ' ' + d.getFullYear() : esc(x.tarih || '');
     var src = (x.kaynaklar || []).map(function(s){ return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + ic('ext') + esc(s.ad) + '</a>'; }).join('');
     return '<article class="sx ' + k[0] + '"><span class="sx-ic">' + ic(k[1]) + '</span><div>' +
-      '<div class="sx-meta">' + esc(x.tur || 'Gelişme') + ' · <time>' + when + '</time></div>' +
+      '<div class="sx-meta">' + esc(x.tur || 'Gelişme') + ' · <time>' + when + '</time>' + (x._sayi ? '<span class="sx-from">Sayı ' + esc(x._sayi) + '\'' + ablative(x._sayi) + '</span>' : '') + '</div>' +
       '<h4>' + esc(x.baslik) + '</h4>' +
       (x.kazananlar && x.kazananlar.length ? podiumHTML(x.kazananlar) : '') +
       (x.metin ? '<p class="d">' + esc(x.metin) + '</p>' : '') +
       (src ? '<div class="sx-links">' + src + '</div>' : '') + '</div></article>';
+  }
+  function ablative(n){ n = Number(n); var u = n % 10, t = Math.floor(n / 10) % 10;
+    if (u) return ['', 'den', 'den', 'ten', 'ten', 'ten', 'dan', 'den', 'den', 'dan'][u];
+    if (t) return ['', 'dan', 'den', 'dan', 'tan', 'den', 'tan', 'ten', 'den', 'dan'][t];
+    return 'den'; }
+  /* Bu sayıda Perakende Vitrini boşsa: önceki sayılardan son 3 madde, "Sayı N'ten" etiketiyle */
+  function sectorFallback(){
+    var out = [];
+    for (var i = state.idx + 1; i < B.sayilar.length && out.length < 3; i++){
+      (B.sayilar[i].sektorden || []).forEach(function(x){ if (out.length < 3){ var y = {}; for (var k in x) y[k] = x[k]; y._sayi = B.sayilar[i].no; out.push(y); } });
+    }
+    return out;
   }
   function sectorHTML(list){
     var hasMed = list.some(function(x){ return (x.kazananlar || []).some(function(m){ return MED[m.derece]; }); });
@@ -1174,7 +1188,7 @@
     } else nb.hidden = true;
 
     /* Bölümler */
-    var show = { 'ana': !!s.ana, 'bu-hafta': s.haberler.length > 0, 'sinyal': !!s.sinyal, 'veri': !!s.veri, 'sektor': !!(s.sektorden && s.sektorden.length), 'izle': !!(s.etkinlikler && s.etkinlikler.length), 'oduller': !!(B.oduller && B.oduller.length), 'kaynaklar': true, 'arsiv': true };
+    var show = { 'ana': !!s.ana, 'bu-hafta': s.haberler.length > 0, 'sinyal': !!s.sinyal, 'veri': !!s.veri, 'sektor': !!(s.sektorden && s.sektorden.length) || sectorFallback().length > 0, 'izle': !!(s.etkinlikler && s.etkinlikler.length), 'oduller': !!(B.oduller && B.oduller.length), 'kaynaklar': true, 'arsiv': true };
     SECTIONS.forEach(function(x){ document.getElementById(x[0]).hidden = !show[x[0]]; });
 
     if (s.ana){ document.getElementById('lead').innerHTML = leadHTML(s.ana); }
@@ -1184,6 +1198,7 @@
     if (s.sinyal) document.getElementById('signal').innerHTML = signalHTML(s.sinyal, s);
     if (s.veri) document.getElementById('data').innerHTML = dataHTML(s.veri);
     if (s.sektorden && s.sektorden.length) document.getElementById('sector').innerHTML = sectorHTML(s.sektorden);
+    else { var fb = sectorFallback(); if (fb.length) document.getElementById('sector').innerHTML = '<p class="sx-empty">Bu hafta bölüme girecek yeni bir gelişme yok. Önceki sayılarda yer alan son gelişmeler:</p>' + sectorHTML(fb); }
     if (s.etkinlikler) renderEvents();
     if (B.oduller && B.oduller.length) renderAwards();
     document.getElementById('method').innerHTML = METHOD.map(function(m){ return '<li>' + ic(m[0]) + '<span>' + esc(m[1]) + '</span></li>'; }).join('');
