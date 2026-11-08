@@ -1188,7 +1188,7 @@
     } else nb.hidden = true;
 
     /* Bölümler */
-    var show = { 'ana': !!s.ana, 'bu-hafta': s.haberler.length > 0, 'sinyal': !!s.sinyal, 'veri': !!s.veri, 'sektor': !!(s.sektorden && s.sektorden.length) || sectorFallback().length > 0, 'izle': !!(s.etkinlikler && s.etkinlikler.length), 'oduller': !!(B.oduller && B.oduller.length), 'kaynaklar': true, 'arsiv': true };
+    var show = { 'ana': !!s.ana, 'bu-hafta': s.haberler.length > 0, 'sinyal': !!s.sinyal, 'veri': !!s.veri, 'sektor': !!(s.sektorden && s.sektorden.length), 'izle': !!(s.etkinlikler && s.etkinlikler.length), 'oduller': !!(B.oduller && B.oduller.length), 'kaynaklar': true, 'arsiv': true };
     SECTIONS.forEach(function(x){ document.getElementById(x[0]).hidden = !show[x[0]]; });
 
     if (s.ana){ document.getElementById('lead').innerHTML = leadHTML(s.ana); }
@@ -1198,7 +1198,7 @@
     if (s.sinyal) document.getElementById('signal').innerHTML = signalHTML(s.sinyal, s);
     if (s.veri) document.getElementById('data').innerHTML = dataHTML(s.veri);
     if (s.sektorden && s.sektorden.length) document.getElementById('sector').innerHTML = sectorHTML(s.sektorden);
-    else { var fb = sectorFallback(); if (fb.length) document.getElementById('sector').innerHTML = '<p class="sx-empty">Bu hafta bölüme girecek yeni bir gelişme yok. Önceki sayılarda yer alan son gelişmeler:</p>' + sectorHTML(fb); }
+    else document.getElementById('sector').innerHTML = '';
     if (s.etkinlikler) renderEvents();
     if (B.oduller && B.oduller.length) renderAwards();
     document.getElementById('method').innerHTML = METHOD.map(function(m){ return '<li>' + ic(m[0]) + '<span>' + esc(m[1]) + '</span></li>'; }).join('');

@@ -26,8 +26,7 @@
                  Ödül haberlerinde kazananları metin yerine "kazananlar" listesine yaz; aynı kategorideki kazananlar
                  sitede tek satırda, madalya renginde noktalarla görünür. Proje adı varsa "proje" alanına yaz.
                  Kural: "rakip", kıyaslama, öneri ve kendi şirketimizin adı yazılmaz.
-                 Haftada haber yoksa liste boş bırakılır; bölüm yine görünür ve önceki sayılardaki son 3 madde
-                 "Sayı N'ten" etiketiyle gösterilir (hiç önceki madde yoksa bölüm gizlenir).
+                 Haftada haber yoksa liste boş bırakılır; o sayıda bölüm görünmez.
     etkinlikler  Yaklaşan etkinlikler: İK, eğitim, çalışan deneyimi, yapay zekâ  (TAKVİM)
                  Her etkinliğe "konular" eklenir (aşağıdaki konu anahtarlarından); sitede bu
                  etiketlerle süzülebilir. Örnek: konular: ["egitim", "ai"]
@@ -83,7 +82,7 @@ window.BULTEN = {
   /* ÖDÜL BAŞVURU TAKVİMİ (sayılardan bağımsız; her hafta resmî sayfalardan güncellenir) */
   oduller: [
     { ad: "PERYÖN İnsana Değer Ödülleri", kurum: "PERYÖN", kapsam: "Türkiye", bolge: "tr",
-      aciklama: "Türkiye İnsan Yönetimi Derneği'nin İK uygulamalarını ödüllendiren programı. Önce ön başvuru, ardından kesin başvuru dosyası teslim ediliyor; \"Değer Yaratan Uygulamalar\" kategorilerinde jüri sunumu yapılıyor. Tören Mart 2027'de.",
+      aciklama: "Türkiye İnsan Yönetimi Derneği'nin İK uygulamalarını ödüllendiren programı. Önce ön başvuru, ardından kesin başvuru dosyası teslim ediliyor; \"Değer Yaratan Uygulamalar\" kategorilerinde (Yetenek Yönetimi, Çalışan Deneyimi, Teknoloji ve İnsan, Gelişim ve Öğrenme Yönetimi gibi) jüri sunumu yapılıyor. Başvuru ücreti kategoriye, üyeliğe ve şirket ölçeğine göre değişiyor (ör. Değer Yaratan Uygulamalar kategorilerinde büyük şirketler için üye ücreti 84.500 TL + KDV; ayrıntılar PERYÖN'ün ödül kategorileri sayfasında). Tören Mart 2027'de.",
       url: "https://peryon.org.tr/en_US/odul-takvimi", konular: ["ik", "tce"],
       tarihler: [
         { etiket: "Ön başvuru son tarihi", tarih: "2026-11-15", sonTarih: true },
@@ -91,7 +90,7 @@ window.BULTEN = {
         { etiket: "Jüri sunumları başlıyor", tarih: "2027-02-01" }
       ] },
     { ad: "Orta Doğu ve Kuzey Afrika Stevie Ödülleri 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Bölgesel · Türkiye dahil 17 ülke",
-      aciklama: "Orta Doğu ve Kuzey Afrika'daki kurumlar için Stevie programı; Türkiye başvurabilen ülkeler arasında. Kazanan ücretinde indirim sağlayan ilk son tarih (29 Ekim) geçti; son başvuru 26 Kasım.",
+      aciklama: "Orta Doğu ve Kuzey Afrika'daki kurumlar için Stevie programı; Türkiye başvurabilen ülkeler arasında. Başvuru ücreti alınmıyor; kazananlar ücret ödüyor (29 Ekim'den sonra yapılan başvurularda 595 dolar). Son başvuru 26 Kasım.",
       url: "https://mena.stevieawards.com/About/faq", konular: ["genel"],
       tarihler: [
         { etiket: "İndirimli ilk son tarih (geçti)", tarih: "2026-10-29" },
@@ -103,7 +102,8 @@ window.BULTEN = {
       url: "https://excellenceawards.brandonhall.com/hcm/", konular: ["egitim", "ik", "liderlik"],
       tarihler: [
         { etiket: "Başvurular açılıyor", tarih: "2027-01-04" },
-        { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true }
+        { etiket: "Son başvuru", tarih: "2027-04-09", sonTarih: true },
+        { etiket: "Kazananlar açıklanıyor", tarih: "2027-08-12" }
       ] },
     { ad: "Stevie International Business Awards 2027", kurum: "Stevie Awards", bolge: "dunya", kapsam: "Dünya",
       aciklama: "Birçok alanda kategorisi olan uluslararası Stevie programı.",
@@ -126,8 +126,8 @@ window.BULTEN = {
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-07-15" }
       ] },
     { ad: "7. Uluslararası Kadın Dostu Markalar Farkındalık Ödülleri", kurum: "Kadın Dostu Markalar Platformu", kapsam: "Türkiye", bolge: "tr",
-      aciklama: "8 kategoride 30 ödül veriliyor; İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\". \"Çeşitlilik, Kapsayıcılık ve İyilik Hali Uygulamaları\" kategorisi de var. İndirimli erken başvuru dönemi 30 Eylül'de sona erdi; tören Mart 2027'de.",
-      url: "https://www.guncelkadin.com.tr/7-uluslararasi-kadin-dostu-markalar-farkindalik-odullerinde-erken-basvuru-donemi-basladi/", konular: ["ik", "tce"],
+      aciklama: "İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\"; \"Çeşitlilik, Kapsayıcılık ve İyilik Hali Uygulamaları\" kategorisi de var. Resmî sitede son başvuru günü 30 Kasım olarak duyuruluyor.",
+      url: "https://www.kadindostumarkalar.org", konular: ["ik", "tce"],
       tarihler: [
         { etiket: "Son başvuru", tarih: "2026-11-30", sonTarih: true }
       ] },
@@ -145,9 +145,148 @@ window.BULTEN = {
       url: "https://thehammersawards.com/", konular: ["isveren"], tarihler: [] }
   ],
 
-  siradaki: { no: 5, donem: "2–8 Kasım 2026", yayin: "8 Kasım Pazar" },
+  siradaki: { no: 6, donem: "9–15 Kasım 2026", yayin: "15 Kasım Pazar" },
 
   sayilar: [
+    {
+      no: 5,
+      donem: "2–8 Kasım 2026",
+      yayin: "8 Kasım 2026",
+      sonraki: "15 Kasım Pazar",
+      okuma: 5,
+
+      /* 1 · HAFTANIN ANA GELİŞMESİ */
+      ana: {
+        id: "ana", kategori: "rapor", tarih: "5 Kasım", tur: "Haftanın konusu", okumaSuresi: 3,
+        baslik: "Challenger: ABD'de Ekim'de açıklanan işten çıkarmalar üç yılın en düşük düzeyinde; yapay zekâ gerekçeli kesintiler yılın en düşük aylık seviyesine indi",
+        ozet: "ABD'li kariyer geçiş danışmanlığı şirketi Challenger, Gray & Christmas'ın 5 Kasım'da yayımladığı rapora göre ABD'li işverenler Ekim'de 43.994 işten çıkarma açıkladı; bu, 2023'ten bu yana en düşük Ekim rakamı. Yapay zekâ gerekçesiyle açıklanan kesinti Ekim'de 1.265'te kalarak bu yılın en düşük aylık düzeyine indi. Yılın ilk 10 ayında yapay zekâ hâlâ kesintilerin yaklaşık beşte birinin gerekçesi; ancak \"piyasa ve ekonomik koşullar\" yapay zekâyı geçerek 2026'nın en sık gerekçesi oldu. İşverenler aynı ay yılbaşı dönemi için yüksek sezonluk işe alım planları açıkladı.",
+        bolumler: [
+          { baslik: "Neler açıklandı?", maddeler: [
+            "Ekim 2025'te açıklanan kesinti 153.074'tü; düşüş %71. Ocak–Ekim 2026 toplamı 617.189, geçen yılın aynı döneminin %44 altında.",
+            "Yapay zekâ gerekçeli kesintiler yılbaşından bu yana 121.401 (toplamın yaklaşık %20'si); piyasa ve ekonomik koşullar 130.531. Bu bültenin 1. sayısında yapay zekânın 2026'da işten çıkarmaların en sık gerekçesi olduğunu yazmıştık; Ekim verisiyle sıralama değişti.",
+            "Ekim'de açıklanan işe alım planları 444.692; rapora göre en az 2009'dan bu yana en yüksek Ekim rakamı.",
+            "Sezonluk işe alım planları yılbaşına kadar 470.400'e ulaştı; geçen yılın aynı dönemine göre %26 fazla. Amazon'un açıkladığı 300.000 sezonluk işe alım, Challenger'ın kaydettiği en büyük tek sezonluk duyuru.",
+            "Challenger'dan Andy Challenger: \"Bu, işten çıkarmanın az olduğu bir ortam. İşverenler yılbaşı dönemine girerken mevcut çalışanlarını tutuyor.\" Challenger'a göre işe alımın büyük kısmı, kalıcı kadro eklemeden yılbaşı talebini karşılamaya yönelik kısa süreli sezonluk işler."
+          ]},
+          { baslik: "Aynı hafta: ABD istihdam verisi", maddeler: [
+            "HR Dive'ın aktardığı ABD Çalışma İstatistikleri Bürosu verisine göre tarım dışı istihdam Ekim'de 165.000 arttı ve ekonomistlerin beklentisini aştı; işsizlik oranı hafifçe düşerek %4,1 oldu."
+          ]},
+          { baslik: "Dikkat edilecek noktalar", maddeler: [
+            "Challenger, şirketlerin kamuya açıkladığı işten çıkarma planlarını derliyor; rakamlar gerçekleşen işten çıkarmaların tamamını göstermiyor. Gerekçeler de şirketlerin kendi açıkladığı gerekçeler.",
+            "Rapora göre Microsoft'un Ekim'de 60.000 çalışana yaptığı gönüllü ayrılma teklifi Ekim toplamına dahil edilmedi."
+          ]}
+        ],
+        not: "Sezonluk işe alım: Yılbaşı gibi yoğun dönemlerde mağaza, depo ve dağıtım işleri için yapılan kısa süreli işe alım. Challenger'ın bu rakamları, şirketlerin açıkladığı planlara dayanıyor.",
+        kapak: { gorsel: "kapak-sayi5.jpg", gorselAciklama: "Beyaz bir kartta, üzerinde soluk bir yapay zekâ çipi simgesi bulunan ve soldan sağa kısalan mercan rengi çubuklar ile yükselen bir ok eşliğinde uzayan yeşil çubuklar; kartın iki yanında sade insan figürleri" },
+        kaynaklar: [
+          { ad: "Challenger, Gray & Christmas · Ekim 2026 raporu", url: "https://www.challengergray.com/blog/october-layoffs-at-three-year-low-seasonal-hiring-plans-up-26/", tip: "resmi" },
+          { ad: "Yahoo Finance · Haber", url: "https://finance.yahoo.com/economy/article/layoffs-are-muted-and-companies-are-expanding-seasonal-hiring-plans-challenger-103000956.html", tip: "ikinci" },
+          { ad: "HR Dive · Haftalık değerlendirme (istihdam verisi)", url: "https://www.hrdive.com/news/employment-growth-hits-unexpected-high-october-2026/874020/", tip: "ikinci" }
+        ]
+      },
+
+      /* 2 · HAFTALIK GÜNDEM (5–7 haber) */
+      haberler: [
+        {
+          id: "h1", kategori: "ta", tarih: "27 Ekim", tur: "Araştırma · Türkiye", gecenHafta: true,
+          baslik: "Kariyer.net: Türkiye'de İK profesyonellerinin %92'si işinde yapay zekâ kullanıyor; %90'ı son işe alım kararının insanda kalmasını istiyor",
+          ozet: "Kariyer.net'in 318 işveren temsilcisi ve İK profesyoneliyle yaptığı araştırmaya göre İK profesyonellerinin %92'si işinde yapay zekâdan yararlanıyor; ancak şirketlerin İK süreçlerinde yapay zekâ kullanım oranı %50 düzeyinde kalıyor. Bu oran geçen yıla göre 9 puan arttı. Yapay zekâ en çok işe alım ve aday taramasında, ardından eğitim ve gelişimde kullanılıyor.",
+          ek: "Yapay zekâ kullanan her 8 şirketten 7'si İK'nın çalışma biçiminde en az bir değişiklik olduğunu söylüyor: %61'i veri ve analiz kullanımının arttığını, %60'ı tekrarlayan operasyonel işlerin azaldığını, %45'i daha stratejik işlere zaman ayırabildiğini belirtiyor. Katılımcıların %61'i başvuru tarama ve kısa listede, %60'ı veri analizi ve raporlamada, %56'sı ilan yazımında yapay zekânın öne çıkmasını istiyor; %90'ı ise son işe alım kararının ağırlıklı olarak insanda kalması gerektiğini düşünüyor. Kariyer.net CEO'su Fatih Uysal: \"Bir teknolojiyi kullanmaya başlamak, onu gerçekten benimsediğimiz anlamına gelmiyor.\"",
+          not: "Araştırmayı bir işe alım platformu yaptı; katılımcıların nasıl seçildiği açıklanmadığı için sonuçlar Türkiye'deki tüm şirketleri temsil etmeyebilir.",
+          kaynaklar: [
+            { ad: "Kariyer.net · Araştırma duyurusu", url: "https://www.kariyer.net/ik-blog/insan-kaynaklarinda-yapay-zeka-kullanimi/", tip: "resmi" },
+            { ad: "Pazarlama Türkiye · Haber", url: "https://pazarlamaturkiye.com/insan-kaynaklarinda-yapay-zeka-kullanimiik-profesyonellerinin-%92si-isinde-yapay-zekadan-yararlaniyor/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h2", kategori: "ai-hr", tarih: "4 Kasım", tur: "Araştırma",
+          baslik: "Workhuman: Takdir mesajlarında yapay zekâyla ilgili ifadelerin payı bir buçuk yılda iki katından fazla arttı",
+          ozet: "Çalışan takdir platformu Workhuman, müşterilerinin 2,6 milyon takdir mesajını doğal dil işleme (metinleri otomatik çözümleyen yapay zekâ yöntemi) ile inceledi. Şirketin açıklamasına göre yapay zekâ ve dijital konulara değinen mesajların payı Ocak 2025'teki yaklaşık %1,6'dan Haziran 2026'da %3,8'e çıktı. Psikolojik güvenlikle ilgili ifadelerin payı %9,8'den %11,1'e yükseldi; iş yükü ve zorlanmaya işaret eden ifadeler Haziran 2026'da mesajların yaklaşık %17,2'sinde görüldü.",
+          ek: "Workhuman'ın blog yazısına göre veri, yedi sektörden 35 müşterinin Ocak 2025–Haziran 2026 dönemindeki mesajlarından oluşuyor. Şirket, bu analizlerin teşhis değil sinyal sunduğunu belirtiyor.",
+          not: "Veri, şirketin kendi platformundan ve kendi müşterilerinden geliyor; bağımsız bir araştırma değil.",
+          kaynaklar: [
+            { ad: "Workhuman · Basın bülteni (Yahoo Finance yayını)", url: "https://finance.yahoo.com/small-business/articles/workhuman-research-finds-employee-recognition-073400824.html", tip: "ikinci" },
+            { ad: "Workhuman · Rapordan 10 bulgu", url: "https://www.workhuman.com/blog/10-stats-you-should-know-from-the-recognition-intelligence-report", tip: "resmi" }
+          ]
+        },
+        {
+          id: "h3", kategori: "ex", tarih: "28 Ekim", tur: "Araştırma", gecenHafta: true,
+          baslik: "Gallup: ABD'de çalışan bağlılığı 15 yılın en düşük düzeyinde; en sert düşüş yapay zekâyı benimseyen kurumlardaki uzaktan ve hibrit çalışanlarda",
+          ozet: "Gallup'un 28 Ekim'de yayımladığı veriye göre ABD'de işine bağlı çalışanların oranı 2026'nın üçüncü çeyreğinde 2 puan düşerek %29'a indi; bu, 2011'den bu yana en düşük oran. İşinden aktif olarak kopmuş çalışanların oranı %18'e çıktı. Gallup'a göre düşüş en çok yapay zekâyı iş süreçlerine entegre eden kurumlardaki tamamen uzaktan çalışanlarda (%38'den %33'e) ve hibrit çalışanlarda (%37'den %33'e) görüldü; bu kurumlardaki ofisten çalışanlarda değişim 1 puanla sınırlı kaldı.",
+          ek: "Kendisinden ne beklendiğini kesinlikle bildiğini söyleyenlerin oranı %49'dan %46'ya, işte kendisini bir insan olarak önemseyen biri olduğunu kesinlikle söyleyenlerin oranı %40'tan %37'ye geriledi. Gallup, bulguların iletişimin ve yönetici desteğinin yapay zekâ entegrasyonuna ayak uydurup uydurmadığı sorusunu gündeme getirdiğini yazıyor. Araştırma, 5–19 Ağustos 2026'da 21.648 çalışanla yapıldı.",
+          kaynaklar: [
+            { ad: "Gallup · Araştırma", url: "https://www.gallup.com/workplace/716117/employee-engagement-below-30-first-time-years.aspx", tip: "resmi" },
+            { ad: "HR Dive · Haber", url: "https://www.hrdive.com/news/employee-engagement-falls-to-lowest-level-in-15-years-gallup/873459/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h4", kategori: "fow", tarih: "4 Kasım", tur: "Şirket açıklaması",
+          baslik: "Canva, çalışanlarının %22'sini etkileyen yeniden yapılanma açıkladı",
+          ozet: "Tasarım platformu Canva'nın açıkladığı yeniden yapılanma, TNW'nin haberine göre değişiklik 1.271 kişiyi, yani çalışanların %22'sini etkiliyor; bu kişiler işini kaybedecek, rol değiştirecek ya da Sidney'e taşınmaları istenecek. Şirket kaç kişinin işini kaybedeceğini açıklamadı. Kurucu ortak ve CEO Melanie Perkins çalışanlara yazdığı notta bunun \"13 yıllık tarihimizin kuşkusuz en zor anı\" olduğunu yazdı.",
+          ek: "TNW'ye göre yönetim katmanları azaltılıyor ve Ocak'tan itibaren hibrit çalışanların çoğunun haftada iki-üç gün ofiste olması bekleniyor; ayrılanlara en az altı aylık maaş veriliyor. ACS Information Age'e göre Perkins notunda \"yeni teknoloji\"den söz etti ancak üretken yapay zekâya doğrudan değinmedi.",
+          kaynaklar: [
+            { ad: "TNW · Haber", url: "https://thenextweb.com/news/canva-restructure-1271-jobs-22-percent-layoffs", tip: "ikinci" },
+            { ad: "ACS Information Age · Haber", url: "https://ia.acs.org.au/article/2026/canva-cuts-jobs-in-major-restructure-affecting-1-200-staff.html", tip: "ikinci" }
+          ]
+        }
+      ],
+
+      /* 3 · SEKTÖREL GÖZLEM (editoryal yorum, haber değil) */
+      sinyal: {
+        baslik: "Soru artık yapay zekâya gidiyor",
+        ingilizce: "From Asking a Colleague → Asking AI",
+        metin: "Bu haftanın iki verisi aynı noktaya işaret ediyor. Gallup'a göre çalışanların kendisinden ne beklendiğini bildiğini ve işte önemsendiğini hissetme oranları geriliyor; düşüş en çok yapay zekâyı benimseyen kurumların uzaktan ve hibrit çalışanlarında görülüyor. Clutch'ın anketi (Sayılarla gündem) ise çalışanların eskiden iş arkadaşına sorduğu soruları giderek yapay zekâya yönelttiğini ve yeni çalışanlara verilen mentorluğun azaldığını gösteriyor. İki veri birlikte okunduğunda, yapay zekâ yaygınlaştıkça beklentilerin netleşmesi ve deneyimli çalışandan öğrenme gibi eskiden gündelik temasla kendiliğinden gerçekleşen şeylerin ayrıca takip edilmesi gerekebileceği görülüyor.",
+        once: { ad: "Gündelik temas", metin: "Çalışan sorusunu iş arkadaşına ya da yöneticisine sorar; beklentiler ve iş bilgisi bu temasla aktarılır." },
+        sonra: { ad: "Yapay zekâ ile soru", metin: "Hızlı sorular yapay zekâya gider; yönetici teması ve mentorluk ayrıca planlanmazsa azalabilir." },
+        dayanak: ["h3"]
+      },
+
+      /* 4 · SAYILARLA GÜNDEM */
+      veri: {
+        id: "veri", kategori: "ex", tarih: "4 Kasım", tur: "Araştırma",
+        deger: "%76",
+        baslik: "Clutch: Yapay zekâ kullanan çalışanların %76'sı iş arkadaşına sormaya utandığı bir soruyu yapay zekâya sormuş",
+        metin: "İş hizmetleri platformu Clutch'ın anketine göre yapay zekâyı düzenli kullanan ABD'li çalışanların %76'sı, bir iş arkadaşına sormaktan utandığı bir iş sorusunu yapay zekâya sorduğunu söylüyor. Sorusu olduğunda ilk olarak yapay zekâya başvuranlar %45, önce bir iş arkadaşına soranlar ise %16.",
+        karsilastirma: [
+          { etiket: "Bir soruda ilk olarak yapay zekâya başvuranlar (%45)", deger: 45 },
+          { etiket: "Bir soruda ilk olarak iş arkadaşına başvuranlar (%16)", deger: 16 }
+        ],
+        orneklem: "Yapay zekâyı düzenli kullanan 669 tam zamanlı ABD'li çalışan (Ekim 2026)",
+        ozet: "Ankette öne çıkanlar:",
+        maddeler: [
+          "Çalışanların %76'sı, yeni çalışanların iş arkadaşlarından öğrenme fırsatını kaçırmasından endişe ediyor; %33'ü yeni çalışanlara verilen mentorluğun azaldığını fark ediyor.",
+          "%51'i ekip arkadaşlarının kendisine daha az durum sorduğunu, %57'si yapay zekânın ekibinde silolar (ekip içi bölünme) yarattığını söylüyor.",
+          "Yazım işlerinde çalışanların %64'ü yapay zekâya iş arkadaşından çok güveniyor; şirkete özgü bilgide ise %67'si iş arkadaşına daha çok güveniyor.",
+          "Clutch analisti Hannah Hicklen: \"Şirketler mentorluk konusunda bilinçli davranmalı; yoksa yapay zekânın kazandırdığı zaman, hâlâ öğrenmekte olanların aleyhine işler.\""
+        ],
+        kaynaklar: [
+          { ad: "Clutch · Basın bülteni", url: "https://clutch.co/press-releases/ai-coworker-questions", tip: "resmi" },
+          { ad: "Clutch · Rapor", url: "https://clutch.co/resources/ai-coworker-questions", tip: "resmi" }
+        ]
+      },
+
+      /* 4b · SEKTÖRDEN (perakende ve iç giyim; herkese açık bilgi, yorum yok) */
+      sektorden: [],
+
+      /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
+      etkinlikler: [
+        { ad: "25. Performans Yönetimi Zirvesi", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-11", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; performans yönetiminin 25 yılda geçirdiği değişim, yöneticilerin dönüşümü, yapay zekâ ve analitikle desteklenen uygulamalar ve çalışan bağlılığı konuşulacak.",
+          url: "https://hrdergi.com/25-performans-yonetimi-zirvesi", konular: ["ik", "liderlik", "ai", "tce"] },
+        { ad: "Türkiye Yapay Zekâ Zirvesi 2026", tur: "Zirve", baslangic: "2026-11-11", bitis: "2026-11-12", yer: "İstanbul · Wyndham Grand Levent (12 Kasım çevrim içi)",
+          aciklama: "Türkiye Yapay Zekâ İnisiyatifi'nin zirvesi; kurumsal dönüşümde yapay zekâ ajanları, yapay zekâ güvenliği ve yönetişimi oturumları ve uygulamalı eğitimler var. 12 Kasım çevrim içi yayın ve eğitim günü.",
+          url: "https://zirve.turkiye.ai/", konular: ["ai", "egitim"] },
+        { ad: "5. Dijital İK Çağı Zirvesi", tur: "Zirve", baslangic: "2026-12-09", bitis: "2026-12-09", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; algoritmik kararlarda İK'nın rolü, insan verisi, beceri dönüşümü ve dijital çalışan deneyimi konuşulacak.",
+          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi", konular: ["ik", "ai", "tce", "egitim"] },
+        { ad: "HBR Türkiye Business Summit 2026", tur: "Zirve", baslangic: "2026-12-03", bitis: "2026-12-03", yer: "İstanbul · Four Seasons Hotel at the Bosphorus",
+          aciklama: "Harvard Business Review Türkiye'nin zirvesi; dijitalleşme, değişen organizasyon yapıları, yeni liderlik modelleri ve değişen çalışan beklentilerinin şirketlerin stratejik önceliklerine etkisi konuşulacak.",
+          url: "https://event.hbrturkiye.com/register/hbr-turkiye-business-summit-2026", konular: ["liderlik"] },
+        { ad: "People Make the Brand 2026", tur: "Etkinlik", baslangic: "2026-12-10", bitis: "2026-12-10", yer: "Yer açıklanmadı · çevrim içi kayıt",
+          aciklama: "HBR Türkiye'nin etkinliği; liderlerin belirsizlik altında nasıl hareket ettiği, yapay zekânın işi yeniden şekillendirmesi, değişen çalışan beklentileri ve kurum kültürü ele alınacak.",
+          url: "https://event.hbrturkiye.com/register/people-make-the-brand-2026", konular: ["liderlik", "ai", "tce"] }
+      ]
+    },
     {
       no: 4,
       donem: "26 Ekim – 1 Kasım 2026",
