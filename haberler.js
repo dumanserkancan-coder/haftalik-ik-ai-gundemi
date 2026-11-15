@@ -85,7 +85,7 @@ window.BULTEN = {
       aciklama: "Türkiye İnsan Yönetimi Derneği'nin İK uygulamalarını ödüllendiren programı. Önce ön başvuru, ardından kesin başvuru dosyası teslim ediliyor; \"Değer Yaratan Uygulamalar\" kategorilerinde (Yetenek Yönetimi, Çalışan Deneyimi, Teknoloji ve İnsan, Gelişim ve Öğrenme Yönetimi gibi) jüri sunumu yapılıyor. Başvuru ücreti kategoriye, üyeliğe ve şirket ölçeğine göre değişiyor (ör. Değer Yaratan Uygulamalar kategorilerinde büyük şirketler için üye ücreti 84.500 TL + KDV; ayrıntılar PERYÖN'ün ödül kategorileri sayfasında). Tören Mart 2027'de.",
       url: "https://peryon.org.tr/en_US/odul-takvimi", konular: ["ik", "tce"],
       tarihler: [
-        { etiket: "Ön başvuru son tarihi", tarih: "2026-11-15", sonTarih: true },
+        { etiket: "Ön başvuru (15 Kasım'da kapandı)", tarih: "2026-11-15" },
         { etiket: "Kesin başvuru dosyası teslimi", tarih: "2026-12-25", sonTarih: true },
         { etiket: "Jüri sunumları başlıyor", tarih: "2027-02-01" }
       ] },
@@ -126,10 +126,11 @@ window.BULTEN = {
         { etiket: "Kazananlar açıklanıyor", tarih: "2027-07-15" }
       ] },
     { ad: "7. Uluslararası Kadın Dostu Markalar Farkındalık Ödülleri", kurum: "Kadın Dostu Markalar Platformu", kapsam: "Türkiye", bolge: "tr",
-      aciklama: "İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\"; \"Çeşitlilik, Kapsayıcılık ve İyilik Hali Uygulamaları\" kategorisi de var. Resmî sitede son başvuru günü 30 Kasım olarak duyuruluyor.",
-      url: "https://www.kadindostumarkalar.org", konular: ["ik", "tce"],
+      aciklama: "İK açısından en ilgili kategori \"Kadın İstihdamı ve İş Yaşamında Fırsat Eşitliği\"; \"Çeşitlilik, Kapsayıcılık ve İyilik Hali Uygulamaları\" kategorisi de var. Resmî sitede son başvuru günü 30 Kasım olarak duyuruluyor. Başvuru ücreti özel sektör için 35.000 TL + KDV. Ödül töreni 17 Mart 2027'de.",
+      url: "https://www.kadindostumarkalar.org/organizasyonlar/farkindalik-odulleri/hakkinda", konular: ["ik", "tce"],
       tarihler: [
-        { etiket: "Son başvuru", tarih: "2026-11-30", sonTarih: true }
+        { etiket: "Son başvuru", tarih: "2026-11-30", sonTarih: true },
+        { etiket: "Ödül töreni", tarih: "2027-03-17" }
       ] },
     { ad: "Youth Awards (Youthall)", kurum: "Youthall", kapsam: "Türkiye", bolge: "tr",
       aciklama: "Şirketler aday olmak için başvuruyor, kazananları 18–35 yaş arası gençler oyluyor. Kategoriler arasında Perakende, Çalışan Değer Önermesi (EVP), Eğitim ve Gelişim, İşe Alım Programı, Staj programları ve İK Lideri var.",
@@ -140,14 +141,149 @@ window.BULTEN = {
       durum: "Yeni dönemin başvuru tarihleri henüz açıklanmadı.",
       url: "https://tegep.org/tegep-kurumsal-akademi-odulleri", konular: ["egitim"], tarihler: [] },
     { ad: "The Hammers Awards", kurum: "Pazarlamasyon", kapsam: "Türkiye", bolge: "tr",
-      aciklama: "Reklamveren tarafındaki pazarlama ve iletişim ekiplerini ödüllendiren program; 2026'da altı ana grupta 103 alt kategori vardı. İşveren markası ekipleri için uygun kategori olup olmadığı yeni dönem kategori listesinden kontrol edilmeli.",
+      aciklama: "Reklamveren tarafındaki pazarlama ve iletişim ekiplerini ödüllendiren program; 2026'da altı ana grupta 103 alt kategori vardı. 2026 kategori gruplarında (sosyal sorumluluk ve sürdürülebilirlik, teknoloji ve veri, marka deneyimi, yapay zekâ ve trendler, strateji gibi) ayrı bir İK kategorisi yoktu; işveren markası projeleri için yeni dönem kategori listesi kontrol edilmeli.",
       durum: "2027 takvimi henüz açıklanmadı. 2026 töreni 13 Ekim'de yapıldı.",
       url: "https://thehammersawards.com/", konular: ["isveren"], tarihler: [] }
   ],
 
-  siradaki: { no: 6, donem: "9–15 Kasım 2026", yayin: "15 Kasım Pazar" },
+  siradaki: { no: 7, donem: "16–22 Kasım 2026", yayin: "22 Kasım Pazar" },
 
   sayilar: [
+    {
+      no: 6,
+      donem: "9–15 Kasım 2026",
+      yayin: "15 Kasım 2026",
+      sonraki: "22 Kasım Pazar",
+      okuma: 5,
+
+      /* 1 · HAFTANIN ANA GELİŞMESİ */
+      ana: {
+        id: "ana", kategori: "fow", tarih: "10 Kasım", tur: "Haftanın konusu", okumaSuresi: 3,
+        baslik: "Gartner: Yapay zekâ 2030'a kadar dünyada net 1,7 milyon iş ekleyecek; 2026'da 1,3 milyon pozisyonun açılması ertelendi",
+        ozet: "Gartner, 10 Kasım'da Barselona'daki IT Symposium/Xpo konferansında açıkladığı tahminde yapay zekânın 2030'a kadar dünyada 10,6 milyon yeni iş yaratacağını ve 8,9 milyon işi ortadan kaldıracağını, net etkinin 1,7 milyon iş artışı olacağını öngördü. Gartner'a göre 2026'da yapay zekânın iş piyasasındaki en önemli etkilerinden biri, yöneticilerin 1,3 milyon pozisyonun açılmasını ve bu pozisyonlara işe alımı ertelemesi oldu. Gartner, 2030'a kadar çalışanların %20'sinden biraz fazlasının işini yapma biçimini değiştirmek zorunda kalacağını tahmin ediyor.",
+        bolumler: [
+          { baslik: "Neler açıklandı?", maddeler: [
+            "Sektörlere göre tablo farklı: Teknoloji sektöründe 1,9 milyon iş yaratılıp 0,4 milyon iş kaybedilmesi bekleniyor; ITPro'ya göre net artışın yaklaşık %89'u teknoloji sektöründen geliyor. Varlık yoğun sektörlerde 6,4 milyon yeni işe karşılık 6 milyon kayıp öngörülüyor; net kayıp beklenen tek sektör kamu (0,4 milyon yeni işe karşılık 0,9 milyon kayıp). Gartner'a göre yapay zekânın doğrudan yol açacağı iş kaybı çalışanların %0,4'ü ile %1,8'i arasında; buna karşın yaklaşık 435,5 milyon çalışanın işini yapma biçimini değiştirmesi gerekecek.",
+            "Gartner, 2026'da yapay zekâ kaynaklı 2,2 milyon iş kaybı ve 1,6 milyon yeni iş olduğunu hesaplıyor ve 2030'a kadar 5 milyon kişinin ertelenen işe alımlardan etkilenmesini bekliyor. ITPro'ya göre yapay zekânın iş piyasasındaki ilk sürtünmesi en çok giriş seviyesindeki çalışanlara yansıyor."
+          ]},
+          { baslik: "Gartner analistleri ne dedi?", maddeler: [
+            "Gartner'ın araştırma şefi ve başkan yardımcısı analisti John Lovelock: \"Ertelenen işler, kaybedilen işlerle aynı şey değil. Onlar sadece hiç oluşturulmuyor.\"",
+            "Gartner'dan başkan yardımcısı analist Helen Poitevin: \"Bir iş ve BT yöneticisinin yapabileceği en kötü hata, bir sektörden ya da rolden çıkarılan dersleri bir başkasına uygulamaktır.\" Poitevin'e göre yapay zekâyı en ileri düzeyde uygulayan kurumlar onu emeğin yerine geçen bir araç olarak görmüyor.",
+            "Bu bültenin 2. sayısında Fed'in, ABD'nin 12 bölgesinden 5'inde bazı firmaların yapay zekâ yatırımı sonrası daha az işe aldığını bildirdiğini; 5. sayısında ise ABD'de yapay zekâ gerekçeli işten çıkarmaların Ekim'de yılın en düşük düzeyine indiğini yazmıştık. Gartner'ın ertelenen işe alım rakamı, işten çıkarmadan çok \"hiç açılmayan pozisyon\" üzerinden işleyen bu etkiye bir büyüklük veriyor."
+          ]},
+          { baslik: "Dikkat edilecek noktalar", maddeler: [
+            "Rakamlar dünya geneline ait bir tahmin; haberlerde tahminin yöntemi açıklanmıyor.",
+            "2026'ya ait rakamlar (2,2 milyon kayıp, 1,6 milyon yeni iş, 1,3 milyon ertelenen pozisyon) ile 2030 tahminleri farklı dönemlere ait; birbirine eklenmemeli."
+          ]}
+        ],
+        not: "Ertelenen iş (job deferral): Şirketin yapay zekâ nedeniyle açmayı planladığı bir pozisyonu açmaması. Kimse işten çıkarılmıyor; ama o iş ve o işe girecek kişi için işe alım hiç gerçekleşmiyor.",
+        kapak: { gorsel: "kapak-sayi6.jpg", gorselAciklama: "Alttaki iki basamağı kesikli çizgiyle boş bırakılmış mavi bir merdiven; merdivenin dibinde bekleyen ve tepesinde duran iki sade insan figürü, üstte bir yapay zekâ çipi simgesi, sağda yukarı oklu yeşil bir çubuk ve ondan biraz kısa mercan rengi bir çubuk" },
+        kaynaklar: [
+          { ad: "Gartner · Basın bülteni", url: "https://www.gartner.com/en/newsroom/press-releases/2026-11-10-gartner-forecasts-artificial-intelligence-will-drive-a-net-increase-of-1-7-million-jobs-by-2030", tip: "resmi" },
+          { ad: "ITPro · Haber", url: "https://www.itpro.com/business/careers-and-training/gartner-says-ai-will-create-more-jobs-than-it-destroys-but-programmers-could-feel-the-pinch", tip: "ikinci" },
+          { ad: "HRD (HCA Mag) · Haber", url: "https://www.hcamag.com/au/news/general/ai-to-create-more-jobs-than-it-eliminates-by-2030-gartner/596921", tip: "ikinci" }
+        ]
+      },
+
+      /* 2 · HAFTALIK GÜNDEM */
+      haberler: [
+        {
+          id: "h1", kategori: "ai-hr", tarih: "26 Ekim", tur: "Araştırma · Türkiye", gecenHafta: true,
+          baslik: "PwC Türkiye: Türkiye'de çalışanların %75'i önümüzdeki 12 ayda işte yapay zekâ kullanımının artmasını bekliyor; küreselde bu oran %60",
+          ozet: "PwC'nin dünya genelinde yaklaşık 50.000 çalışanla yaptığı \"Geleceğin Çalışma Hayatına Dair Umutlar ve Endişeler Araştırması 2026\"nın Türkiye sonuçlarına göre Türkiye'deki çalışanların %75'i önümüzdeki 12 ayda işte yapay zekâ kullanımının artmasını bekliyor (küresel %60). Kullanımın önemli ölçüde artacağını düşünenler Türkiye'de %19, küreselde %14. Yapay zekâ kullanımındaki artışın kendisini enerjik hissettirdiğini söyleyenler Türkiye'de %60, küreselde %46.",
+          ek: "Son 12 ayda yapay zekânın becerilerini geliştirdiğini söyleyenler Türkiye'de %42 (küresel %38), iş kalitesine olumlu katkı yaptığını söyleyenler %47 (küresel %43). Türkiye'de çalışanların %35'i yapay zekânın iş yükünü azalttığını, %21'i artırdığını söylüyor. Önümüzdeki üç yılda rolünün ortadan kalkacağını düşünenler Türkiye'de %5 (küresel %3); yapay zekânın rolüne hiçbir etkisi olmayacağını düşünenler %21 (küresel %19). Araştırmaya göre dünya genelinde çalışanların üst yönetime güveni bir önceki yıla göre 7 puan geriledi.",
+          not: "PwC Türkiye'nin yayımladığı sayfada Türkiye örnekleminin büyüklüğü ve anketin yapıldığı tarihler yer almıyor.",
+          kaynaklar: [
+            { ad: "PwC Türkiye · Araştırma sayfası", url: "https://www.pwc.com.tr/tr/hizmetlerimiz/insan-yonetimi-ve-organizasyon-danismanligi/yayinlar/umutlar-endiseler-arastirmasi-2026.html", tip: "resmi" }
+          ]
+        },
+        {
+          id: "h2", kategori: "ai-hr", tarih: "9 Kasım", tur: "Araştırma",
+          baslik: "PA Consulting: Üst düzey yöneticilerin %70'i yapay zekâyla önceden yapamadıklarını yapabildiğini söylüyor; giriş ve alt kademede bu oran %38",
+          ozet: "Danışmanlık şirketi PA Consulting'in İngiltere'de 2.000 çalışanla yaptığı ankete göre üst düzey yöneticilerin %70'i yapay zekânın daha önce yapamadıkları şeyleri başarmalarına yardımcı olduğunu söylüyor; giriş ve alt kademe çalışanlarda bu oran %38. Üst düzey yöneticiler yapay zekâyı günde ortalama 6,9 kez, yani giriş ve alt kademedeki çalışanların üç katından fazla kullanıyor.",
+          ek: "Yapay zekâyla daha kaliteli iş çıkardığını söyleyenler üst düzey yöneticilerde %72, giriş ve alt kademede %43. Çalışanların %32'si yapay zekâdan henüz anlamlı bir fayda görmediğini söylüyor. PA Consulting'den Kate Spencer: \"Yapay zekâ çoğu zaman uzmanlığı herkesin erişimine sunan büyük bir eşitleyici olarak görülüyor. Ancak araştırmamız şu anda bunun tersinin yaşanıyor olabileceğini gösteriyor.\"",
+          not: "Anket yalnızca İngiltere'deki çalışanlarla yapıldı; anketin yapıldığı tarihler basın bülteninde yer almıyor.",
+          kaynaklar: [
+            { ad: "PA Consulting · Basın bülteni", url: "https://www.paconsulting.com/newsroom/ai-risks-widening-the-workplace-divide-new-report-finds-9-november-2026", tip: "resmi" },
+            { ad: "People Management · Haber", url: "https://www.peoplemanagement.co.uk/article/1975078/ai-benefits-senior-leaders-junior-staff-survey-finds", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h3", kategori: "pa", tarih: "12 Kasım", tur: "Araştırma",
+          baslik: "HiBob: Kişi kararlarını yapay zekâyla gözden geçiren İK profesyonellerinin %57'si, terfide atlanan çalışanları yeniden değerlendirmiş",
+          ozet: "İK yazılımı şirketi HiBob'un açıkladığı ankete göre ücret, terfi, performans ve işe alım kararlarını yapay zekâyla gözden geçiren İK profesyonellerinin %57'si, terfi için ilk aşamada atlanan çalışanları yeniden değerlendirdi. Katılımcıların %73'ü, bir yöneticiyi önerdiği kararı yeniden düşünmeye teşvik etmek için yapay zekâdan gelen bilgiyi kullandığını söylüyor.",
+          ek: "Yapay zekâ destekli bir gözden geçirmenin ardından kararın çalışan lehine sonuçlandığını söyleyenler ücret artışında %43, terfide %40, performans notunda %42. Katılımcıların %59'u yapay zekâdan gelen bilginin doğruluk ve ilgililik açısından kontrol edildiğini, %45'i önerilen kararların adil olmayan ya da tutarsız muamele açısından incelendiğini söylüyor.",
+          not: "Anketi bir İK yazılımı şirketi yaptı; basın bülteninde katılımcı sayısı, ülkeler ve anket tarihleri yer almıyor.",
+          kaynaklar: [
+            { ad: "HiBob · Basın bülteni (GlobeNewswire)", url: "https://www.globenewswire.com/news-release/2026/11/12/3402059/0/en/study-suggests-overlooked-talent-reconsidered-for-promotion-after-ai-review.html", tip: "ikinci" },
+            { ad: "HR Dive · Haftalık değerlendirme", url: "https://www.hrdive.com/news/can-ai-root-out-manager-bias/874657/", tip: "ikinci" }
+          ]
+        },
+        {
+          id: "h4", kategori: "fow", tarih: "10 Kasım", tur: "Araştırma",
+          baslik: "Payscale: Yapay zekâ becerisine daha fazla ödediğini ya da ödeyeceğini söyleyen yöneticiler %83, İK profesyonelleri %54; yapay zekâ eğitimiyle ücreti artan çalışanlar %16",
+          ozet: "Ücret verisi şirketi Payscale'in 10 Kasım'da yayımladığı rapora göre kurumlarının yapay zekâ becerisine daha fazla ödediğini ya da ödemeyi planladığını söyleyenler üst yöneticilerde %83, İK'da %54, işe alım ekiplerinde %34. Çalışanların %16'sı yapay zekâyla ilgili beceri gelişimi nedeniyle ücretinin arttığını söylerken %70'i ücretinde bir değişiklik olmadığını belirtiyor.",
+          ek: "Çalışanların %43'ü yapay zekâ sayesinde haftada üç saat ya da daha fazla zaman kazandığını söylüyor; ancak kazanılan zamanı daha stratejik ya da daha değerli işlere ayırdığını söyleyenler %19. İşverenlerin %74'ü yapay zekânın önümüzdeki 12 ayda kadro ya da işe alım planlarını etkilemesini bekliyor. İşverenlerin gelişimlerine açık bir yatırım yaptığını söyleyen çalışanlar %29. Payscale'den Ruth Thomas: \"Yapay zekâ, çalışanların rollerine kattığı değeri değiştiriyor; ancak ücretlendirme uygulamaları buna ayak uyduramadı.\"",
+          not: "Araştırma, ücret verisi ve yazılımı satan bir şirkete ait. Ağustos 2026'da, 100'den fazla çalışanı olan kurumlarda 500 işveren temsilcisi (İK, ücret ve işe alım uzmanları) ve 1.000 tam zamanlı çalışanla yapıldı. Şirket raporun ön sonuçlarını Eylül'de paylaşmıştı; burada yer alan rakamlar 10 Kasım'daki tam raporla açıklananlar.",
+          kaynaklar: [
+            { ad: "Payscale · Basın bülteni", url: "https://www.payscale.com/press-releases/payscales-ai-workforce-impact-report", tip: "resmi" },
+            { ad: "Payscale · Rapor ve yöntem", url: "https://www.payscale.com/featured-content/ai-workforce-impact-report", tip: "resmi" },
+            { ad: "GlobeNewswire · Basın bülteni yayını", url: "https://www.globenewswire.com/news-release/2026/11/10/3399638/0/en/payscale-s-ai-workforce-impact-report-ai-is-boosting-productivity-but-employers-struggle-to-put-a-price-on-it.html", tip: "ikinci" }
+          ]
+        }
+      ],
+
+      /* 3 · SEKTÖREL GÖZLEM (editoryal yorum, haber değil) */
+      sinyal: {
+        baslik: "Ücret ve terfi masasında yapay zekâ",
+        ingilizce: "AI at the Pay and Promotion Table",
+        metin: "Bu haftanın iki araştırması, yapay zekânın ücret ve terfi kararlarına iki ayrı yoldan girdiğini gösteriyor. HiBob'un anketinde İK profesyonelleri, yöneticilerin ücret, terfi ve performans önerilerini yapay zekâyla gözden geçirdiklerini ve bu gözden geçirmelerin bir kısmında kararın çalışan lehine değiştiğini söylüyor. Payscale'in raporunda ise yapay zekâ becerisi, ücretlendirilmesi gereken bir yetkinlik olarak öne çıkıyor; ancak üst yöneticilerle İK'nın bu konudaki yanıtları birbirinden uzak ve beceri geliştirdiği için ücreti artan çalışan az. İki araştırma da yazılım şirketlerine ait ve HiBob anketinin yöntemi açıklanmadı; yine de birlikte okunduğunda yapay zekânın hem kararı gözden geçiren bir araç olarak kullanıldığı hem de kararın ölçütlerinden biri olarak tartışılmaya başladığı görülüyor. Bu da ücret ve terfi kararlarının hangi veriye ve hangi kurala dayandığının yazılı olmasını daha önemli kılabilir.",
+        once: { ad: "Yöneticinin önerisi", metin: "Ücret ve terfi önerisi yöneticiden gelir; yapay zekâ becerisi ayrı bir ölçüt değildir." },
+        sonra: { ad: "Yapay zekâyla gözden geçirme", metin: "Öneri yapay zekâyla yeniden incelenir; yapay zekâ becerisi de ücretlendirilecek bir yetkinlik olarak tartışılır." },
+        dayanak: ["h3", "h4"]
+      },
+
+      /* 4 · SAYILARLA GÜNDEM */
+      veri: {
+        id: "veri", kategori: "ex", tarih: "11 Kasım", tur: "Araştırma",
+        deger: "%20",
+        baslik: "Unily ve Gallup: ABD'de çalışanların yalnızca %20'si iyi bir dijital çalışma deneyimine sahip",
+        metin: "Çalışan deneyimi platformu Unily'nin Gallup ile yaptığı araştırmaya göre ABD'li çalışanların yalnızca %20'si, raporun \"dijital olanaklar\" (Digital Enablement) ve \"dijital kültür\" (Digital Culture) adını verdiği iki boyutun ikisinde de güçlü bir deneyime sahip. İyi bir dijital çalışma deneyimi olan çalışanlarda işe bağlılık oranı %46, kötü deneyimi olanlarda %15.",
+        karsilastirma: [
+          { etiket: "İşine bağlı çalışanlar: iyi dijital deneyim (%46)", deger: 46 },
+          { etiket: "İşine bağlı çalışanlar: kötü dijital deneyim (%15)", deger: 15 }
+        ],
+        orneklem: "Gallup Paneli'nden 2.305 ABD'li çalışan (6–10 Temmuz 2026)",
+        ozet: "Araştırmada öne çıkanlar:",
+        maddeler: [
+          "Tükenmişlik yaşadığını söyleyenler iyi dijital deneyimi olanlarda %11, kötü deneyimi olanlarda %38.",
+          "Çalışanların %72'si son altı ayda işvereninin sağladığı herhangi bir yapay zekâ eğitimine katılmadığını söylüyor.",
+          "Araştırma tek bir zamanda yapılan bir anket; dijital deneyim ile bağlılık arasındaki ilişkiyi gösteriyor, birinin diğerine yol açtığını göstermiyor."
+        ],
+        kaynaklar: [
+          { ad: "Unily ve Gallup · Basın bülteni", url: "https://www.prnewswire.com/news-releases/only-one-in-five-us-employees-has-a-good-digital-workplace-experience-new-unily-and-gallup-research-finds-302936487.html", tip: "resmi" }
+        ]
+      },
+
+      /* 4b · SEKTÖRDEN (perakende ve iç giyim; herkese açık bilgi, yorum yok) */
+      sektorden: [],
+
+      /* 5 · YAKLAŞAN İK ETKİNLİKLERİ (tarihi geçenler sitede kendiliğinden gizlenir) */
+      etkinlikler: [
+        { ad: "Alışılagelmişin Dışında Networking HR Summit İstanbul'26", tur: "Zirve", baslangic: "2026-11-25", bitis: "2026-11-25", yer: "İstanbul · Marriott Hotel Pendik",
+          aciklama: "İnsan Kaynakları Dayanışma Derneği'nin (İKDAY) ücretsiz etkinliği; atölyeler ve tanışma oturumlarının yanında derneğin \"2027 İnsan Kaynakları Beklentileri ve Trendleri Geri Bildirimi\" oturumu yapılacak. Katılım kayıtla ve kontenjanla sınırlı.",
+          url: "https://www.ikday.org.tr/etkinlikler/alisilagelmisin-disinda-networking-hr-summit-istanbul-26", konular: ["ik"] },
+        { ad: "5. Dijital İK Çağı Zirvesi", tur: "Zirve", baslangic: "2026-12-09", bitis: "2026-12-09", yer: "İstanbul · Sheraton Grand Ataşehir",
+          aciklama: "HRdergi'nin zirvesi; algoritmik kararlarda İK'nın rolü, insan verisi ve analitiği, beceri dönüşümü ve dijital çalışan deneyimi konuşulacak.",
+          url: "https://hrdergi.com/5-dijital-ik-cagi-zirvesi", konular: ["ik", "ai", "tce", "egitim"] },
+        { ad: "People Make the Brand 2026", tur: "Etkinlik", baslangic: "2026-12-10", bitis: "2026-12-10", yer: "Yer açıklanmadı · çevrim içi kayıt",
+          aciklama: "HBR Türkiye'nin etkinliği; yapay zekânın işi yeniden tanımlaması, demografik değişim, değişen çalışan beklentileri, güven ve kurum kültürünün geleceği ele alınacak.",
+          url: "https://event.hbrturkiye.com/register/people-make-the-brand-2026", konular: ["liderlik", "ai", "tce"] },
+        { ad: "Global HR Summit 2027", tur: "Zirve", baslangic: "2027-05-04", bitis: "2027-05-05", yer: "İstanbul · Mandarin Oriental Bosphorus",
+          aciklama: "\"İnsan, Teknoloji ve İşin Yeni Dönemi\" temalı zirvenin yedinci buluşması; liderlik, işin geleceği ve dijital, çalışan bağlılığı, kurum kültürü ve işveren markası ile sürdürülebilirlik ve kurumsal iyi oluş başlıklarında oturumlar var.",
+          url: "https://globalhrsummit.org/en", konular: ["ik", "liderlik", "tce", "isveren"] }
+      ]
+    },
     {
       no: 5,
       donem: "2–8 Kasım 2026",
